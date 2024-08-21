@@ -1,65 +1,65 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Stellar Minesite",
-    page_icon="💫",
+    page_title="🚀 Cosmic Mining Hub",
+    page_icon="🌌",
 )
 
 with st.sidebar:
-    st.success("Select a model above to try it!")
-    st.title("💫 Stellar Minesite")
-    st.subheader("Unlocking the Riches of the Cosmos, One Site at a Time.")
+    st.success("Explore models to begin your journey!")
+    st.title("🌌 Cosmic Mining Hub")
+    st.subheader("Discovering the Treasures of the Universe.")
     st.markdown(
         """
-        Stellar Minesite is an ML-driven web platform to 
-        analyze data on mining sites, and generate 
-        recommendations based on user input.
+        Welcome to the Cosmic Mining Hub, a cutting-edge 
+        machine learning platform designed to analyze 
+        extraterrestrial mining data and offer expert 
+        recommendations.
         """
     )
-    with st.expander("Built for ISRO Space Exploration Hackathon"):
+    with st.expander("About This Project"):
         st.markdown(
             """
-            ## ISRO Space Exploration Hackathon
+            ### ISRO Space Exploration Hackathon
 
-            This project is a submission for [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/)
-            and it was built by Team PiklPython (Desh, Devanik, Shivam).
+            Cosmic Mining Hub is a submission for the 
+            [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/) 
+            by Team PiklPython (Desh, Devanik, Shivam).
             """
         )
 
 st.markdown(
     """
-    <div align="center">
+    <div style="text-align: center;">
 
-    ## 💫 Stellar Minesite
+    ## 🌌 Cosmic Mining Hub
 
-    <samp>
-    Unlocking the Riches of the Cosmos, One Site at a Time.
-    </samp>
+    <em>
+    Discovering the Treasures of the Universe.
+    </em>
 
     </div>
     """,
     unsafe_allow_html=True
 )
 st.divider()
-st.markdown("""
-    Stellar Minesite is a Machine Learning driven web 
-    platform for exploring analyzing data on mining sites,
-    and generating recommendations based on user input. 
-    Machine Learning and Data Science projects.
+st.markdown(
+    """
+    The Cosmic Mining Hub leverages machine learning to explore, 
+    analyze, and recommend prime mining sites across the cosmos.
 
-    **🛩️ Select a model from the sidebar** to see it in action!
-    ### 🛰️ The Prediction Model
-    - brief description line
-    - brief description line
-    - brief description line
-    - brief description line
+    **🚀 Select a model from the sidebar** to start exploring!
 
-    ### 🌌 The Recommendation Model
-    - The recommendation model evaluates space mining sites 
-    based on user-defined feature weights and a trained 
-    machine learning model.
-    - It normalizes input data, predicts suitability scores, and adjusts for user preferences.
-    - Finally, it ranks sites to provide the top recommendations.
-    - Users interactively adjust feature weight/priority and the model recommends best minesites available.
-    """, 
+    ### 🛰️ Prediction Model
+    - **Comprehensive Analysis:** Assesses vital factors such as distance from Earth, mineral richness, projected value (B USD), and sustainability indices to predict optimal mining sites.
+    - **Advanced Algorithms:** Utilizes sophisticated models like Random Forest, XGBoost, and LightGBM for precise predictions.
+    - **Interactive Input:** Adapts to user data, offering personalized mining site recommendations.
+    - **Strategic Insights:** Provides actionable insights for cosmic resource exploration and extraction.
+
+    ### 🌠 Recommendation Model
+    - **Site Evaluation:** Analyzes and ranks mining sites based on user-defined criteria and trained ML models.
+    - **Data Normalization:** Processes input data, predicting suitability scores aligned with user preferences.
+    - **Custom Ranking:** Generates top site recommendations by prioritizing features according to user input.
+    - **Dynamic Interaction:** Allows real-time adjustments to feature importance, enhancing recommendation accuracy.
+    """
 )
