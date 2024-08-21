@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     st.success("Explore models to begin your journey!")
-    st.title("🌌 Cosmic Mining Hub")
+    st.title("👽 Cosmic Mining Hub")
     st.subheader("Discovering the Treasures of the Universe.")
     st.markdown(
         """
