@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="👽 Cosmic Mining Hub",
+    page_title="Cosmic Mining Hub",
     page_icon="🌌",
 )
 
