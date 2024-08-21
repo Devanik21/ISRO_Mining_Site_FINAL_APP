@@ -9,7 +9,7 @@ def load_data():
     # Load your dataset here
     # For demonstration, assuming a CSV file with the same columns
     # Replace 'data.csv' with your actual data file
-    data = pd.read_csv('data.csv')
+    data = pd.read_csv('space_mining_dataset.csv')
     return data
 
 def show_analysis_page():
