@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-st.set_page_config(page_title="📊 Mining Site Visualization", page_icon="🔍")
+st.set_page_config(page_title="Mining Site Visualization", page_icon="🔍")
 
 def load_data():
     # Load the dataset
@@ -61,5 +61,43 @@ def show_visualize_page():
     top_sites = adjusted_scores.sort_values(by='adjusted_score', ascending=False).head(top_n)
     st.subheader(f"Top {top_n} Sites Based on Adjusted Scores")
     st.write(top_sites[['Celestial Body', 'iron', 'nickel', 'water_ice', 'distance_from_earth', 'adjusted_score']])
+
+    # Visualization 4: Feature Importance from Model
+    st.subheader("Feature Importance from Model")
+    model = joblib.load("space_mining_model.pkl")
+    feature_importances = model.feature_importances_
+    features = data[['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'efficiency_index', 'distance_from_earth']].columns
+    importance_df = pd.DataFrame({
+        'Feature': features,
+        'Importance': feature_importances
+    }).sort_values(by='Importance', ascending=False)
+    fig, ax = plt.subplots()
+    sns.barplot(x='Importance', y='Feature', data=importance_df, ax=ax)
+    ax.set_xlabel('Importance')
+    st.pyplot(fig)
+
+    # Visualization 5: Correlation of Features with Final Score
+    st.subheader("Correlation of Features with Final Score")
+    corr_matrix = data[['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'efficiency_index', 'distance_from_earth', 'final_score']].corr()
+    fig, ax = plt.subplots()
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', ax=ax)
+    st.pyplot(fig)
+
+    # Visualization 6: Scatter Plot of Final Score vs. Distance from Earth
+    st.subheader("Scatter Plot of Final Score vs. Distance from Earth")
+    fig, ax = plt.subplots()
+    sns.scatterplot(x='distance_from_earth', y='final_score', data=data, ax=ax)
+    ax.set_xlabel('Distance from Earth (M km)')
+    ax.set_ylabel('Final Score')
+    st.pyplot(fig)
+
+    # Visualization 7: Box Plot of Final Scores by Feature Ranges
+    st.subheader("Box Plot of Final Scores by Feature Ranges")
+    feature_range = st.selectbox("Select Feature Range", ['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'efficiency_index', 'distance_from_earth'])
+    fig, ax = plt.subplots()
+    sns.boxplot(x=feature_range, y='final_score', data=data, ax=ax)
+    ax.set_xlabel(feature_range)
+    ax.set_ylabel('Final Score')
+    st.pyplot(fig)
 
 show_visualize_page()
