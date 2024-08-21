@@ -14,7 +14,7 @@ with st.sidebar:
         ### Space Mining Project
 
         Cosmic Mining Hub is a space mining project that showcases AI's abilities to analyze and recommend optimal mining sites across the cosmos. 
-        Developed by Team PiklPython, it harnesses advanced machine learning techniques to explore the potential of space resource extraction.
+        Developed by DeVaNiK, it harnesses advanced machine learning techniques to explore the potential of space resource extraction.
         """
     )
 
