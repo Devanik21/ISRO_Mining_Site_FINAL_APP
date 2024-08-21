@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import joblib
 st.set_page_config(page_title="Mining Site Visualization", page_icon="🔍")
 
 def load_data():
