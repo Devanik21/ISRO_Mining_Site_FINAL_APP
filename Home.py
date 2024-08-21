@@ -9,7 +9,7 @@ with st.sidebar:
     st.success("Explore models to begin your journey!")
     st.title("👽 Cosmic Mining Hub")
     with st.expander("About This Project"):
-    st.markdown(
+        st.markdown(
         """
         ### Space Mining Project
 
@@ -17,6 +17,7 @@ with st.sidebar:
         Developed by Team PiklPython, it harnesses advanced machine learning techniques to explore the potential of space resource extraction.
         """
     )
+
 
 
     
