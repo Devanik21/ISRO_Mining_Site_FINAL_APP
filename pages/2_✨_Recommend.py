@@ -8,7 +8,7 @@ import joblib
 
 import streamlit as st
 
-st.set_page_config(page_title="Mining Site Recommendation", page_icon="✨")
+st.set_page_config(page_title="Mining Site Recommendation", page_icon="🌌")
 
 def recommend_site(user_preferences, top_n = 5):
     model = joblib.load("space_mining_model.pkl")
