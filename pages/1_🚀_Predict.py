@@ -3,8 +3,8 @@ import pandas as pd
 import joblib
 
 # Load the trained model
-model = joblib.load("RF_mining_model.pkl")
-st.set_page_config(page_title="Mining Site Prediction", page_icon="🚀")
+model = joblib.load("FINAL_mining_model.pkl")
+st.set_page_config(page_title="Mining Site Prediction", page_icon="🛰️")
 
 def show_decide_page ():
     st.title("Mining Site Prediction")
