@@ -47,14 +47,14 @@ st.markdown("""
     and generating recommendations based on user input. 
     Machine Learning and Data Science projects.
 
-    **👈 Select a model from the sidebar** to see it in action!
-    ### 🚀 The Prediction Model
+    **🛩️ Select a model from the sidebar** to see it in action!
+    ### 🛰️ The Prediction Model
     - brief description line
     - brief description line
     - brief description line
     - brief description line
 
-    ### ✨ The Recommendation Model
+    ### 🌌 The Recommendation Model
     - The recommendation model evaluates space mining sites 
     based on user-defined feature weights and a trained 
     machine learning model.
