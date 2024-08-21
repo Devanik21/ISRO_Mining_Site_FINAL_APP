@@ -74,6 +74,6 @@ def show_recommend_page():
             recommended_site = recommend_site(user_preferences)
         st.markdown("### 🚀 Top 5 Mining Sites for Your Preferences:")
         st.table(recommended_site)
-        st.balloons()
+        st.markdown("<div style='text-align: center;'>✨ The search for new worlds is complete! ✨</div>", unsafe_allow_html=True)
 
 show_recommend_page()
