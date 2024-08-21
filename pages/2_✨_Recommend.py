@@ -49,7 +49,7 @@ def recommend_site(user_preferences, top_n=5):
     return ranked_sites_df
 
 def show_recommend_page():
-    st.title("🚀 Mining Site Recommendation")
+    st.title("🌌 Mining Site Recommendation")
     st.write("Set your preferences in the sidebar, and our model will recommend the most suitable mining sites for your needs!")
 
     iron = st.sidebar.slider("Iron (%)", 0, 100, 50)/100.0
@@ -72,7 +72,7 @@ def show_recommend_page():
     if ok:
         with st.spinner("Scanning the Cosmos for Prime Mining Sites..."):
             recommended_site = recommend_site(user_preferences)
-        st.markdown("### 🚀 Top 5 Mining Sites for Your Preferences:")
+        st.markdown("### 🔭 Top 5 Mining Sites for Your Preferences:")
         st.table(recommended_site)
         st.markdown("<div style='text-align: center;'>✨ Exploration successful: New cosmic mining opportunities discovered ! ✨</div>", unsafe_allow_html=True)
 
