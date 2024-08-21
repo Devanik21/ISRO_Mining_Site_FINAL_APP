@@ -9,24 +9,17 @@ with st.sidebar:
     st.success("Explore models to begin your journey!")
     st.title("👽 Cosmic Mining Hub")
     st.subheader("Discovering the Treasures of the Universe.")
+    with st.expander("About This Project"):
     st.markdown(
         """
-        Welcome to the Cosmic Mining Hub, a cutting-edge 
-        machine learning platform designed to analyze 
-        extraterrestrial mining data and offer expert 
-        recommendations.
+        ### Space Mining Project
+
+        Cosmic Mining Hub is a space mining project that showcases AI's abilities to analyze and recommend optimal mining sites across the cosmos. 
+        Developed by Devanik, it harnesses advanced machine learning techniques to explore the potential of space resource extraction.
         """
     )
-    with st.expander("About This Project"):
-        st.markdown(
-            """
-            ### ISRO Space Exploration Hackathon
 
-            Cosmic Mining Hub is a submission for the 
-            [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/) 
-            by Team PiklPython (Desh, Devanik, Shivam).
-            """
-        )
+    
 
 st.markdown(
     """
