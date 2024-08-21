@@ -1,16 +1,13 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
 import joblib
-
 import streamlit as st
 
 st.set_page_config(page_title="Mining Site Recommendation", page_icon="🌌")
 
-def recommend_site(user_preferences, top_n = 5):
+def recommend_site(user_preferences, top_n=5):
     model = joblib.load("space_mining_model.pkl")
     df = pd.read_csv("space_mining_dataset.csv")
     features = df[['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'efficiency_index', 'distance_from_earth']]
@@ -46,14 +43,14 @@ def recommend_site(user_preferences, top_n = 5):
     ranked_sites = df.sort_values(by='final_score', ascending=False).head(top_n)
     
     # Select specific columns to display
-    columns_to_display = [ 'Celestial Body', 'iron', 'nickel', 'water_ice', 'distance_from_earth', 'final_score']
+    columns_to_display = ['Celestial Body', 'iron', 'nickel', 'water_ice', 'distance_from_earth', 'final_score']
     ranked_sites_df = ranked_sites[columns_to_display]
 
     return ranked_sites_df
 
 def show_recommend_page():
-    st.title("Mining Site Recommendation")
-    st.write("In the sidebar, enter the priority/weightage of minerals, distance from Earth and sustainability and our model will recommend perfect mining sites for you!")
+    st.title("🚀 Mining Site Recommendation")
+    st.write("Set your preferences in the sidebar, and our model will recommend the most suitable mining sites for your needs!")
 
     iron = st.sidebar.slider("Iron (%)", 0, 100, 50)/100.0
     nickel = st.sidebar.slider("Nickel (%)", 0, 100, 50)/100.0
@@ -73,10 +70,10 @@ def show_recommend_page():
     
     ok = st.button("Recommend")
     if ok:
-        with st.spinner("Calculating Optimal Mining Locations..."):
+        with st.spinner("Scanning the Cosmos for Prime Mining Sites..."):
             recommended_site = recommend_site(user_preferences)
-        st.markdown("""### Here's top 5 mining sites suitable for your needs:""")
+        st.markdown("### 🚀 Top 5 Mining Sites for Your Preferences:")
         st.table(recommended_site)
-        st.snow()
+        st.balloons()
 
 show_recommend_page()
