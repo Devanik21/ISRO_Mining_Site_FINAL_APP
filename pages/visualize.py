@@ -96,8 +96,6 @@ def show_visualize_page():
     feature_range = st.selectbox("Select Feature Range", ['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'efficiency_index', 'distance_from_earth'])
     fig, ax = plt.subplots()
     sns.boxplot(x=feature_range, y='final_score', data=data, ax=ax)
-    ax.set_xlabel(feature_range)
-    ax.set_ylabel('Final Score')
     st.pyplot(fig)
 
 show_visualize_page()
