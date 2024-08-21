@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="🚀 Cosmic Mining Hub",
+    page_title="👽 Cosmic Mining Hub",
     page_icon="🌌",
 )
 
@@ -48,7 +48,7 @@ st.markdown(
     The Cosmic Mining Hub leverages machine learning to explore, 
     analyze, and recommend prime mining sites across the cosmos.
 
-    **🚀 Select a model from the sidebar** to start exploring!
+    **🛩️ Select a model from the sidebar** to start exploring!
 
     ### 🛰️ Prediction Model
     - **Comprehensive Analysis:** Assesses vital factors such as distance from Earth, mineral richness, projected value (B USD), and sustainability indices to predict optimal mining sites.
