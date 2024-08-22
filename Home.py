@@ -1,28 +1,28 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Stellar Minesite",
-    page_icon="💫",
+    page_title="Galactic Mining Hub",
+    page_icon="🌌",
 )
 
 with st.sidebar:
-    st.success("Select a model above to try it!")
-    st.title("💫 Stellar Minesite")
-    st.subheader("Unlocking the Riches of the Cosmos, One Site at a Time.")
+    st.success("Choose a model to explore its features!")
+    st.title("🌟 Galactic Mining Hub")
+    st.subheader("Exploring Cosmic Treasures, One Site at a Time.")
     st.markdown(
         """
-        Stellar Minesite is an ML-driven web platform to 
-        analyze data on mining sites, and generate 
-        recommendations based on user input.
+        Galactic Mining Hub is an advanced ML-based platform designed to
+        analyze mining site data and offer personalized recommendations
+        based on your inputs.
         """
     )
-    with st.expander("Built for ISRO Space Exploration Hackathon"):
+    with st.expander("Created for the ISRO Space Exploration Hackathon"):
         st.markdown(
             """
             ## ISRO Space Exploration Hackathon
 
-            This project is a submission for [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/)
-            and it was built by Team PiklPython (Desh, Devanik, Shivam).
+            This submission is for the [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/)
+            and was developed by Team PiklPython (Desh, Devanik, Shivam).
             """
         )
 
@@ -30,10 +30,10 @@ st.markdown(
     """
     <div align="center">
 
-    ## 💫 Stellar Minesite
+    ## 🌟 Galactic Mining Hub
 
     <samp>
-    Unlocking the Riches of the Cosmos, One Site at a Time.
+    Exploring Cosmic Treasures, One Site at a Time.
     </samp>
 
     </div>
@@ -42,24 +42,23 @@ st.markdown(
 )
 st.divider()
 st.markdown("""
-    Stellar Minesite is a Machine Learning driven web 
-    platform for exploring analyzing data on mining sites,
-    and generating recommendations based on user input. 
+    Galactic Mining Hub is a state-of-the-art Machine Learning platform 
+    for exploring and analyzing data on mining sites and generating 
+    tailored recommendations based on your preferences. Dive into 
     Machine Learning and Data Science projects.
 
-    **👈 Select a model from the sidebar** to see it in action!
-    ### 🚀 The Prediction Model
-    - brief description line
-    - brief description line
-    - brief description line
-    - brief description line
+    **🛩️ Select a model from the sidebar** to see its capabilities!
+    ### 🚀 Prediction Model
+    - Provides insights into potential mining sites based on various features.
+    - Generates predictions about site suitability.
+    - Visualizes key metrics and predictions.
+    - Offers an interactive experience for exploring predictions.
 
-    ### ✨ The Recommendation Model
-    - The recommendation model evaluates space mining sites 
-    based on user-defined feature weights and a trained 
-    machine learning model.
-    - It normalizes input data, predicts suitability scores, and adjusts for user preferences.
-    - Finally, it ranks sites to provide the top recommendations.
-    - Users interactively adjust feature weight/priority and the model recommends best minesites available.
-    """, 
+    ### 🌠 Recommendation Model
+    - Evaluates mining sites based on custom feature weights and a trained 
+    ML model.
+    - Normalizes input data and predicts suitability scores.
+    - Adjusts recommendations according to user preferences.
+    - Ranks sites to highlight the top recommendations based on input criteria.
+    """,
 )
