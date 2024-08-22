@@ -1,86 +1,94 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 
 def show_analyze_page():
     st.title("Mining Site Analysis")
-    st.write("Analyze the characteristics of different mining sites.")
-    
+    st.write("Analyze the characteristics of different mining sites with advanced data analytics.")
+
     # Load dataset
     df = pd.read_csv("space_mining_dataset.csv")
     
     # Display dataset summary
-    st.subheader("Dataset Summary")
+    st.write("### Dataset Summary")
     st.write(df.describe())
     
-    # Handle non-numeric columns
-    non_numeric_cols = df.select_dtypes(exclude=['number']).columns
-    if len(non_numeric_cols) > 0:
-        st.subheader("Non-Numeric Columns Encoding")
-        st.write("Encoding non-numeric columns for analysis:")
-        for col in non_numeric_cols:
-            st.write(f"- {col}")
-            encoder = LabelEncoder()
-            df[col] = encoder.fit_transform(df[col])
-    
-    # Correlation Heatmap
-    st.subheader("Correlation Heatmap")
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
-    st.pyplot(plt)
-    
-    # Clustering Analysis
-    st.subheader("Clustering Analysis")
-    st.write("Applying K-Means clustering to group similar mining sites.")
-    
-    # Select the number of clusters
-    num_clusters = st.slider("Number of Clusters", 2, 10, 3)
-    
-    # Apply K-Means clustering
-    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
-    df['Cluster'] = kmeans.fit_predict(df.select_dtypes(include=['number']))
-    
-    st.write("### Cluster Centers")
-    st.write(pd.DataFrame(kmeans.cluster_centers_, columns=df.select_dtypes(include=['number']).columns))
-    
-    # Visualize clusters with PCA
-    st.subheader("Cluster Visualization with PCA")
-    pca = PCA(n_components=2)
-    pca_result = pca.fit_transform(df.select_dtypes(include=['number']).drop(columns=['Cluster']))
-    df['PCA1'] = pca_result[:, 0]
-    df['PCA2'] = pca_result[:, 1]
-    
-    plt.figure(figsize=(10, 8))
-    sns.scatterplot(x='PCA1', y='PCA2', hue='Cluster', palette='viridis', data=df)
-    st.pyplot(plt)
-    
-    # Feature Importance Analysis
-    st.subheader("Feature Importance")
-    st.write("Analyzing feature importance using RandomForest.")
-    
-    from sklearn.ensemble import RandomForestClassifier
-    
-    features = df.drop(columns=['Cluster', 'PCA1', 'PCA2'])
-    target = df['Cluster']
-    
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(features, target)
-    
-    importances = pd.Series(model.feature_importances_, index=features.columns)
-    importances = importances.sort_values(ascending=False)
-    
-    st.write(importances)
-    
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x=importances, y=importances.index)
-    plt.title("Feature Importance")
-    st.pyplot(plt)
-    
-    # Display the DataFrame with clusters and PCA
-    st.subheader("Analyzed Data")
-    st.write(df)
+    # Display correlation matrix for numeric features
+    st.write("### Correlation Matrix")
+    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Select numeric columns
+    corr_matrix = numeric_df.corr()
+    st.write(corr_matrix)
 
+    # Correlation heatmap
+    st.write("### Correlation Heatmap")
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+    st.pyplot(plt)
+    
+    # Clustering analysis using KMeans
+    st.write("### Clustering Analysis")
+    st.write("Identifying clusters of similar mining sites using KMeans.")
+
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(numeric_df)
+
+    kmeans = KMeans(n_clusters=3, random_state=42)
+    clusters = kmeans.fit_predict(scaled_features)
+    df['Cluster'] = clusters
+
+    st.write("Cluster Centers:")
+    st.write(pd.DataFrame(scaler.inverse_transform(kmeans.cluster_centers_), columns=numeric_df.columns))
+
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='iron', y='nickel', hue='Cluster', data=df, palette='Set1')
+    plt.title('KMeans Clustering of Mining Sites')
+    st.pyplot(plt)
+
+    # PCA for dimensionality reduction and visualization
+    st.write("### Principal Component Analysis (PCA)")
+    st.write("Reducing dimensionality for visualization.")
+
+    pca = PCA(n_components=2)
+    pca_features = pca.fit_transform(scaled_features)
+    df['PCA1'] = pca_features[:, 0]
+    df['PCA2'] = pca_features[:, 1]
+
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='PCA1', y='PCA2', hue='Cluster', data=df, palette='Set1')
+    plt.title('PCA of Mining Sites')
+    st.pyplot(plt)
+
+    # Outlier detection using IQR method
+    st.write("### Outlier Detection")
+    st.write("Detecting outliers using the IQR method.")
+
+    Q1 = numeric_df.quantile(0.25)
+    Q3 = numeric_df.quantile(0.75)
+    IQR = Q3 - Q1
+
+    outliers = ((numeric_df < (Q1 - 1.5 * IQR)) | (numeric_df > (Q3 + 1.5 * IQR))).any(axis=1)
+    df['Outlier'] = outliers
+
+    st.write(f"Number of outliers detected: {outliers.sum()}")
+    st.write(df[outliers])
+
+    # Correlation with non-numeric features using One-Hot Encoding
+    st.write("### Correlation with Non-Numeric Features")
+    st.write("Analyzing correlations with non-numeric features using One-Hot Encoding.")
+
+    non_numeric_df = df.select_dtypes(exclude=['float64', 'int64'])
+    encoded_df = pd.get_dummies(non_numeric_df)
+    combined_df = pd.concat([numeric_df, encoded_df], axis=1)
+    combined_corr_matrix = combined_df.corr()
+
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(combined_corr_matrix, annot=False, cmap='coolwarm')
+    st.pyplot(plt)
+
+    st.write("Analysis complete!")
+
+show_analyze_page()
