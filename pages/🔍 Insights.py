@@ -3,7 +3,7 @@ import pandas as pd
 
 def show_insights_page():
     # Set page title with an icon
-    st.title("🌌 Mining Site Insights")
+    st.title(" Mining Site Insights")
     st.write("Gain **actionable insights** based on the characteristics of mining sites.")
     
     # Load dataset
