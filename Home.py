@@ -24,7 +24,7 @@ with st.sidebar:
         This project, **Galactic Mining Hub**, is  to showcase the capabilities of Machine Learning in space mining exploration. 
         It was developed  to create an advanced web platform for analyzing and recommending mining sites based on user preferences.
 
-        Developed by: **[Your Name]**
+        Developed by: **Devanik**
         """
     )
 
