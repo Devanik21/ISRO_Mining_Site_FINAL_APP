@@ -1,59 +1,38 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Cosmic Mining Hub",
-    page_icon="🌌",
-)
+def main():
+    st.set_page_config(page_title="👽 Cosmic Mining Hub", page_icon="🌌")
 
-with st.sidebar:
-    st.success("Explore models to begin your journey!")
-    st.title("👽 Cosmic Mining Hub")
-    with st.expander("About This Project"):
-        st.markdown(
-        """
-        ### Space Mining Project
+    st.sidebar.title("Navigation")
+    selection = st.sidebar.radio("Go to", ["Home", "Prediction", "Recommendation", "Analysis", "Visualization", "Insights", "About"])
 
-        Cosmic Mining Hub is a space mining project that showcases AI's abilities to analyze and recommend optimal mining sites across the cosmos. 
-        Developed by DeVaNiK, it harnesses advanced machine learning techniques to explore the potential of space resource extraction.
-        """
-    )
+    if selection == "Home":
+        st.title("Welcome to Stellar Minesite")
+        st.write("Use the navigation panel on the left to explore the different features of the app.")
 
+    elif selection == "Prediction":
+        from predict import show_decide_page
+        show_decide_page()
 
+    elif selection == "Recommendation":
+        from recommend import show_recommend_page
+        show_recommend_page()
 
-    
+    elif selection == "Analysis":
+        from analyze import show_analyze_page
+        show_analyze_page()
 
-st.markdown(
-    """
-    <div style="text-align: center;">
+    elif selection == "Visualization":
+        from visualize import show_visualize_page
+        show_visualize_page()
 
-    ## 🌌 Cosmic Mining Hub
+    elif selection == "Insights":
+        from insights import show_insights_page
+        show_insights_page()
 
-    <em>
-    Discovering the Treasures of the Universe.
-    </em>
+    elif selection == "About":
+        from about import show_about_page
+        show_about_page()
 
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-st.divider()
-st.markdown(
-    """
-    The Cosmic Mining Hub leverages machine learning to explore, 
-    analyze, and recommend prime mining sites across the cosmos.
-
-    **🛩️ Select a model from the sidebar** to start exploring!
-
-    ### 🛰️ Prediction Model
-    - **Comprehensive Analysis:** Assesses vital factors such as distance from Earth, mineral richness, projected value (B USD), and sustainability indices to predict optimal mining sites.
-    - **Advanced Algorithms:** Utilizes sophisticated models like Random Forest, XGBoost, and LightGBM for precise predictions.
-    - **Interactive Input:** Adapts to user data, offering personalized mining site recommendations.
-    - **Strategic Insights:** Provides actionable insights for cosmic resource exploration and extraction.
-
-    ### 🌠 Recommendation Model
-    - **Site Evaluation:** Analyzes and ranks mining sites based on user-defined criteria and trained ML models.
-    - **Data Normalization:** Processes input data, predicting suitability scores aligned with user preferences.
-    - **Custom Ranking:** Generates top site recommendations by prioritizing features according to user input.
-    - **Dynamic Interaction:** Allows real-time adjustments to feature importance, enhancing recommendation accuracy.
-    """
-)
+if __name__ == "__main__":
+    main()
