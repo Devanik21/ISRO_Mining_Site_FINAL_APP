@@ -1,10 +1,10 @@
 import streamlit as st
 
 def show_about_page():
-    st.title("About Galactic Mining Hub 🌌")
+    st.title(" 👽 About Galactic Mining Hub ")
     
     st.markdown("""
-    ## Welcome to **Galactic Mining Hub** 🚀
+    ## Welcome to **Galactic Mining Hub** 
     
     Explore the frontier of space mining with **Galactic Mining Hub**, a cutting-edge platform engineered to transform data into actionable insights, guiding the next generation of space exploration.
 
