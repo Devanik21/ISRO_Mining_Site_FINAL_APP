@@ -35,7 +35,7 @@ st.markdown(
     ## 🌟 Galactic Mining Hub
 
     <samp>
-    Exploring Cosmic Treasures, One Site at a Time.
+    
     </samp>
 
     </div>
