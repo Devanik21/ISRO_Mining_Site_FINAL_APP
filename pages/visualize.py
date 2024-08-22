@@ -50,11 +50,12 @@ def show_visualize_page():
     plt.title('Estimated Value (B USD) by Celestial Body')
     st.pyplot(plt)
     
-    # Correlation Heatmap
+    # Correlation Heatmap (only for numeric columns)
     st.write("### Correlation Heatmap")
+    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Select only numeric columns
     plt.figure(figsize=(10, 8))
-    sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
-    plt.title('Correlation Heatmap of Features')
+    sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f')
+    plt.title('Correlation Heatmap of Numeric Features')
     st.pyplot(plt)
     
     # Pairplot of Selected Features
