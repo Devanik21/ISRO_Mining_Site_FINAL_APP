@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     st.success("Choose a model to explore its features!")
-    st.title("👽 Galactic Mining Hub")
+    st.title("🪐 Galactic Mining Hub")
     st.subheader("Exploring Cosmic Treasures, diving deep into the cosmic sea.")
     st.markdown(
         """
@@ -18,13 +18,36 @@ with st.sidebar:
     )
     with st.expander("Project Overview"):
         st.markdown(
+            """
+            ## Galactic Mining Hub
+
+            This project, **Galactic Mining Hub**, is designed to showcase the capabilities of Machine Learning in space mining exploration. 
+            It was developed to create an advanced web platform for analyzing and recommending mining sites based on user preferences.
+
+            Developed by: **Devanik**
+            """
+        )
+    st.markdown(
         """
-        ## Galactic Mining Hub
+        ### 🚀 Prediction Model
+        - Predict potential mining sites based on various features.
+        - Generated insights and visualizations from `1_🚀_Predict.py`.
 
-        This project, **Galactic Mining Hub**, is  to showcase the capabilities of Machine Learning in space mining exploration. 
-        It was developed  to create an advanced web platform for analyzing and recommending mining sites based on user preferences.
+        ### ✨ Recommendation Model
+        - Evaluate mining sites using custom feature weights and a trained ML model.
+        - Processed recommendations from `2_✨_Recommend.py`.
 
-        Developed by: **Devanik**
+        ### 📊 Analysis
+        - In-depth analysis and visualizations from `Analyze.py`.
+
+        ### 📚 About
+        - Information and details from `about.py`.
+
+        ### 🔍 Insights
+        - Detailed insights and additional information from `insights.py`.
+
+        ### 📈 Visualizations
+        - Advanced visualizations and charts from `visualize.py`.
         """
     )
 
@@ -34,7 +57,7 @@ st.markdown(
 
     ## 🛰️ Galactic Mining Hub
 
-    
+    Explore, Analyze, and Recommend Cosmic Mining Sites.
 
     </div>
     """,
