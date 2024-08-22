@@ -34,9 +34,7 @@ st.markdown(
 
     ## 🌟 Galactic Mining Hub
 
-    <samp>
     
-    </samp>
 
     </div>
     """,
