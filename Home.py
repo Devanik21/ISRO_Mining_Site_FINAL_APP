@@ -1,87 +1,95 @@
 import streamlit as st
 
+# Configure the page with a modern theme and a custom icon
 st.set_page_config(
     page_title="Galactic Mining Hub",
     page_icon="🌌",
+    layout="wide",
+    initial_sidebar_state="expanded",
 )
 
+# Sidebar content with advanced layout
 with st.sidebar:
-    st.success("Choose a model to explore its features!")
-    st.title("🪐 Galactic Mining Hub")
-    st.subheader("Exploring Cosmic Treasures, diving deep into the cosmic sea.")
+    st.title("🪐 **Galactic Mining Hub**")
+    st.subheader("Exploring Cosmic Treasures")
     st.markdown(
         """
-        Galactic Mining Hub is an advanced ML-based platform designed to
-        analyze mining site data and offer personalized recommendations
-        based on your inputs.
+        **Galactic Mining Hub** is a cutting-edge platform that leverages advanced
+        Machine Learning and Data Science techniques to revolutionize space mining 
+        exploration. Dive deep into the cosmos to discover valuable mining sites
+        across the galaxy.
         """
     )
-    with st.expander("Project Overview"):
+    st.image("space_mining.png", use_column_width=True)
+
+    with st.expander("🌟 **Project Overview**"):
         st.markdown(
             """
-            ## Galactic Mining Hub
+            ## 🚀 **Galactic Mining Hub**
 
-            This project, **Galactic Mining Hub**, is designed to showcase the capabilities of Machine Learning in space mining exploration. 
-            It was developed to create an advanced web platform for analyzing and recommending mining sites based on user preferences.
+            This initiative is at the forefront of space exploration, aiming to identify 
+            and evaluate mining sites on distant celestial bodies using sophisticated 
+            AI algorithms. Developed to push the boundaries of what's possible in 
+            extraterrestrial resource extraction.
 
-            Developed by: **Devanik**
+            **Developer:** [Devanik](https://www.linkedin.com/in/devanik/)
             """
         )
     st.markdown(
         """
-        ### 🚀 Prediction Model
-        - Predict potential mining sites based on various features.
-        - Generated insights and visualizations from `1_🚀_Predict.py`.
-
-        ### ✨ Recommendation Model
-        - Evaluate mining sites using custom feature weights and a trained ML model.
-        - Processed recommendations from `2_✨_Recommend.py`.
-
-        ### 📊 Analysis
-        - In-depth analysis and visualizations from `Analyze.py`.
-
-        ### 📚 About
-        - Information and details from `about.py`.
-
-        ### 🔍 Insights
-        - Detailed insights and additional information from `insights.py`.
-
-        ### 📈 Visualizations
-        - Advanced visualizations and charts from `visualize.py`.
+        ## **Navigate the Hub**
+        - **🚀 Prediction Model:** Classify mining sites based on their potential.
+        - **✨ Recommendation Model:** Generate top mining site recommendations.
+        - **📊 Analysis:** Perform in-depth data analysis and clustering.
+        - **🔍 Insights:** Obtain actionable insights for decision-making.
+        - **📈 Visualizations:** Explore data through advanced visual tools.
         """
     )
 
+# Main content layout with a centered introduction and styled text
 st.markdown(
     """
-    <div align="center">
-
-    ## 🛰️ Galactic Mining Hub
-
-    Explore, Analyze, and Recommend Cosmic Mining Sites.
-
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>🛰️ <strong>Galactic Mining Hub</strong></h1>
+        <h2><em>Explore, Analyze, and Discover Cosmic Mining Sites with Advanced AI</em></h2>
     </div>
     """,
     unsafe_allow_html=True
 )
+
 st.divider()
-st.markdown("""
-    Galactic Mining Hub is a state-of-the-art Machine Learning platform 
-    for exploring and analyzing data on mining sites and generating 
-    tailored recommendations based on your preferences. Dive into 
-    Machine Learning and Data Science projects.
 
-    **🛩️ Select a model from the sidebar** to see its capabilities!
-    ### 🚀 Prediction Model
-    - Provides insights into potential mining sites based on various features.
-    - Generates predictions about site suitability.
-    - Visualizes key metrics and predictions.
-    - Offers an interactive experience for exploring predictions.
+st.markdown(
+    """
+    **Welcome to Galactic Mining Hub**, a premier platform that combines the power of 
+    **Machine Learning** and **Data Science** to unlock the secrets of the universe. 
+    Our hub provides a comprehensive toolkit for space mining analysis, from predictive 
+    modeling to in-depth data insights, designed to support informed decision-making 
+    in the field of space exploration.
 
-    ### 🌠 Recommendation Model
-    - Evaluates mining sites based on custom feature weights and a trained 
-    ML model.
-    - Normalizes input data and predicts suitability scores.
-    - Adjusts recommendations according to user preferences.
-    - Ranks sites to highlight the top recommendations based on input criteria.
-    """,
+    ### **🚀 Prediction Model**
+    - **Predictive Analysis:** Identify potential mining sites based on critical features.
+    - **Insightful Visualizations:** Gain insights into the suitability of sites for mining operations.
+    - **Interactive Experience:** Engage with predictions to explore potential outcomes.
+
+    ### **✨ Recommendation Model**
+    - **Custom Recommendations:** Tailor mining site evaluations with custom feature weighting.
+    - **Data-Driven Insights:** Utilize a trained ML model to score and rank sites.
+    - **Optimized Selection:** Highlight top recommendations aligned with user-defined criteria.
+
+    ### **📊 Advanced Analysis**
+    - **Deep Data Exploration:** Use advanced clustering and outlier detection to understand data patterns.
+    - **Multi-Dimensional Visualization:** Leverage techniques like PCA to uncover hidden trends.
+
+    ### **🔍 Actionable Insights**
+    - **Strategic Recommendations:** Get actionable advice based on comprehensive data analysis.
+    - **Sustainability & Efficiency:** Focus on mining sites with optimal sustainability and efficiency indices.
+
+    ### **📈 Cutting-Edge Visualizations**
+    - **Interactive Charts:** Explore data through a wide range of visual tools, including heatmaps, scatter plots, and more.
+    - **Dynamic Analysis:** Visualize correlations, distributions, and trends with real-time updates based on user input.
+
+    ---
+    **Ready to embark on your cosmic journey?** Use the sidebar to navigate through the hub’s capabilities and start your exploration!
+    """
 )
