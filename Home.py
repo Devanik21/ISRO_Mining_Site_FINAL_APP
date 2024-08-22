@@ -1,7 +1,7 @@
 import streamlit as st
-from predict import show_predict_page
-from recommend import show_recommend_page
-from analyze import show_analysis_page
+from 1_🚀_Predict import show_predict_page
+from 2_✨_Recommend import show_recommend_page
+from Analyze import show_analysis_page
 from visualize import show_visualize_page
 from insights import show_insights_page
 from about import show_about_page
@@ -40,15 +40,15 @@ if selection == "Home":
         - Adjusts scores according to user preferences and ranks sites.
         - Recommends the best mining sites based on personalized criteria.
         """)
-elif selection == "🚀 Predict":
+elif selection == "1_🚀_Predict":
     show_predict_page()
-elif selection == "✨ Recommend":
+elif selection == "2_✨_Recommend":
     show_recommend_page()
-elif selection == "Analyze":
+elif selection == "analyze":
     show_analysis_page()
 elif selection == "Visualize":
     show_visualize_page()
-elif selection == "Insights":
+elif selection == "insights":
     show_insights_page()
-elif selection == "About":
+elif selection == "about":
     show_about_page()
