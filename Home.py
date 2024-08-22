@@ -11,7 +11,7 @@ st.set_page_config(
 # Sidebar content with advanced layout
 with st.sidebar:
     st.title("🪐 **Galactic Mining Hub**")
-    st.subheader("Exploring Cosmic Treasures")
+    st.subheader("Deep dive into the infinite cosmic sea !")
     st.markdown(
         """
         **Galactic Mining Hub** is a cutting-edge platform that leverages advanced
