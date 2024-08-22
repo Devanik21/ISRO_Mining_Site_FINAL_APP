@@ -1,26 +1,32 @@
 import streamlit as st
 
 def show_about_page():
-    st.title("About This Project")
-    st.write("""
-    ## Galactic Mining Hub
+    st.title("About Galactic Mining Hub 🌌")
+    
+    st.markdown("""
+    ## Welcome to **Galactic Mining Hub** 🚀
+    
+    Explore the frontier of space mining with **Galactic Mining Hub**, a cutting-edge platform engineered to transform data into actionable insights, guiding the next generation of space exploration.
 
-    **Galactic Mining Hub** is an advanced tool designed to assist in the exploration and evaluation of potential mining sites across different celestial bodies.
+    ### 🎯 **Our Mission**
+    - **Predict Potential**: Utilize advanced algorithms to assess the viability of mining sites across celestial bodies.
+    - **Recommend Sites**: Offer personalized recommendations based on user-defined criteria and site characteristics.
+    - **Analyze Deeply**: Dive into rich datasets with tools for clustering, outlier detection, and more.
+    - **Visualize Clearly**: Gain clarity with dynamic visualizations that make complex data understandable.
+    - **Drive Insights**: Empower decision-making with data-driven insights that highlight the most promising opportunities.
 
-    ### Project Objectives
-    - To predict and recommend potential mining sites based on key characteristics.
-    - To provide in-depth analysis and visualizations of mining site data.
-    - To offer actionable insights for making informed decisions about space mining opportunities.
+    ### 🔍 **Key Features**
+    - **AI-Powered Predictions**: Automatically assess mining potential using sophisticated models.
+    - **Tailored Recommendations**: Discover optimal sites that match your unique goals.
+    - **Comprehensive Analysis**: Uncover hidden patterns and trends within mining data.
+    - **Interactive Visualizations**: Engage with your data through interactive charts and plots.
+    - **Strategic Insights**: Receive actionable advice on where to focus your mining efforts.
 
-    ### Features
-    - **Prediction**: Determine whether a site is a potential mining candidate.
-    - **Recommendation**: Suggest top mining sites based on user preferences.
-    - **Analysis**: Explore data characteristics, detect clusters, and identify outliers.
-    - **Visualization**: Create detailed charts and graphs to understand data distributions and correlations.
-    - **Insights**: Provide actionable recommendations based on the data analysis.
+    ### 🌐 **Get in Touch**
+    Have questions, suggestions, or just want to connect? Reach out to me on [LinkedIn](https://www.linkedin.com/in/devanik/) and let’s chat about the future of space exploration!
 
-    ### Contact
-    If you have any questions or feedback, please reach out to https://www.linkedin.com/in/devanik/
+    ---
+    Built by passionate developers and space enthusiasts, **Galactic Mining Hub** is more than just a tool—it's your gateway to the stars.
     """)
 
 show_about_page()
