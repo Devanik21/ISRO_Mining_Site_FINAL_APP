@@ -33,12 +33,40 @@ Developed by: **Devanik**
 - Gain actionable insights based on the characteristics of mining sites.
 - Receive tailored recommendations for high-value, sustainable mining sites.
 
-## 📦 Installation
+📊 Dataset
+The project utilizes a synthetic dataset representing various celestial bodies and their potential mining sites. The dataset includes features such as:
 
-To run the **Galactic Mining Hub** locally, follow these steps:
+Celestial Body: The name of the celestial body.
+Iron (%): Percentage of iron composition.
+Nickel (%): Percentage of nickel composition.
+Water/Ice (%): Percentage of water or ice.
+Estimated Value (B USD): Estimated economic value in billions of USD.
+Sustainability Index: A metric representing the sustainability of mining operations.
+Efficiency Index: A metric representing the efficiency of mining operations.
+Distance from Earth (M km): Distance of the site from Earth in million kilometers.
+🛠️ Technologies Used
+Python: The core programming language used for the project.
+Streamlit: For creating an interactive web application.
+Pandas: For data manipulation and analysis.
+Seaborn & Matplotlib: For creating visualizations.
+Scikit-Learn: For machine learning models.
+💻 How to Use
+Select a model from the sidebar to explore its capabilities:
 
-1. **Clone the repository:**
+Prediction: To predict potential mining sites.
+Recommendation: To get personalized recommendations.
+Analysis: To explore and analyze the dataset.
+Visualization: To create and customize visualizations.
+Insights: To gain actionable insights based on the data.
+Interact with the application by selecting features, adjusting parameters, and exploring the outputs.
 
-   ```bash
-   git clone https://github.com/yourusername/galactic-mining-hub.git
-   cd galactic-mining-hub
+Review the insights and visualizations generated to inform your decision-making process regarding space mining opportunities.
+
+👤 Author
+Devanik - LinkedIn
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🛰️ Acknowledgments
+Inspiration for this project came from the growing interest in space exploration and the potential for resource mining on other celestial bodies.
+Special thanks to the open-source community and the developers behind the tools used in this project.
