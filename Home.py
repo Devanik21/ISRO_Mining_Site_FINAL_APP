@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     st.success("Choose a model to explore its features!")
-    st.title("🛰️ Galactic Mining Hub")
+    st.title("👽 Galactic Mining Hub")
     st.subheader("Exploring Cosmic Treasures, diving deep into the cosmic sea.")
     st.markdown(
         """
@@ -32,7 +32,7 @@ st.markdown(
     """
     <div align="center">
 
-    ## 👽 Galactic Mining Hub
+    ## 🛰️ Galactic Mining Hub
 
     
 
