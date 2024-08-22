@@ -8,7 +8,7 @@ st.set_page_config(
 with st.sidebar:
     st.success("Choose a model to explore its features!")
     st.title("🌟 Galactic Mining Hub")
-    st.subheader("Exploring Cosmic Treasures, One Site at a Time.")
+    st.subheader("Exploring Cosmic Treasures, diving deep into the cosmic sea.")
     st.markdown(
         """
         Galactic Mining Hub is an advanced ML-based platform designed to
@@ -16,15 +16,17 @@ with st.sidebar:
         based on your inputs.
         """
     )
-    with st.expander("Created for the ISRO Space Exploration Hackathon"):
+    with st.expander("Project Overview"):
         st.markdown(
-            """
-            ## ISRO Space Exploration Hackathon
+        """
+        ## Galactic Mining Hub
 
-            This submission is for the [ISRO Space Exploration Hackathon](https://dorahacks.io/hackathon/isro-space-exploration-hackathon/)
-            and was developed by Team PiklPython (Desh, Devanik, Shivam).
-            """
-        )
+        This project, **Galactic Mining Hub**, is  to showcase the capabilities of Machine Learning in space mining exploration. 
+        It was developed  to create an advanced web platform for analyzing and recommending mining sites based on user preferences.
+
+        Developed by: **[Your Name]**
+        """
+    )
 
 st.markdown(
     """
