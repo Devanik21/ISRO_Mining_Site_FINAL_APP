@@ -7,30 +7,30 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 def show_analyze_page():
-    st.title("Mining Site Analysis")
+    st.title("🔍 Mining Site Analysis")
     st.write("Analyze the characteristics of different mining sites with advanced data analytics.")
 
     # Load dataset
     df = pd.read_csv("space_mining_dataset.csv")
     
     # Display dataset summary
-    st.write("### Dataset Summary")
-    st.write(df.describe())
-    
+    st.write("## 📊 Dataset Summary")
+    st.write(df.describe().style.background_gradient(cmap='coolwarm'))
+
     # Display correlation matrix for numeric features
-    st.write("### Correlation Matrix")
+    st.write("## 📈 Correlation Matrix")
     numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Select numeric columns
     corr_matrix = numeric_df.corr()
-    st.write(corr_matrix)
+    st.write(corr_matrix.style.background_gradient(cmap='viridis', axis=None))
 
     # Correlation heatmap
-    st.write("### Correlation Heatmap")
+    st.write("### 🔥 Correlation Heatmap")
     plt.figure(figsize=(10, 8))
-    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
     st.pyplot(plt)
     
     # Clustering analysis using KMeans
-    st.write("### Clustering Analysis")
+    st.write("## 🧩 Clustering Analysis")
     st.write("Identifying clusters of similar mining sites using KMeans.")
 
     scaler = StandardScaler()
@@ -40,8 +40,8 @@ def show_analyze_page():
     clusters = kmeans.fit_predict(scaled_features)
     df['Cluster'] = clusters
 
-    st.write("Cluster Centers:")
-    st.write(pd.DataFrame(scaler.inverse_transform(kmeans.cluster_centers_), columns=numeric_df.columns))
+    st.write("### 🎯 Cluster Centers")
+    st.write(pd.DataFrame(scaler.inverse_transform(kmeans.cluster_centers_), columns=numeric_df.columns).style.background_gradient(cmap='coolwarm'))
 
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x='iron', y='nickel', hue='Cluster', data=df, palette='Set1')
@@ -49,7 +49,7 @@ def show_analyze_page():
     st.pyplot(plt)
 
     # PCA for dimensionality reduction and visualization
-    st.write("### Principal Component Analysis (PCA)")
+    st.write("## 🔍 Principal Component Analysis (PCA)")
     st.write("Reducing dimensionality for visualization.")
 
     pca = PCA(n_components=2)
@@ -63,7 +63,7 @@ def show_analyze_page():
     st.pyplot(plt)
 
     # Outlier detection using IQR method
-    st.write("### Outlier Detection")
+    st.write("## 🚨 Outlier Detection")
     st.write("Detecting outliers using the IQR method.")
 
     Q1 = numeric_df.quantile(0.25)
@@ -73,11 +73,11 @@ def show_analyze_page():
     outliers = ((numeric_df < (Q1 - 1.5 * IQR)) | (numeric_df > (Q3 + 1.5 * IQR))).any(axis=1)
     df['Outlier'] = outliers
 
-    st.write(f"Number of outliers detected: {outliers.sum()}")
-    st.write(df[outliers])
+    st.write(f"**Number of outliers detected:** `{outliers.sum()}`")
+    st.write(df[outliers].style.background_gradient(cmap='Reds'))
 
     # Correlation with non-numeric features using One-Hot Encoding
-    st.write("### Correlation with Non-Numeric Features")
+    st.write("## 🔗 Correlation with Non-Numeric Features")
     st.write("Analyzing correlations with non-numeric features using One-Hot Encoding.")
 
     non_numeric_df = df.select_dtypes(exclude=['float64', 'int64'])
@@ -86,9 +86,9 @@ def show_analyze_page():
     combined_corr_matrix = combined_df.corr()
 
     plt.figure(figsize=(12, 10))
-    sns.heatmap(combined_corr_matrix, annot=False, cmap='coolwarm')
+    sns.heatmap(combined_corr_matrix, annot=False, cmap='coolwarm', linewidths=0.5)
     st.pyplot(plt)
 
-    st.write("Analysis complete!")
+    st.success("Analysis complete!")
 
 show_analyze_page()
