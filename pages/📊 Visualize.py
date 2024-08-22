@@ -9,36 +9,47 @@ def show_visualize_page():
 
     # Load dataset
     df = pd.read_csv("space_mining_dataset.csv")
+    
+    # Select columns for visualizations
+    columns = df.columns.tolist()
+    selected_columns = st.multiselect("Select Columns to Visualize", columns, default=columns[:3])
 
-    # Iron vs. Nickel Scatter Plot
-    st.write("### 🧲 Iron vs. Nickel Composition")
-    plt.figure(figsize=(10, 6))
-    sns.scatterplot(x='iron', y='nickel', data=df, hue='Celestial Body', palette='Set1', s=100, edgecolor='black')
-    plt.title('Iron vs. Nickel Composition (%)')
-    plt.xlabel('Iron (%)')
-    plt.ylabel('Nickel (%)')
-    plt.grid(True)
-    st.pyplot(plt)
+    if not selected_columns:
+        st.warning("Please select at least one column.")
+        return
 
-    # Histogram of Iron Composition
-    st.write("### 🏭 Distribution of Iron Composition")
-    plt.figure(figsize=(10, 6))
-    sns.histplot(df['iron'], kde=True, color='red', bins=20, edgecolor='black')
-    plt.title('Distribution of Iron Composition (%)')
-    plt.xlabel('Iron (%)')
-    plt.ylabel('Frequency')
-    plt.grid(True)
-    st.pyplot(plt)
+    # Iron vs. Nickel Scatter Plot (or any two selected columns)
+    if len(selected_columns) >= 2:
+        st.write(f"### 🧲 {selected_columns[0]} vs. {selected_columns[1]} Composition")
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(x=selected_columns[0], y=selected_columns[1], data=df, hue='Celestial Body', palette='Set1', s=100, edgecolor='black')
+        plt.title(f'{selected_columns[0]} vs. {selected_columns[1]} Composition')
+        plt.xlabel(f'{selected_columns[0]}')
+        plt.ylabel(f'{selected_columns[1]}')
+        plt.grid(True)
+        st.pyplot(plt)
 
-    # Histogram of Water/Ice Composition
-    st.write("### 💧 Distribution of Water/Ice Composition")
-    plt.figure(figsize=(10, 6))
-    sns.histplot(df['water_ice'], kde=True, color='blue', bins=20, edgecolor='black')
-    plt.title('Distribution of Water/Ice Composition (%)')
-    plt.xlabel('Water/Ice (%)')
-    plt.ylabel('Frequency')
-    plt.grid(True)
-    st.pyplot(plt)
+    # Histogram of selected column
+    if len(selected_columns) >= 1:
+        st.write(f"### 🏭 Distribution of {selected_columns[0]}")
+        plt.figure(figsize=(10, 6))
+        sns.histplot(df[selected_columns[0]], kde=True, color='red', bins=20, edgecolor='black')
+        plt.title(f'Distribution of {selected_columns[0]}')
+        plt.xlabel(f'{selected_columns[0]}')
+        plt.ylabel('Frequency')
+        plt.grid(True)
+        st.pyplot(plt)
+
+    # Histogram of another selected column
+    if len(selected_columns) >= 2:
+        st.write(f"### 💧 Distribution of {selected_columns[1]}")
+        plt.figure(figsize=(10, 6))
+        sns.histplot(df[selected_columns[1]], kde=True, color='blue', bins=20, edgecolor='black')
+        plt.title(f'Distribution of {selected_columns[1]}')
+        plt.xlabel(f'{selected_columns[1]}')
+        plt.ylabel('Frequency')
+        plt.grid(True)
+        st.pyplot(plt)
 
     # Pie Chart of Celestial Bodies
     st.write("### 🌌 Celestial Body Distribution")
@@ -49,28 +60,32 @@ def show_visualize_page():
     plt.title('Celestial Body Distribution')
     st.pyplot(plt)
 
-    # Boxplot of Estimated Value by Celestial Body
-    st.write("### 💵 Estimated Value by Celestial Body")
-    plt.figure(figsize=(12, 6))
-    sns.boxplot(x='Celestial Body', y='Estimated Value (B USD)', data=df, palette='Set3')
-    plt.xticks(rotation=45)
-    plt.title('Estimated Value (B USD) by Celestial Body')
-    plt.grid(True)
-    st.pyplot(plt)
+    # Boxplot of Selected Columns by Celestial Body
+    if len(selected_columns) >= 1:
+        st.write(f"### 💵 {selected_columns[0]} by Celestial Body")
+        plt.figure(figsize=(12, 6))
+        sns.boxplot(x='Celestial Body', y=selected_columns[0], data=df, palette='Set3')
+        plt.xticks(rotation=45)
+        plt.title(f'{selected_columns[0]} by Celestial Body')
+        plt.grid(True)
+        st.pyplot(plt)
 
-    # Correlation Heatmap (only for numeric columns)
+    # Correlation Heatmap (only for selected numeric columns)
     st.write("### 🔥 Correlation Heatmap")
-    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Select only numeric columns
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, cbar_kws={'shrink': 0.5})
-    plt.title('Correlation Heatmap of Numeric Features')
-    st.pyplot(plt)
+    numeric_df = df[selected_columns].select_dtypes(include=['float64', 'int64'])  # Select only numeric columns
+    if not numeric_df.empty:
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, cbar_kws={'shrink': 0.5})
+        plt.title('Correlation Heatmap of Selected Features')
+        st.pyplot(plt)
+    else:
+        st.warning("No numeric columns selected for correlation heatmap.")
 
     # Pairplot of Selected Features
-    st.write("### 🔗 Pairplot of Selected Features")
-    selected_features = ['iron', 'nickel', 'water_ice', 'Estimated Value (B USD)', 'sustainability_index', 'efficiency_index']
-    sns.pairplot(df[selected_features], diag_kind='kde', palette='coolwarm', plot_kws={'edgecolor': 'black'})
-    plt.suptitle('Pairplot of Selected Features', y=1.02)
-    st.pyplot(plt)
+    if len(selected_columns) > 1:
+        st.write("### 🔗 Pairplot of Selected Features")
+        sns.pairplot(df[selected_columns], diag_kind='kde', palette='coolwarm', plot_kws={'edgecolor': 'black'})
+        plt.suptitle('Pairplot of Selected Features', y=1.02)
+        st.pyplot(plt)
 
 show_visualize_page()
