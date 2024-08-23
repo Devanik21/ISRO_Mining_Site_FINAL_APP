@@ -37,7 +37,7 @@ st.markdown("""
             padding: 10px 20px;
         }
         .stButton > button:hover {
-            background-color: #27ae60;
+            background-color: #000000;
         }
         .stTable {
             margin: 20px 0;
