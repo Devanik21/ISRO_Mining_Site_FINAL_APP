@@ -119,7 +119,12 @@ def show_analyze_page():
 
     # Pairplot
     st.write("### 🌐 Pairplot")
-    selected_pair_columns = st.multiselect("Select columns for pairplot:", df.select_dtypes(include=['float64', 'int64']).columns.tolist(), default=df.select_dtypes(include(['float64', 'int64']).columns.tolist()[:4], key="pairplot_columns")
+    selected_pair_columns = st.multiselect(
+    "Select columns for pairplot:", 
+    df.select_dtypes(include=['float64', 'int64']).columns.tolist(), 
+    default=df.select_dtypes(include=['float64', 'int64']).columns.tolist()[:4], 
+    key="pairplot_columns"
+)
     if selected_pair_columns:
         sns.pairplot(df[selected_pair_columns])
         st.pyplot(plt)
