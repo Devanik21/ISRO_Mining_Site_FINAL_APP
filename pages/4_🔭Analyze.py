@@ -132,6 +132,16 @@ def show_analyze_page():
         plt.title(f'Boxplot of {selected_box_columns}')
         st.pyplot(plt)
 
+    st.write("### 🎻 Violin Plot")
+    selected_violin_columns = st.selectbox("Select a column for violin plot:", df.select_dtypes(include=['float64', 'int64']).columns.tolist())
+    if selected_violin_columns:
+        plt.figure(figsize=(10, 6))
+        sns.violinplot(x=df[selected_violin_columns], color='orange')
+        plt.title(f'Violin Plot of {selected_violin_columns}')
+        st.pyplot(plt)
+
     st.success("Analysis complete!")
+
+show_analyze_page()
 
 show_analyze_page()
