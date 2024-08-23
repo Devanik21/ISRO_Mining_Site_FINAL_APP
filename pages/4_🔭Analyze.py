@@ -70,7 +70,7 @@ def show_analyze_page():
     st.write("Detecting outliers using the IQR method.")
 
     Q1 = df.select_dtypes(include=['float64', 'int64']).quantile(0.25)
-    Q3 = df.select_dtypes(include=(['float64', 'int64']).quantile(0.75)
+    Q3 = df.select_dtypes(include=['float64', 'int64']).quantile(0.75)
     IQR = Q3 - Q1
 
     outliers = ((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | (df.select_dtypes(include(['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)
