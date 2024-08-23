@@ -18,7 +18,7 @@ st.markdown("""
     <style>
         body {
             background-color: #1c1e21;
-            color: #f5f6f7;
+            color: #000000;
         }
         .sidebar .sidebar-content {
             background-color: #2c2f33;
