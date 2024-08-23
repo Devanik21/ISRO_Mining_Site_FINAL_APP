@@ -26,7 +26,7 @@ st.markdown("""
             border-radius: 10px;
         }
         .stSlider > div > div > div > div {
-            background-color: #faf5cf;
+            background-color: #911100;
         }
         .stButton > button {
             background-color: #2ecc71;
