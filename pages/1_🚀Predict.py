@@ -29,7 +29,7 @@ st.markdown("""
             color: #007bff;
         }
         .stButton>button {
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
             border-radius: 5px;
             font-weight: bold;
@@ -83,7 +83,7 @@ def show_decide_page():
         
         if prediction[0] == 1:
             st.success("✅ **This is a Potential Mining Site!**")
-            st.balloons()
+            
         else:
             st.error("❌ **This is Not a Potential Mining Site.**")
 
