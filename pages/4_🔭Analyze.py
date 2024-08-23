@@ -95,11 +95,7 @@ def show_analyze_page():
     # Additional Visualizations
     st.write("## 📊 Additional Visualizations")
 
-    # Line Chart
-    st.write("### 📉 Line Chart")
-    selected_line_columns = st.multiselect("Select columns for line chart:", df.columns.tolist(), default=df.columns[:2].tolist())
-    if selected_line_columns:
-        st.line_chart(df[selected_line_columns])
+    
 
     # Bar Chart
     st.write("### 📊 Bar Chart")
