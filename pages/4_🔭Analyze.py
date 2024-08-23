@@ -106,17 +106,13 @@ def show_analyze_page():
         plt.title(f'Bar Chart of {selected_bar_columns}')
         st.pyplot(plt)
 
-    # Histogram
-   st.write("### 📊 Histogram")
-   selected_hist_column = st.selectbox("Select a column for histogram:", df.columns.tolist())
-
-   if pd.api.types.is_numeric_dtype(df[selected_hist_column]):
-     plt.figure(figsize=(10, 6))
-     df[selected_hist_column].plot(kind='hist', bins=30, color='green')
-     plt.title(f'Histogram of {selected_hist_column}')
-     st.pyplot(plt)
-   else:
-     st.warning("⚠️ Please select a numeric column to plot the histogram.")
+    st.write("### 📊 Histogram")
+    selected_hist_columns = st.selectbox("Select a column for histogram:", df.columns.tolist(), index=0)
+    if selected_hist_columns:
+        plt.figure(figsize=(10, 6))
+        df[selected_hist_columns].plot(kind='hist', bins=30, color='green')
+        plt.title(f'Histogram of {selected_hist_columns}')
+        st.pyplot(plt)
 
     # Pairplot
     st.write("### 🌐 Pairplot")
