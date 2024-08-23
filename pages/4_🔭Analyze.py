@@ -17,31 +17,34 @@ def show_analyze_page():
     st.write("## 📊 Dataset Summary")
     st.write(df.describe().style.background_gradient(cmap='coolwarm'))
 
-    # Display correlation matrix for numeric features
-    st.write("## 📈 Correlation Matrix")
-    numeric_df = df.select_dtypes(include=['float64', 'int64'])  # Select numeric columns
-    corr_matrix = numeric_df.corr()
-    st.write(corr_matrix.style.background_gradient(cmap='viridis', axis=None))
+    # User selects columns for correlation matrix and heatmap
+    st.write("## 📈 Correlation Matrix & Heatmap")
+    selected_columns = st.multiselect("Select columns for correlation matrix:", df.columns.tolist(), default=df.select_dtypes(include=['float64', 'int64']).columns.tolist())
+    
+    if selected_columns:
+        numeric_df = df[selected_columns]
+        corr_matrix = numeric_df.corr()
+        st.write(corr_matrix.style.background_gradient(cmap='viridis', axis=None))
 
-    # Correlation heatmap
-    st.write("### 🔥 Correlation Heatmap")
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
-    st.pyplot(plt)
+        # Correlation heatmap
+        st.write("### 🔥 Correlation Heatmap")
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+        st.pyplot(plt)
     
     # Clustering analysis using KMeans
     st.write("## 🧩 Clustering Analysis")
     st.write("Identifying clusters of similar mining sites using KMeans.")
 
     scaler = StandardScaler()
-    scaled_features = scaler.fit_transform(numeric_df)
+    scaled_features = scaler.fit_transform(df.select_dtypes(include=['float64', 'int64']))
 
     kmeans = KMeans(n_clusters=3, random_state=42)
     clusters = kmeans.fit_predict(scaled_features)
     df['Cluster'] = clusters
 
     st.write("### 🎯 Cluster Centers")
-    st.write(pd.DataFrame(scaler.inverse_transform(kmeans.cluster_centers_), columns=numeric_df.columns).style.background_gradient(cmap='coolwarm'))
+    st.write(pd.DataFrame(scaler.inverse_transform(kmeans.cluster_centers_), columns=df.select_dtypes(include=['float64', 'int64']).columns).style.background_gradient(cmap='coolwarm'))
 
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x='iron', y='nickel', hue='Cluster', data=df, palette='Set1')
@@ -66,11 +69,11 @@ def show_analyze_page():
     st.write("## 🚨 Outlier Detection")
     st.write("Detecting outliers using the IQR method.")
 
-    Q1 = numeric_df.quantile(0.25)
-    Q3 = numeric_df.quantile(0.75)
+    Q1 = df.select_dtypes(include=['float64', 'int64']).quantile(0.25)
+    Q3 = df.select_dtypes(include=['float64', 'int64']).quantile(0.75)
     IQR = Q3 - Q1
 
-    outliers = ((numeric_df < (Q1 - 1.5 * IQR)) | (numeric_df > (Q3 + 1.5 * IQR))).any(axis=1)
+    outliers = ((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | (df.select_dtypes(include=['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)
     df['Outlier'] = outliers
 
     st.write(f"**Number of outliers detected:** `{outliers.sum()}`")
@@ -82,12 +85,55 @@ def show_analyze_page():
 
     non_numeric_df = df.select_dtypes(exclude=['float64', 'int64'])
     encoded_df = pd.get_dummies(non_numeric_df)
-    combined_df = pd.concat([numeric_df, encoded_df], axis=1)
+    combined_df = pd.concat([df.select_dtypes(include=['float64', 'int64']), encoded_df], axis=1)
     combined_corr_matrix = combined_df.corr()
 
     plt.figure(figsize=(12, 10))
     sns.heatmap(combined_corr_matrix, annot=False, cmap='coolwarm', linewidths=0.5)
     st.pyplot(plt)
+
+    # Additional Visualizations
+    st.write("## 📊 Additional Visualizations")
+
+    # Line Chart
+    st.write("### 📉 Line Chart")
+    selected_line_columns = st.multiselect("Select columns for line chart:", df.columns.tolist(), default=df.columns[:2].tolist())
+    if selected_line_columns:
+        st.line_chart(df[selected_line_columns])
+
+    # Bar Chart
+    st.write("### 📊 Bar Chart")
+    selected_bar_columns = st.selectbox("Select a column for bar chart:", df.columns.tolist())
+    if selected_bar_columns:
+        plt.figure(figsize=(10, 6))
+        df[selected_bar_columns].value_counts().plot(kind='bar', color='skyblue')
+        plt.title(f'Bar Chart of {selected_bar_columns}')
+        st.pyplot(plt)
+
+    # Histogram
+    st.write("### 📊 Histogram")
+    selected_hist_columns = st.selectbox("Select a column for histogram:", df.columns.tolist(), index=0)
+    if selected_hist_columns:
+        plt.figure(figsize=(10, 6))
+        df[selected_hist_columns].plot(kind='hist', bins=30, color='green')
+        plt.title(f'Histogram of {selected_hist_columns}')
+        st.pyplot(plt)
+
+    # Pairplot
+    st.write("### 🌐 Pairplot")
+    selected_pair_columns = st.multiselect("Select columns for pairplot:", df.select_dtypes(include=['float64', 'int64']).columns.tolist(), default=df.select_dtypes(include=['float64', 'int64']).columns.tolist()[:4])
+    if selected_pair_columns:
+        sns.pairplot(df[selected_pair_columns])
+        st.pyplot(plt)
+
+    # Boxplot
+    st.write("### 📦 Boxplot")
+    selected_box_columns = st.selectbox("Select a column for boxplot:", df.select_dtypes(include=['float64', 'int64']).columns.tolist())
+    if selected_box_columns:
+        plt.figure(figsize=(10, 6))
+        sns.boxplot(x=df[selected_box_columns], color='purple')
+        plt.title(f'Boxplot of {selected_box_columns}')
+        st.pyplot(plt)
 
     st.success("Analysis complete!")
 
