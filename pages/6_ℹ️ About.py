@@ -26,7 +26,7 @@ def show_about_page():
     Have questions, suggestions, or want to connect? Reach out to me on [LinkedIn](https://www.linkedin.com/in/devanik/) and let’s chat about the future of space exploration!
 
     ---
-    Built by Devanik, a passionate developer and space enthusiast, **Galactic Mining Hub** is more than just a tool—it's your gateway to the stars.
+    Built by  [Devanik](https://www.linkedin.com/in/devanik/), a passionate developer and space enthusiast, **Galactic Mining Hub** is more than just a tool—it's your gateway to the stars.
     """)
 
 show_about_page()
