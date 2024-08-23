@@ -73,8 +73,9 @@ def show_analyze_page():
     Q3 = df.select_dtypes(include=['float64', 'int64']).quantile(0.75)
     IQR = Q3 - Q1
 
-    outliers = ((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | (df.select_dtypes(include(['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)
-    df['Outlier'] = outliers
+    outliers = ((df.select_dtypes(include=['float64', 'int64']) < (Q1 - 1.5 * IQR)) | 
+            (df.select_dtypes(include=['float64', 'int64']) > (Q3 + 1.5 * IQR))).any(axis=1)
+
 
     st.write(f"**Number of outliers detected:** `{outliers.sum()}`")
     st.write(df[outliers].style.background_gradient(cmap='Reds'))
