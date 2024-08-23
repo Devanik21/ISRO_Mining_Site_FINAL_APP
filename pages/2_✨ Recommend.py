@@ -5,8 +5,50 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib
 import streamlit as st
 
-st.set_page_config(page_title="Mining Site Recommendation", page_icon="🌌")
+# Set up the page configuration
+st.set_page_config(
+    page_title="Mining Site Recommendation",
+    page_icon="🌌",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
 
+# Custom CSS to style the app
+st.markdown("""
+    <style>
+        body {
+            background-color: #1c1e21;
+            color: #f5f6f7;
+        }
+        .sidebar .sidebar-content {
+            background-color: #2c2f33;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .stSlider > div > div > div > div {
+            background-color: #2ecc71;
+        }
+        .stButton > button {
+            background-color: #2ecc71;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        .stButton > button:hover {
+            background-color: #27ae60;
+        }
+        .stTable {
+            margin: 20px 0;
+        }
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: #f5f6f7;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Function to recommend mining sites
 def recommend_site(user_preferences, top_n=5):
     model = joblib.load("space_mining_model.pkl")
     df = pd.read_csv("space_mining_dataset.csv")
@@ -48,17 +90,20 @@ def recommend_site(user_preferences, top_n=5):
 
     return ranked_sites_df
 
+# Function to display the recommendation page
 def show_recommend_page():
     st.title("🌌 Mining Site Recommendation")
     st.write("Set your preferences in the sidebar, and our model will recommend the most suitable mining sites for your needs!")
 
-    iron = st.sidebar.slider("Iron (%)", 0, 100, 50)/100.0
-    nickel = st.sidebar.slider("Nickel (%)", 0, 100, 50)/100.0
-    water_ice = st.sidebar.slider("Water/Ice (%)", 0, 100, 50)/100.0
-    other_minerals = st.sidebar.slider("Other Minerals (%)", 0, 100, 50)/100.0
-    sustainability_efficiency = st.sidebar.slider("Sustainability/Efficiency (%)", 0, 100, 50)/100.0
-    distance_from_earth = st.sidebar.slider("Distance from Earth (%)", 0, 100, 50)/100.0
+    # Sidebar sliders for user input
+    iron = st.sidebar.slider("Iron Importance (%)", 0, 100, 50)/100.0
+    nickel = st.sidebar.slider("Nickel Importance (%)", 0, 100, 50)/100.0
+    water_ice = st.sidebar.slider("Water/Ice Importance (%)", 0, 100, 50)/100.0
+    other_minerals = st.sidebar.slider("Other Minerals Importance (%)", 0, 100, 50)/100.0
+    sustainability_efficiency = st.sidebar.slider("Sustainability/Efficiency Importance (%)", 0, 100, 50)/100.0
+    distance_from_earth = st.sidebar.slider("Distance from Earth Importance (%)", 0, 100, 50)/100.0
 
+    # User preferences dictionary
     user_preferences = {
         'iron_weight': iron,
         'nickel_weight': nickel,
@@ -68,12 +113,13 @@ def show_recommend_page():
         'distance_weight': distance_from_earth
     }
     
-    ok = st.button("Recommend")
-    if ok:
-        with st.spinner("Scanning the Cosmos for Prime Mining Sites..."):
+    # Predict button
+    if st.button("Recommend"):
+        with st.spinner("🚀 Scanning the Cosmos for Prime Mining Sites..."):
             recommended_site = recommend_site(user_preferences)
         st.markdown("### 🔭 Top 5 Mining Sites for Your Preferences:")
         st.table(recommended_site)
-        st.markdown("<div style='text-align: center;'>✨ Exploration successful: New cosmic mining opportunities discovered ! ✨</div>", unsafe_allow_html=True)
+        st.markdown("<div style='text-align: center;'>✨ Exploration successful: New cosmic mining opportunities discovered! ✨</div>", unsafe_allow_html=True)
 
+# Display the recommendation page
 show_recommend_page()
