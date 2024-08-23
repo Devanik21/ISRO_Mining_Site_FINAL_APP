@@ -35,7 +35,7 @@ st.markdown("""
             font-weight: bold;
         }
         .stButton>button:hover {
-            background-color: #10914a;
+            background-color: #ffb000;
         }
     </style>
 """, unsafe_allow_html=True)
