@@ -11,7 +11,7 @@ st.set_page_config(
 # Sidebar content with advanced layout
 with st.sidebar:
     st.title("🪐 **Galactic Mining Hub**")
-    st.subheader("Deep dive into the infinite cosmic sea !")
+    st.subheader("Deep dive into the infinite cosmic sea!")
     st.markdown(
         """
         **Galactic Mining Hub** is a cutting-edge platform that leverages advanced
@@ -59,6 +59,13 @@ st.markdown(
 
 st.divider()
 
+# Adding sliders for user customization
+st.markdown("### Customize Your Exploration")
+st.slider("🔧 **Select Mining Site Importance Level**", min_value=1, max_value=10, value=5)
+st.slider("🌐 **Filter Sites by Distance (in light years)**", min_value=0, max_value=1000, value=500)
+st.slider("🔍 **Adjust Sensitivity for Outlier Detection**", min_value=0.0, max_value=1.0, value=0.5)
+
+# Information and interactive section
 st.markdown(
     """
     **Welcome to Galactic Mining Hub**, a premier platform that combines the power of 
