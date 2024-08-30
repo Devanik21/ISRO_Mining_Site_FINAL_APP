@@ -8,21 +8,22 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
     # Adding selectboxes for user customization
-mining_importance = st.selectbox(
+
+# Sidebar content with advanced layout
+
+with st.sidebar:
+    mining_importance = st.selectbox(
         "🔧 **Select Mining Site Importance Level**",
         options=["Low", "Medium", "High", "Critical"]
     )
-distance_filter = st.selectbox(
+    distance_filter = st.selectbox(
         "🌐 **Filter Sites by Distance**",
         options=["< 100 light years", "100-500 light years", "500-1000 light years", "> 1000 light years"]
     )
-
-outlier_sensitivity = st.selectbox(
+    outlier_sensitivity = st.selectbox(
         "🔍 **Adjust Sensitivity for Outlier Detection**",
         options=["Low", "Medium", "High"]
     )
-# Sidebar content with advanced layout
-with st.sidebar:
     st.title("🪐 **Galactic Mining Hub**")
     st.subheader("Deep dive into the infinite cosmic sea!")
     st.markdown(
