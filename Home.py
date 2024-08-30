@@ -1,12 +1,108 @@
 import streamlit as st
 
 # Configure the page with a modern theme and a custom icon
+
+# Configure the page with a modern theme and a custom icon
 st.set_page_config(
     page_title="Galactic Mining Hub",
     page_icon="🌌",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# Sidebar content with advanced layout
+with st.sidebar:
+    st.title("🪐 **Galactic Mining Hub**")
+    st.subheader("Deep dive into the infinite cosmic sea!")
+    
+    # Creating a scrollable selectbox for navigation
+    section = st.selectbox(
+        "Navigate the Hub",
+        options=[
+            "🏠 Home",
+            "🚀 Predict",
+            "✨ Recommend",
+            "📊 Visualize",
+            "🔭 Analyze",
+            "🔍 Insights",
+            "ℹ️ About"
+        ]
+    )
+
+    # Display content based on the selected section
+    if section == "🏠 Home":
+        st.markdown(
+            """
+            ## Welcome to the Galactic Mining Hub
+
+            Dive deep into space mining exploration with advanced tools and insights. 
+            Navigate through different sections to explore more.
+            """
+        )
+    elif section == "🚀 Predict":
+        st.markdown(
+            """
+            ## Prediction Model
+
+            Use our AI-powered prediction model to classify mining sites based on their potential.
+            """
+        )
+    elif section == "✨ Recommend":
+        st.markdown(
+            """
+            ## Recommendation Model
+
+            Generate top mining site recommendations based on custom criteria.
+            """
+        )
+    elif section == "📊 Visualize":
+        st.markdown(
+            """
+            ## Visualize Data
+
+            Explore data through advanced visual tools like heatmaps, scatter plots, and more.
+            """
+        )
+    elif section == "🔭 Analyze":
+        st.markdown(
+            """
+            ## Advanced Analysis
+
+            Perform in-depth data analysis and clustering to discover hidden patterns.
+            """
+        )
+    elif section == "🔍 Insights":
+        st.markdown(
+            """
+            ## Actionable Insights
+
+            Obtain strategic recommendations and actionable insights for space mining.
+            """
+        )
+    elif section == "ℹ️ About":
+        st.markdown(
+            """
+            ## About Galactic Mining Hub
+
+            Learn more about the mission, vision, and team behind this innovative platform.
+            """
+        )
+
+# Main content layout with a centered introduction and styled text
+st.markdown(
+    """
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>🛰️ <strong>Galactic Mining Hub</strong></h1>
+        <h2><em>Explore, Analyze, and Discover Cosmic Mining Sites with Advanced AI</em></h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.divider()
+
+# Additional content could be added here based on selected section
+
     # Adding selectboxes for user customization
 
 # Sidebar content with advanced layout
