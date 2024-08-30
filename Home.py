@@ -46,6 +46,22 @@ with st.sidebar:
         """
     )
 
+    # Adding selectboxes for user customization
+    mining_importance = st.selectbox(
+        "🔧 **Select Mining Site Importance Level**",
+        options=["Low", "Medium", "High", "Critical"]
+    )
+
+    distance_filter = st.selectbox(
+        "🌐 **Filter Sites by Distance**",
+        options=["< 100 light years", "100-500 light years", "500-1000 light years", "> 1000 light years"]
+    )
+
+    outlier_sensitivity = st.selectbox(
+        "🔍 **Adjust Sensitivity for Outlier Detection**",
+        options=["Low", "Medium", "High"]
+    )
+
 # Main content layout with a centered introduction and styled text
 st.markdown(
     """
@@ -59,15 +75,9 @@ st.markdown(
 
 st.divider()
 
-# Adding sliders for user customization
-st.markdown("### Customize Your Exploration")
-st.slider("🔧 **Select Mining Site Importance Level**", min_value=1, max_value=10, value=5)
-st.slider("🌐 **Filter Sites by Distance (in light years)**", min_value=0, max_value=1000, value=500)
-st.slider("🔍 **Adjust Sensitivity for Outlier Detection**", min_value=0.0, max_value=1.0, value=0.5)
-
 # Information and interactive section
 st.markdown(
-    """
+    f"""
     **Welcome to Galactic Mining Hub**, a premier platform that combines the power of 
     **Machine Learning** and **Data Science** to unlock the secrets of the universe. 
     Our hub provides a comprehensive toolkit for space mining analysis, from predictive 
