@@ -44,12 +44,14 @@ Estimated Value (B USD): Estimated economic value in billions of USD.
 Sustainability Index: A metric representing the sustainability of mining operations.
 Efficiency Index: A metric representing the efficiency of mining operations.
 Distance from Earth (M km): Distance of the site from Earth in million kilometers.
+
 🛠️ Technologies Used
 Python: The core programming language used for the project.
 Streamlit: For creating an interactive web application.
 Pandas: For data manipulation and analysis.
 Seaborn & Matplotlib: For creating visualizations.
 Scikit-Learn: For machine learning models.
+
 💻 How to Use
 Select a model from the sidebar to explore its capabilities:
 
@@ -61,6 +63,27 @@ Insights: To gain actionable insights based on the data.
 Interact with the application by selecting features, adjusting parameters, and exploring the outputs.
 
 Review the insights and visualizations generated to inform your decision-making process regarding space mining opportunities.
+
+
+## 🤝 Contributing
+
+We welcome contributions to the Galactic Mining Hub! If you’d like to contribute, please follow these guidelines:
+
+1. **Fork the repository** to your own GitHub account.
+2. **Clone the repository** to your local machine:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/ISRO_Mining_Site_FINAL_APP.git
+   ```
+3. **Create a new branch** for your changes:
+   ```bash
+   git checkout -b your-feature-branch
+   ```
+4. **Make your changes** and test them thoroughly.
+5. **Commit your changes** with clear commit messages.
+6. **Push to your fork** and open a pull request.
+
+For detailed contribution guidelines, please refer to the [Contributing.md](Contributing.md) file.
+
 
 👤 Author
 Devanik - LinkedIn
