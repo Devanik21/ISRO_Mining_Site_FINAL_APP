@@ -84,7 +84,8 @@ Interact with the application by selecting features, adjusting parameters, and e
 - **Joblib**: Model serialization for efficient storage and deployment.
 - **Tesseract** (optional): Optical Character Recognition (OCR) for text extraction from images.
 - **TensorFlow & Keras**: Deep learning frameworks for building and training AI/ML models.
-
+- **App Framework:** Streamlit for rapid web app development.
+- 
 ### Version Control:
 - **GitHub**: For code management, version control, and collaboration.
 
