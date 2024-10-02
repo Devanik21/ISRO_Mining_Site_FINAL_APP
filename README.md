@@ -61,6 +61,32 @@ Analysis: To explore and analyze the dataset.
 Visualization: To create and customize visualizations.
 Insights: To gain actionable insights based on the data.
 Interact with the application by selecting features, adjusting parameters, and exploring the outputs.
+## 🛠️ Tech Stack
+
+### Languages:
+- **Python**: Core language for backend logic and machine learning.
+- **HTML/CSS**: Frontend styling and structure for web components.
+
+### Frameworks:
+- **Streamlit**: Used for developing the interactive web application.
+
+### Libraries:
+- **Pandas**: Data manipulation and analysis.
+- **NumPy**: Numerical computations and array processing.
+- **Scikit-learn**: Machine learning models and evaluation metrics.
+- **Matplotlib**: Plotting and data visualization.
+- **Seaborn**: Statistical data visualization.
+- **Plotly**: Interactive data visualization.
+- **XGBoost**: Extreme Gradient Boosting for optimized machine learning models.
+- **LightGBM**: High-performance gradient boosting framework.
+
+### Tools:
+- **Joblib**: Model serialization for efficient storage and deployment.
+- **Tesseract** (optional): Optical Character Recognition (OCR) for text extraction from images.
+- **TensorFlow & Keras**: Deep learning frameworks for building and training AI/ML models.
+
+### Version Control:
+- **GitHub**: For code management, version control, and collaboration.
 
 Review the insights and visualizations generated to inform your decision-making process regarding space mining opportunities.
 
