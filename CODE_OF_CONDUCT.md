@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The StarMine Mining Hub is an innovative Machine Learning-based platform designed to assist in the exploration and evaluation of potential mining sites across celestial bodies. We aim to create a community where all users, contributors, and developers feel respected, valued, and encouraged. Whether you’re contributing code, reporting an issue, or suggesting new features, we expect everyone to adhere to the community standards outlined below.
+The StarMine is an innovative Machine Learning-based platform designed to assist in the exploration and evaluation of potential mining sites across celestial bodies. We aim to create a community where all users, contributors, and developers feel respected, valued, and encouraged. Whether you’re contributing code, reporting an issue, or suggesting new features, we expect everyone to adhere to the community standards outlined below.
 
 ## Our Commitment
 
-We are committed to maintaining a welcoming, inclusive, and harassment-free environment for all members of the StarMine Mining Hub project. By participating in this community, you agree to foster a positive, constructive atmosphere and to respect the contributions of others.
+We are committed to maintaining a welcoming, inclusive, and harassment-free environment for all members of the StarMine project. By participating in this community, you agree to foster a positive, constructive atmosphere and to respect the contributions of others.
 
 ## Our Values
 
@@ -14,13 +14,13 @@ We are committed to maintaining a welcoming, inclusive, and harassment-free envi
    We expect all members of the community to treat others with kindness and respect. Harassment, discrimination, and offensive language or behavior will not be tolerated. We believe that a community built on respect is essential for fostering collaboration and innovation.
 
 2. **Collaboration and Support**  
-   The StarMine Mining Hub thrives on collaboration. If you encounter an issue or need assistance, don’t hesitate to reach out to others. Likewise, offer your help when you can. Encourage the exchange of ideas, and work together to improve the project.
+   The StarMine thrives on collaboration. If you encounter an issue or need assistance, don’t hesitate to reach out to others. Likewise, offer your help when you can. Encourage the exchange of ideas, and work together to improve the project.
 
 3. **Constructive Feedback**  
    Feedback is an essential part of our community’s growth. When giving or receiving feedback, be respectful and open-minded. Constructive criticism leads to better outcomes and helps improve both the project and the community as a whole.
 
 4. **Inclusivity and Diversity**  
-   We welcome contributions from individuals of all backgrounds and skill levels. The StarMine Mining Hub is a space for diverse perspectives, and everyone should feel empowered to contribute, learn, and share their ideas without fear of discrimination or exclusion.
+   We welcome contributions from individuals of all backgrounds and skill levels. The StarMine is a space for diverse perspectives, and everyone should feel empowered to contribute, learn, and share their ideas without fear of discrimination or exclusion.
 
 5. **Professionalism**  
    We expect professionalism in all communications, whether they are issues, pull requests, or direct messages. Be mindful of your tone and ensure that interactions remain respectful and polite at all times.
@@ -43,7 +43,7 @@ We are committed to maintaining a welcoming, inclusive, and harassment-free envi
 
 ## Spammy PR Rules
 
-To ensure high-quality contributions, StarMine Mining Hub has established guidelines to prevent spammy pull requests (PRs):
+To ensure high-quality contributions, StarMine has established guidelines to prevent spammy pull requests (PRs):
 
 - PRs must be associated with an open issue. PRs without a corresponding issue may be considered spam.
 - Avoid submitting trivial or minor changes unless they significantly improve the project.
@@ -62,8 +62,8 @@ Contributors who violate this Code of Conduct may face actions deemed appropriat
 
 ## Conclusion
 
-By contributing to StarMine Mining Hub, you agree to abide by this Code of Conduct. Let’s work together to create a welcoming, inclusive, and productive environment where everyone can thrive and contribute meaningfully.
+By contributing to StarMine, you agree to abide by this Code of Conduct. Let’s work together to create a welcoming, inclusive, and productive environment where everyone can thrive and contribute meaningfully.
 
 ---
 
-Thank you for being a part of the StarMine Mining Hub community!
+Thank you for being a part of the StarMine community!
