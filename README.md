@@ -93,6 +93,21 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - [View Contributing Guidelines](CONTRIBUTING.md)
 - [View Code of Conduct](CODE_OF_CONDUCT.md)
 
+---
+
+## 👀 Our Contributors
+
+- We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating this project to greater heights.
+- Make sure you show some love by giving ⭐ to our repository.
+
+<div align="center">
+  <a href="https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP">
+    <img src="https://contrib.rocks/image?repo=Devanik21/ISRO_Mining_Site_FINAL_APP&&max=100" />
+  </a>
+</div>
+
+---
+
 ## 🛰️ Acknowledgments
 
 - Inspired by the growing interest in space exploration and resource mining on celestial bodies
