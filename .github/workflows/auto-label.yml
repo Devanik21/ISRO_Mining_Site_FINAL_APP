@@ -1,0 +1,26 @@
+name: Auto Label PRs and Issues
+
+on:
+  pull_request:
+    types: [opened]
+  issues:
+    types: [opened]
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Auto-label PRs and Issues
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          # Common labels for both PRs and issues
+          labels: |
+            gssoc-ext,
+            Hackathon Winner,
+            hacktoberfest-accepted,
+            level1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
