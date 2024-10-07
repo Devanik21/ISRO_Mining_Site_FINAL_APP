@@ -15,9 +15,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Auto-label PRs and Issues
-        uses: actions-ecosystem/action-add-labels@v1
+        uses: github/auto-labeler-action@v1.0.1
         with:
-          # Common labels for both PRs and issues
           labels: |
             gssoc-ext,
             Hackathon Winner,
