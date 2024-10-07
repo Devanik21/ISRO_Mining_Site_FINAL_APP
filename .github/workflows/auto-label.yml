@@ -22,5 +22,5 @@ jobs:
             gssoc-ext,
             Hackathon Winner,
             hacktoberfest-accepted,
-            level1
+            
           github-token: ${{ secrets.GITHUB_TOKEN }}
