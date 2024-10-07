@@ -19,7 +19,6 @@ jobs:
         with:
           labels: |
             gssoc-ext
-            Hackathon Winner
             hacktoberfest-accepted
             level1
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Correct key
