@@ -18,8 +18,10 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: |
-            gssoc-ext,
-            Hackathon Winner,
-            hacktoberfest-accepted,
+            gssoc-ext
+            Hackathon Winner
+            hacktoberfest-accepted
             level1
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Corrected key
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Correct key
+          repo: ${{ github.repository }}  # Specifies the repository
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}  # Selects the issue or PR number dynamically
