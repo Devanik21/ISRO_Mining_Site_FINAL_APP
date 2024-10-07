@@ -24,7 +24,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number,
-              labels: ['gssoc-ext','hacktoberfest-accepted']
+              labels: ['gssoc-ext','level1']
             });
             const addLabel = async (label) => {
               await github.rest.issues.addLabels({
