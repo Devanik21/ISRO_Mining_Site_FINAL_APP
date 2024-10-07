@@ -1,0 +1,3 @@
+Works on classifying and identifying different rocks like igneous,sedimentary to better understand topology .
+Use of CNN and loss=categorical_crossentropy,optimizer=adam , metrics=accuracy
+Fiinding output upto accuracy 95%.
