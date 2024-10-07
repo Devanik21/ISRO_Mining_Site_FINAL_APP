@@ -1,26 +1,39 @@
-name: Auto Label PRs and Issues
+name: Auto Label Issue
 
 on:
-  pull_request:
-    types: [opened]
   issues:
-    types: [opened]
+    types: [opened, reopened, edited]
 
 jobs:
-  auto-label:
+  label_issue:
     runs-on: ubuntu-latest
-
+    permissions:
+      issues: write
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
-      - name: Auto-label PRs and Issues
-        uses: actions_ecosystem/action-add-labels@v1  # Correct action
+      - name: Label Issue
+        uses: actions/github-script@v6
         with:
-          labels: |
-            gssoc-ext
-            hacktoberfest-accepted
-            level1
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Correct key
-          repo: ${{ github.repository }}  # Specifies the repository
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}  # Selects the issue or PR number dynamically
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const issue = context.payload.issue;
+            const issueBody = issue.body ? issue.body.toLowerCase() : '';
+            const issueTitle = issue.title.toLowerCase();
+            
+            // Add gssoc label to all issues
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: ['gssoc-ext','hacktoberfest-accepted']
+            });
+            const addLabel = async (label) => {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: [label]
+              });
+            };
+            if (issueBody.includes('documentation') || issueTitle.includes('doc') || issueBody.includes('readme')) {
+              await addLabel('level1');
+            }
