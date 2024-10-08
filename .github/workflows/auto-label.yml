@@ -1,39 +1,44 @@
-name: Auto Label Issue
+name: Auto Label Issue and PR
 
 on:
   issues:
     types: [opened, reopened, edited]
+  pull_request:
+    types: [opened, reopened, edited]
 
 jobs:
-  label_issue:
+  label_issue_or_pr:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      pull-requests: write
     steps:
-      - name: Label Issue
+      - name: Label Issue or PR
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const issue = context.payload.issue;
-            const issueBody = issue.body ? issue.body.toLowerCase() : '';
-            const issueTitle = issue.title.toLowerCase();
+            const item = context.payload.issue || context.payload.pull_request;
+            const itemBody = item.body ? item.body.toLowerCase() : '';
+            const itemTitle = item.title.toLowerCase();
             
-            // Add gssoc label to all issues
+            // Add gssoc label to all issues and PRs
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issue.number,
+              issue_number: item.number,
               labels: ['gssoc-ext','level1']
             });
+
             const addLabel = async (label) => {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: issue.number,
+                issue_number: item.number,
                 labels: [label]
               });
             };
-            if (issueBody.includes('documentation') || issueTitle.includes('doc') || issueBody.includes('readme')) {
+
+            if (itemBody.includes('documentation') || itemTitle.includes('doc') || itemBody.includes('readme')) {
               await addLabel('level1');
             }
