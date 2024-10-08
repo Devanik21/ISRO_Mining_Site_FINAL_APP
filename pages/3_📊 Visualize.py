@@ -10,6 +10,10 @@ def show_visualize_page():
     # Load dataset
     df = pd.read_csv("space_mining_dataset.csv")
     
+    # Set seaborn style and palette
+    sns.set_style("whitegrid")
+    sns.set_palette("coolwarm")
+
     # Select columns for visualizations
     columns = df.columns.tolist()
     selected_columns = st.multiselect("Select Columns to Visualize", columns, default=columns[:3])
@@ -22,10 +26,11 @@ def show_visualize_page():
     if len(selected_columns) >= 2:
         st.write(f"### 🧲 {selected_columns[0]} vs. {selected_columns[1]} Composition")
         plt.figure(figsize=(10, 6))
-        sns.scatterplot(x=selected_columns[0], y=selected_columns[1], data=df, hue='Celestial Body', palette='Set1', s=100, edgecolor='black')
-        plt.title(f'{selected_columns[0]} vs. {selected_columns[1]} Composition')
-        plt.xlabel(f'{selected_columns[0]}')
-        plt.ylabel(f'{selected_columns[1]}')
+        sns.scatterplot(x=selected_columns[0], y=selected_columns[1], data=df, hue='Celestial Body', 
+                        palette='Spectral', s=100, edgecolor='black')
+        plt.title(f'{selected_columns[0]} vs. {selected_columns[1]} Composition', fontsize=16, fontweight='bold')
+        plt.xlabel(f'{selected_columns[0]}', fontsize=14)
+        plt.ylabel(f'{selected_columns[1]}', fontsize=14)
         plt.grid(True)
         st.pyplot(plt)
 
@@ -33,10 +38,10 @@ def show_visualize_page():
     if len(selected_columns) >= 1:
         st.write(f"### 🏭 Distribution of {selected_columns[0]}")
         plt.figure(figsize=(10, 6))
-        sns.histplot(df[selected_columns[0]], kde=True, color='red', bins=20, edgecolor='black')
-        plt.title(f'Distribution of {selected_columns[0]}')
-        plt.xlabel(f'{selected_columns[0]}')
-        plt.ylabel('Frequency')
+        sns.histplot(df[selected_columns[0]], kde=True, color='crimson', bins=20, edgecolor='black')
+        plt.title(f'Distribution of {selected_columns[0]}', fontsize=16, fontweight='bold')
+        plt.xlabel(f'{selected_columns[0]}', fontsize=14)
+        plt.ylabel('Frequency', fontsize=14)
         plt.grid(True)
         st.pyplot(plt)
 
@@ -44,10 +49,10 @@ def show_visualize_page():
     if len(selected_columns) >= 2:
         st.write(f"### 💧 Distribution of {selected_columns[1]}")
         plt.figure(figsize=(10, 6))
-        sns.histplot(df[selected_columns[1]], kde=True, color='blue', bins=20, edgecolor='black')
-        plt.title(f'Distribution of {selected_columns[1]}')
-        plt.xlabel(f'{selected_columns[1]}')
-        plt.ylabel('Frequency')
+        sns.histplot(df[selected_columns[1]], kde=True, color='steelblue', bins=20, edgecolor='black')
+        plt.title(f'Distribution of {selected_columns[1]}', fontsize=16, fontweight='bold')
+        plt.xlabel(f'{selected_columns[1]}', fontsize=14)
+        plt.ylabel('Frequency', fontsize=14)
         plt.grid(True)
         st.pyplot(plt)
 
@@ -55,18 +60,18 @@ def show_visualize_page():
     st.write("### 🌌 Celestial Body Distribution")
     body_counts = df['Celestial Body'].value_counts()
     plt.figure(figsize=(8, 8))
-    plt.pie(body_counts, labels=body_counts.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette("Set2"), 
-            wedgeprops={'edgecolor': 'black'})
-    plt.title('Celestial Body Distribution')
+    plt.pie(body_counts, labels=body_counts.index, autopct='%1.1f%%', startangle=140, 
+            colors=sns.color_palette("Set2"), wedgeprops={'edgecolor': 'black'})
+    plt.title('Celestial Body Distribution', fontsize=16, fontweight='bold')
     st.pyplot(plt)
 
     # Boxplot of Selected Columns by Celestial Body
     if len(selected_columns) >= 1:
         st.write(f"### 💵 {selected_columns[0]} by Celestial Body")
         plt.figure(figsize=(12, 6))
-        sns.boxplot(x='Celestial Body', y=selected_columns[0], data=df, palette='Set3')
-        plt.xticks(rotation=45)
-        plt.title(f'{selected_columns[0]} by Celestial Body')
+        sns.boxplot(x='Celestial Body', y=selected_columns[0], data=df, palette='rocket')
+        plt.xticks(rotation=45, fontsize=12)
+        plt.title(f'{selected_columns[0]} by Celestial Body', fontsize=16, fontweight='bold')
         plt.grid(True)
         st.pyplot(plt)
 
@@ -75,8 +80,9 @@ def show_visualize_page():
     numeric_df = df[selected_columns].select_dtypes(include=['float64', 'int64'])  # Select only numeric columns
     if not numeric_df.empty:
         plt.figure(figsize=(10, 8))
-        sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, cbar_kws={'shrink': 0.5})
-        plt.title('Correlation Heatmap of Selected Features')
+        sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5, 
+                    cbar_kws={'shrink': 0.5})
+        plt.title('Correlation Heatmap of Selected Features', fontsize=16, fontweight='bold')
         st.pyplot(plt)
     else:
         st.warning("No numeric columns selected for correlation heatmap.")
@@ -85,7 +91,7 @@ def show_visualize_page():
     if len(selected_columns) > 1:
         st.write("### 🔗 Pairplot of Selected Features")
         sns.pairplot(df[selected_columns], diag_kind='kde', palette='coolwarm', plot_kws={'edgecolor': 'black'})
-        plt.suptitle('Pairplot of Selected Features', y=1.02)
+        plt.suptitle('Pairplot of Selected Features', y=1.02, fontsize=16, fontweight='bold')
         st.pyplot(plt)
 
 show_visualize_page()
