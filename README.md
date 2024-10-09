@@ -147,7 +147,7 @@ For questions or feedback, please reach out to [Devanik](https://www.linkedin.co
 
 ---
 
-## 👀 Our Contributors
+## ❤️ Our Contributors
 
 - We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating this project to greater heights.
 - Make sure you show some love by giving ⭐ to our repository.
