@@ -10,9 +10,9 @@
 - [💻 Installation & Usage](#-installation--usage)
 - [📚 Project Documentation](#-project-documentation)
 - [📄 License & Contributing](#-license--contributing)
-- [👀 Our Contributors](#-our-contributors)
 - [🛰️ Acknowledgments](#-acknowledgments)
 - [📞 Contact](#-contact)
+- [👀 Our Contributors](#-our-contributors)
 
   
 ## 🚀 Project Overview
@@ -135,18 +135,6 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 
 ---
 
-## 👀 Our Contributors
-
-- We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating this project to greater heights.
-- Make sure you show some love by giving ⭐ to our repository.
-
-<div align="center">
-  <a href="https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP">
-    <img src="https://contrib.rocks/image?repo=Devanik21/ISRO_Mining_Site_FINAL_APP&&max=100" />
-  </a>
-</div>
-
----
 
 ## 🛰️ Acknowledgments
 
@@ -158,6 +146,19 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 For questions or feedback, please reach out to [Devanik](https://www.linkedin.com/in/devanik) on LinkedIn.
 
 ---
+
+## 👀 Our Contributors
+
+- We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating this project to greater heights.
+- Make sure you show some love by giving ⭐ to our repository.
+
+<div align="center">
+  <a href="https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP">
+    <img src="https://contrib.rocks/image?repo=Devanik21/ISRO_Mining_Site_FINAL_APP&&max=100" />
+  </a>
+</div>
+
+
 
 ⭐️ If you find this project interesting, please consider giving it a star on GitHub!
 
