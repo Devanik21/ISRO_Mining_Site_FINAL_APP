@@ -1,5 +1,20 @@
 # 🌌 Galactic Mining Hub
 
+## Table of Contents
+- [🚀 Project Overview](#-project-overview)
+- [📊 GitHub Stats](#-github-stats)
+- [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
+- [🏆 Featured in](#-featured-in)
+- [🌟 Key Features](#-key-features)
+- [📊 Dataset](#-dataset)
+- [💻 Installation & Usage](#-installation--usage)
+- [📚 Project Documentation](#-project-documentation)
+- [📄 License & Contributing](#-license--contributing)
+- [👀 Our Contributors](#-our-contributors)
+- [🛰️ Acknowledgments](#-acknowledgments)
+- [📞 Contact](#-contact)
+
+  
 ## 🚀 Project Overview
 
 **Galactic Mining Hub** is an advanced Machine Learning-based platform designed to revolutionize space mining exploration. By leveraging cutting-edge AI technologies, this project assists in the exploration and evaluation of potential mining sites across various celestial bodies. It provides predictive insights, personalized recommendations, and detailed analysis of mining site data, making it an invaluable tool for space mining enthusiasts, researchers, and industry professionals.
@@ -33,6 +48,22 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
 ![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+## 🏆 Featured In:
+
+<table>
+<tr>
+      <th>Event Logo</th>
+      <th>Event Name</th>
+      <th>Event Description</th>
+    </tr>
+    <tr>
+        <td><img src="https://user-images.githubusercontent.com/63473496/213306279-338f7ce9-9a9f-4427-8c2a-3e344874498f.png#gh-dark-mode-only" width="200" height="auto" loading="lazy" alt="GSSoC Ext 24"/></td>
+        <td>GirlScript Summer of Code Ext 2024</td>
+        <td>GSSOC Ext is a one-month-long open-source program by the GirlScript Foundation that runs from October 1 to November 10, 2024</td> 
+    </tr>
+   <tr>
+</table>
 
 ## 🌟 Key Features
 
@@ -83,6 +114,15 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 
 5. Interact with the application by adjusting parameters and exploring the outputs to inform your space mining decisions.
 
+## 📚 Project Documentation
+
+| Document                                 | Description                                |
+| ---------------------------------------- | ------------------------------------------ |
+| [README.md](README.md)                   | Project overview and main documentation    |
+| [CONTRIBUTING.md](CONTRIBUTING.md)       | Guidelines for contributing to the project |
+| [LICENSE](LICENSE)                       | Full text of the MIT License               |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
+
 ## 📄 License & Contributing
 
 |        [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)         | [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) |
@@ -121,11 +161,4 @@ For questions or feedback, please reach out to [Devanik](https://www.linkedin.co
 
 ⭐️ If you find this project interesting, please consider giving it a star on GitHub!
 
-## 📚 Project Documentation
 
-| Document                                 | Description                                |
-| ---------------------------------------- | ------------------------------------------ |
-| [README.md](README.md)                   | Project overview and main documentation    |
-| [CONTRIBUTING.md](CONTRIBUTING.md)       | Guidelines for contributing to the project |
-| [LICENSE](LICENSE)                       | Full text of the MIT License               |
-| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
