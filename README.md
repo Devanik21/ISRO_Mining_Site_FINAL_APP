@@ -104,7 +104,12 @@ The project utilizes a synthetic dataset representing various celestial bodies a
    streamlit run app.py
    ```
 
-4. Navigate through the sidebar to explore different models and features:
+4. ## Running Unit Tests
+   To run the unit tests, install the required dependencies and execute:
+   ```bash
+   pytest tests/
+
+5. Navigate through the sidebar to explore different models and features:
 
    - Prediction
    - Recommendation
@@ -112,7 +117,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
    - Visualization
    - Insights
 
-5. Interact with the application by adjusting parameters and exploring the outputs to inform your space mining decisions.
+6. Interact with the application by adjusting parameters and exploring the outputs to inform your space mining decisions.
 
 ## 📚 Project Documentation
 
