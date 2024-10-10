@@ -8,10 +8,10 @@ try:
     model = joblib.load("FINAL_mining_model.pkl")
 except FileNotFoundError:
     st.error("Model file not found. Please check the file path.")
-    st.stop()
+    st.stop() 
 except Exception as e:
     st.error(f"Error loading the model: {e}")
-    st.stop()
+    st.stop() 
 
 # Set the page configuration
 st.set_page_config(
@@ -50,7 +50,6 @@ st.markdown("""
 
 
 def adjust_weights(data, base_weights):
-    """Adjust feature weights based on thresholds."""
     adjusted_weights = base_weights.copy()
 
     high_iron_threshold = 70
@@ -59,16 +58,15 @@ def adjust_weights(data, base_weights):
     high_nickel_threshold = 60
 
     # Winsorize iron content values
-    iron_value = data['Iron (%)']
-    iron_winsorized = np.clip(iron_value, np.percentile([iron_value], 5), np.percentile([iron_value], 95))
+    iron_values = data['Iron (%)']
+    iron_winsorized = np.clip(iron_values, np.percentile(iron_values, 5), np.percentile(iron_values, 95))
 
-    # Adjust weights based on iron content
+   
     if iron_winsorized > high_iron_threshold:
-        adjusted_weights['Iron (%)'] += 0.3
+        adjusted_weights['Iron (%)'] += 0.3 
     elif iron_winsorized < low_iron_threshold:
-        adjusted_weights['Iron (%)'] -= 0.1
-
-    # Adjust weights for water ice and nickel
+        adjusted_weights['Iron (%)'] -= 0.1 
+        
     if data['Water Ice (%)'] > high_water_ice_threshold:
         adjusted_weights['Water Ice (%)'] += 0.15
 
@@ -80,12 +78,6 @@ def adjust_weights(data, base_weights):
     adjusted_weights = {k: v / total_weight for k, v in adjusted_weights.items()}
 
     return adjusted_weights
-
-
-def apply_weights(data, weights):
-    """Applied the adjusted weights to the feature values."""
-    weighted_data = {key: data[key] * weights[key] for key in data.keys()}
-    return pd.DataFrame(weighted_data, index=[0])
 
 
 def reset_inputs():
@@ -140,7 +132,6 @@ def show_decide_page():
         'Efficiency Index': Efficiency_Index
     }
 
-    # Define base weights
     base_weights = {
         'Iron (%)': 0.2,
         'Nickel (%)': 0.2,
@@ -151,22 +142,18 @@ def show_decide_page():
         'Efficiency Index': 0.1
     }
 
-    # Adjust the weights based on thresholds
     adjusted_weights = adjust_weights(data, base_weights)
-
-    # Apply the adjusted weights to the feature values
-    weighted_features = apply_weights(data, adjusted_weights)
-
-    # Show user inputs
-    st.subheader('🔍 User Input Features (with Adjusted Weights)')
-    st.table(weighted_features)
 
     # Prediction button
     if st.button("🔮 Predict"):
+        features = pd.DataFrame(data, index=[0])
+        st.subheader('🔍 User Input Features')
+        st.table(features)
+
         # Perform prediction with error handling
         try:
             with st.spinner("Predicting..."):
-                prediction = model.predict(weighted_features)
+                prediction = model.predict(features)
             st.subheader('📊 Prediction Result')
 
             if prediction[0] == 1:
