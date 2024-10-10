@@ -9,4 +9,4 @@ xgboost
 lightgbm
 tensorflow
 keras
-pytest>=6.0.0
+
