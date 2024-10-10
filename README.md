@@ -119,7 +119,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 | Document                                 | Description                                |
 | ---------------------------------------- | ------------------------------------------ |
 | [README.md](README.md)                   | Project overview and main documentation    |
-| [CONTRIBUTING.md](CONTRIBUTING.md)       | Guidelines for contributing to the project |
+| [CONTRIBUTING.md](https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP/blob/main/CONTRIBUTORS.md)       | Guidelines for contributing to the project |
 | [LICENSE](LICENSE)                       | Full text of the MIT License               |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
 
