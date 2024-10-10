@@ -103,10 +103,6 @@ The project utilizes a synthetic dataset representing various celestial bodies a
    ```bash
    streamlit run app.py
    ```
-4. Running Unit Tests
-   To run the unit tests, install the required dependencies and execute:
-   ```bash
-   pytest tests/   
 
 4. Navigate through the sidebar to explore different models and features:
 
