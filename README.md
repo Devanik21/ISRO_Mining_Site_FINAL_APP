@@ -75,36 +75,63 @@
 
 ## 📊 Dataset
 
-The project utilizes a synthetic dataset representing various celestial bodies and their potential mining sites. Key features include:
+The project utilizes a synthetic dataset representing various celestial bodies and their potential mining sites. It is synthetic and simulates real-world space mining scenarios. Here's a breakdown of the dataset structure:
 
-- Celestial Body
-- Mineral Composition (Iron %, Nickel %, Water/Ice %)
-- Estimated Value (Billions USD)
-- Sustainability Index
-- Efficiency Index
-- Distance from Earth (Million km)
+| Column             | Description                                      |
+|--------------------|--------------------------------------------------|
+| Celestial Body      | Name of the celestial object (e.g., Moon, Mars)  |
+| Mineral Composition | Percentage of minerals such as Iron, Nickel, etc.|
+| Estimated Value     | Economic value of the mining site (in billions)  |
+| Sustainability Index| Measures the sustainability of mining operations|
+| Efficiency Index    | Overall mining efficiency at the site            |
+| Distance from Earth | Distance of the celestial body from Earth (in km)|
+
 
 ## 💻 Installation & Usage
 
+Prerequisites
+- Python 3.x
+- Streamlit installed
+
+Setup
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP.git
    ```
+   
+2. Set up a virtual environment :
 
-2. Install dependencies:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate # On Windows: venv\Scripts\activate
+   ```
+
+3. Activate the Virtual Environment :
+
+   On Windows:
+   ```bash
+   .\env\Scripts\activate
+   ```
+
+   On Mac/Linux:
+   ```bash
+   source env/bin/activate
+   ```
+   
+4. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the Streamlit app:
+5. Run the Streamlit app:
 
    ```bash
    streamlit run app.py
    ```
 
-4. Navigate through the sidebar to explore different models and features:
+6. Navigate through the sidebar to explore different models and features:
 
    - Prediction
    - Recommendation
@@ -112,7 +139,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
    - Visualization
    - Insights
 
-5. Interact with the application by adjusting parameters and exploring the outputs to inform your space mining decisions.
+7. Interact with the application by adjusting parameters and exploring the outputs to inform your space mining decisions.
 
 ## 📚 Project Documentation
 
@@ -122,6 +149,44 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 | [CONTRIBUTING.md](https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP/blob/main/CONTRIBUTORS.md)       | Guidelines for contributing to the project |
 | [LICENSE](LICENSE)                       | Full text of the MIT License               |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
+
+
+## 🤝 How to Contribute
+
+We welcome contributions from the community! Here's how you can get involved:
+
+1. Fork the Repository: Click on the "Fork" button at the top of this page to copy the repository to your account.
+
+2. Clone the Repository: Use the following command to clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/ISRO_Mining_Site_FINAL_APP.git
+   ```
+
+3. Create a Branch: 
+
+   ```bash
+   git checkout -b feature-name
+   ```
+
+4. Make Changes: Implement your changes to the code or documentation.
+
+5. Commit Changes:
+
+   ```bash
+   git add .
+   git commit -m "Description of changes"
+   ```
+
+6. Push the Changes: 
+
+   ```bash
+   git push origin feature-name
+   ```
+
+7. Create a Pull Request: Go to the original repository on GitHub and create a pull request, explaining your changes.
+
+
 
 ## 📄 License & Contributing
 
