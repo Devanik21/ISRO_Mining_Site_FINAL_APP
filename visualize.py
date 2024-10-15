@@ -16,11 +16,41 @@ def show_visualize_page():
 
     data = load_data()
 
+    # Check available columns in the dataset
+    st.write("Available Columns:", data.columns)
+
+    # If 'final_score' does not exist, calculate it based on other features
+    if 'final_score' not in data.columns:
+        st.write("The 'final_score' column does not exist, calculating it based on weights.")
+        
+        # Assuming the columns 'iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', and 'distance_from_earth' exist.
+        iron_weight = 0.3
+        nickel_weight = 0.2
+        water_ice_weight = 0.2
+        other_minerals_weight = 0.1
+        sustainability_weight = 0.1
+        distance_weight = -0.1
+        
+        # Calculate the final score
+        data['final_score'] = (
+            iron_weight * data['iron'] +
+            nickel_weight * data['nickel'] +
+            water_ice_weight * data['water_ice'] +
+            other_minerals_weight * data['other_minerals'] +
+            sustainability_weight * data['sustainability_index'] +
+            distance_weight * data['distance_from_earth']
+        )
+    
+    # Check again if final_score is now available
+    st.write("Updated Columns:", data.columns)
+
     # Visualization 1: Distribution of Features
     st.subheader("Distribution of Features")
     feature = st.selectbox("Select Feature to Visualize", data.columns[1:])  # Exclude non-numeric columns if necessary
     fig, ax = plt.subplots()
-    sns.histplot(data[feature], bins=20, kde=True, ax=ax)
+    
+    # Use a more colorful palette for the histogram
+    sns.histplot(data[feature], bins=20, kde=True, ax=ax, color='teal')
     ax.set_xlabel(feature)
     st.pyplot(fig)
 
@@ -29,12 +59,47 @@ def show_visualize_page():
     features = st.multiselect("Select Features for Pairplot", data.columns[1:])  # Exclude non-numeric columns if necessary
     if len(features) > 1:
         fig, ax = plt.subplots()
-        sns.pairplot(data[features + ['final_score']], diag_kind='kde', hue='final_score')
-        st.pyplot(fig)
+        
+        # Customizing pairplot with a color palette
+        pairplot_fig = sns.pairplot(data[features + ['final_score']], diag_kind='kde', hue='final_score', palette="coolwarm")
+        st.pyplot(pairplot_fig.fig)
     else:
         st.write("Please select more than one feature.")
 
-    # Visualization 3: Impact of Weights on Recommendations
+    # Visualization 3: Correlation Heatmap (with only numeric columns)
+    st.subheader("Correlation Heatmap")
+    # Select only numeric columns for correlation calculation
+    numeric_data = data.select_dtypes(include='number')
+    corr_matrix = numeric_data.corr()
+    
+    # Displaying the heatmap
+    fig, ax = plt.subplots()
+    sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5, ax=ax)
+    ax.set_title("Correlation Heatmap")
+    st.pyplot(fig)
+
+    # Visualization 4: Boxplot of Feature Distribution by Category
+    st.subheader("Boxplot of Feature Distribution by Final Score")
+    box_feature = st.selectbox("Select Feature for Boxplot", data.columns[1:])
+    
+    # Create a boxplot based on the 'final_score'
+    fig, ax = plt.subplots()
+    sns.boxplot(x='final_score', y=box_feature, data=data, palette="Set2", ax=ax)
+    ax.set_title(f"Boxplot of {box_feature} by Final Score")
+    st.pyplot(fig)
+
+    # Visualization 5: Barplot for Aggregate Feature Insights
+    st.subheader("Barplot for Aggregate Insights by Celestial Body")
+    aggregate_feature = st.selectbox("Select Feature for Aggregate Barplot", data.columns[1:])
+    
+    # Create a barplot of average feature values by celestial body
+    fig, ax = plt.subplots()
+    sns.barplot(x='Celestial Body', y=aggregate_feature, data=data, palette="coolwarm", ax=ax)
+    ax.set_title(f"Average {aggregate_feature} by Celestial Body")
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')  # Rotate x-axis labels for clarity
+    st.pyplot(fig)
+
+    # Visualization 6: Impact of Weights on Recommendations
     st.subheader("Impact of Weights on Recommendations")
     st.write("Adjust the weights to see how the recommendations change.")
     
@@ -59,7 +124,12 @@ def show_visualize_page():
     # Display top N sites based on adjusted scores
     top_n = st.slider("Number of Top Sites to Display", 1, 10, 5)
     top_sites = adjusted_scores.sort_values(by='adjusted_score', ascending=False).head(top_n)
+    
+    # Customizing the table display with color for better insight
     st.subheader(f"Top {top_n} Sites Based on Adjusted Scores")
-    st.write(top_sites[['Celestial Body', 'iron', 'nickel', 'water_ice', 'distance_from_earth', 'adjusted_score']])
+    top_sites_display = top_sites[['Celestial Body', 'iron', 'nickel', 'water_ice', 'distance_from_earth', 'adjusted_score']]
+    
+    # Use a color gradient for the 'adjusted_score' column for better visual appeal
+    st.write(top_sites_display.style.background_gradient(subset=['adjusted_score'], cmap='coolwarm'))
 
 show_visualize_page()
