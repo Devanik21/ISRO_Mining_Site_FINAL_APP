@@ -120,14 +120,7 @@ def show_visualize_page():
     # Additional Visualizations
     st.write("### 📊 More Visualizations")
 
-    # Barplot for any selected columns
-    if len(selected_columns) >= 2:
-        st.write(f"### 📊 Barplot of {selected_columns[0]} and {selected_columns[1]}")
-        plt.figure(figsize=(10, 6))
-        sns.barplot(x=selected_columns[0], y=selected_columns[1], data=df, palette='Spectral')
-        plt.title(f'Barplot of {selected_columns[0]} and {selected_columns[1]}', fontsize=16, fontweight='bold')
-        plt.grid(True)
-        st.pyplot(plt)
+
 
     # KDE Plot
     if len(selected_columns) >= 1:
