@@ -11,19 +11,20 @@ def show_visualize_page():
     # Load dataset
     df = pd.read_csv("space_mining_dataset.csv")
     
-    # Set seaborn style and palette
-    sns.set_style("whitegrid")
-    sns.set_palette("coolwarm")
+    # Set seaborn style and palette for professional appearance
+    sns.set_style("darkgrid")
+    sns.set_palette("coolwarm_r")
 
     # Select columns for visualizations
     columns = df.columns.tolist()
-    selected_columns = st.multiselect("Select Columns to Visualize", columns, default=columns[:3])
+    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
+    selected_columns = st.multiselect("Select Columns to Visualize", numeric_columns, default=numeric_columns[:3])
 
     if not selected_columns:
-        st.warning("Please select at least one column.")
+        st.warning("Please select at least one numeric column.")
         return
 
-    # Iron vs. Nickel Scatter Plot (or any two selected columns)
+    # Scatter Plot with user-selected columns
     if len(selected_columns) >= 2:
         st.write(f"### 🧲 {selected_columns[0]} vs. {selected_columns[1]} Composition")
         plt.figure(figsize=(10, 6))
@@ -46,7 +47,7 @@ def show_visualize_page():
         plt.grid(True)
         st.pyplot(plt)
 
-    # Violin Plot: Distribution by Celestial Body
+    # Violin Plot
     if len(selected_columns) >= 1:
         st.write(f"### 🎻 {selected_columns[0]} Distribution by Celestial Body (Violin Plot)")
         plt.figure(figsize=(12, 6))
@@ -56,7 +57,7 @@ def show_visualize_page():
         plt.grid(True)
         st.pyplot(plt)
 
-    # FacetGrid to Compare Distributions Across Celestial Bodies
+    # FacetGrid for selected column
     if len(selected_columns) >= 1:
         st.write(f"### 🪐 {selected_columns[0]} Distribution by Celestial Body (FacetGrid)")
         g = sns.FacetGrid(df, col='Celestial Body', height=4, aspect=1.2)
@@ -84,9 +85,9 @@ def show_visualize_page():
         plt.grid(True)
         st.pyplot(plt)
 
-    # Correlation Heatmap (only for selected numeric columns)
+    # Correlation Heatmap
     st.write("### 🔥 Correlation Heatmap")
-    numeric_df = df[selected_columns].select_dtypes(include=['float64', 'int64'])  # Select only numeric columns
+    numeric_df = df[selected_columns].select_dtypes(include=['float64', 'int64'])
     if not numeric_df.empty:
         plt.figure(figsize=(10, 8))
         corr_matrix = numeric_df.corr()
@@ -98,7 +99,7 @@ def show_visualize_page():
     else:
         st.warning("No numeric columns selected for correlation heatmap.")
 
-    # Pairplot of Selected Features
+    # Pairplot
     if len(selected_columns) > 1:
         st.write("### 🔗 Pairplot of Selected Features")
         sns.pairplot(df[selected_columns], diag_kind='kde', palette='coolwarm', plot_kws={'edgecolor': 'black'})
@@ -113,6 +114,47 @@ def show_visualize_page():
         plt.title('Regression Plot: Iron vs Nickel', fontsize=16, fontweight='bold')
         plt.xlabel('Iron Content', fontsize=14)
         plt.ylabel('Nickel Content', fontsize=14)
+        plt.grid(True)
+        st.pyplot(plt)
+
+    # Additional Visualizations
+    st.write("### 📊 More Visualizations")
+
+    # Barplot for any selected columns
+    if len(selected_columns) >= 2:
+        st.write(f"### 📊 Barplot of {selected_columns[0]} and {selected_columns[1]}")
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=selected_columns[0], y=selected_columns[1], data=df, palette='Spectral')
+        plt.title(f'Barplot of {selected_columns[0]} and {selected_columns[1]}', fontsize=16, fontweight='bold')
+        plt.grid(True)
+        st.pyplot(plt)
+
+    # KDE Plot
+    if len(selected_columns) >= 1:
+        st.write(f"### 📈 KDE Plot of {selected_columns[0]}")
+        plt.figure(figsize=(10, 6))
+        sns.kdeplot(df[selected_columns[0]], shade=True, color='blue')
+        plt.title(f'KDE Plot of {selected_columns[0]}', fontsize=16, fontweight='bold')
+        plt.xlabel(f'{selected_columns[0]}', fontsize=14)
+        plt.grid(True)
+        st.pyplot(plt)
+
+    # Strip Plot
+    if len(selected_columns) >= 1:
+        st.write(f"### 🎋 Strip Plot of {selected_columns[0]} by Celestial Body")
+        plt.figure(figsize=(10, 6))
+        sns.stripplot(x='Celestial Body', y=selected_columns[0], data=df, jitter=True, palette='viridis', size=7)
+        plt.title(f'Strip Plot of {selected_columns[0]} by Celestial Body', fontsize=16, fontweight='bold')
+        plt.grid(True)
+        st.pyplot(plt)
+
+    # Hexbin Plot for continuous variables
+    if len(selected_columns) >= 2:
+        st.write(f"### 🧮 Hexbin Plot of {selected_columns[0]} vs {selected_columns[1]}")
+        plt.figure(figsize=(10, 6))
+        plt.hexbin(df[selected_columns[0]], df[selected_columns[1]], gridsize=30, cmap='Purples', edgecolors='black')
+        plt.colorbar(label='Count')
+        plt.title(f'Hexbin Plot of {selected_columns[0]} vs {selected_columns[1]}', fontsize=16, fontweight='bold')
         plt.grid(True)
         st.pyplot(plt)
 
