@@ -34,6 +34,11 @@
 ![Contributors](https://img.shields.io/github/contributors/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
 ![Last Commit](https://img.shields.io/github/last-commit/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
 
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Devanik21&show_icons=true&theme=radical)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Devanik21&layout=compact&theme=radical)
+
+
 ## 🛠️ Tech Stack
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -64,6 +69,8 @@
     </tr>
    <tr>
 </table>
+
+
 
 ## 🌟 Key Features
 
@@ -122,6 +129,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 | [CONTRIBUTING.md](https://github.com/Devanik21/ISRO_Mining_Site_FINAL_APP/blob/main/CONTRIBUTORS.md)       | Guidelines for contributing to the project |
 | [LICENSE](LICENSE)                       | Full text of the MIT License               |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
+
 
 ## 📄 License & Contributing
 
