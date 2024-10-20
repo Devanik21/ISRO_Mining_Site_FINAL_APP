@@ -84,6 +84,22 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - Efficiency Index
 - Distance from Earth (Million km)
 
+## Docker Setup Instructions
+
+1. Install [Docker](https://docs.docker.com/get-docker/) on your machine.
+2. Windows user - Install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install/) (Ubuntu-22.04).
+   ```
+   wsl --install -d Ubuntu-22.04
+   ``` 
+4. Run the application using Docker Compose:
+   ```PowerShell
+   docker-compose up
+   ```
+5. To stop the application:
+   ```PowerShell
+   docker-compose down
+   ```
+
 ## 💻 Installation & Usage
 
 1. Clone the repository:
