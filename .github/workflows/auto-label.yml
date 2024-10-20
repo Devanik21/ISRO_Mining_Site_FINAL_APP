@@ -21,24 +21,29 @@ jobs:
             const item = context.payload.issue || context.payload.pull_request;
             const itemBody = item.body ? item.body.toLowerCase() : '';
             const itemTitle = item.title.toLowerCase();
-            
-            // Add gssoc label to all issues and PRs
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: item.number,
-              labels: ['gssoc-ext','level1']
-            });
 
-            const addLabel = async (label) => {
+            // Labels to add to every issue or PR
+            const defaultLabels = ['gssoc-ext'];
+            const labelsToAdd = [...defaultLabels];
+
+            // Label based on content
+            if (itemBody.includes('documentation') || itemTitle.includes('doc') || itemBody.includes('readme')) {
+              labelsToAdd.push('documentation');
+            }
+            if (itemBody.includes('bug') || itemTitle.includes('bug')) {
+              labelsToAdd.push('bug');
+            }
+            if (itemBody.includes('feature') || itemTitle.includes('enhancement')) {
+              labelsToAdd.push('enhancement');
+            }
+            if (itemBody.includes('level1') || itemTitle.includes('level1')) {
+              labelsToAdd.push('level1');
+            }
+             if (labelsToAdd.length > 0) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: item.number,
-                labels: [label]
+                labels: labelsToAdd,
               });
-            };
-
-            if (itemBody.includes('documentation') || itemTitle.includes('doc') || itemBody.includes('readme')) {
-              await addLabel('level1');
             }
