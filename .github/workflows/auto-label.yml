@@ -21,24 +21,37 @@ jobs:
             const item = context.payload.issue || context.payload.pull_request;
             const itemBody = item.body ? item.body.toLowerCase() : '';
             const itemTitle = item.title.toLowerCase();
-            
-            // Add gssoc label to all issues and PRs
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: item.number,
-              labels: ['gssoc-ext','level1']
-            });
 
-            const addLabel = async (label) => {
+            // Labels to always add to all issues and PRs
+            const baseLabels = ['gssoc-ext', 'level1'];
+            const labelsToAdd = new Set(baseLabels);
+
+            // Utility function to add labels to the Set
+            const addLabel = (label) => {
+              labelsToAdd.add(label);
+            };
+
+            // Conditional labels based on content
+            if (itemBody.includes('documentation') || itemTitle.includes('doc') || itemBody.includes('readme')) {
+              addLabel('documentation');
+            }
+            if (itemBody.includes('bug') || itemTitle.includes('bug')) {
+              addLabel('bug');
+            }
+            if (itemBody.includes('feature') || itemTitle.includes('enhancement')) {
+              addLabel('enhancement');
+            }
+            if (itemBody.includes('level1') || itemTitle.includes('level1')) {
+              addLabel('level1');
+            }
+
+            // Apply labels
+            if (labelsToAdd.size > 0) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: item.number,
-                labels: [label]
+                labels: Array.from(labelsToAdd),
               });
-            };
-
-            if (itemBody.includes('documentation') || itemTitle.includes('doc') || itemBody.includes('readme')) {
-              await addLabel('level1');
             }
+            
