@@ -10,19 +10,19 @@ We are committed to maintaining a welcoming, inclusive, and harassment-free envi
 
 ## Our Values
 
-1. **Respect and Kindness**  
+1. **Respect and Kindness**
    We expect all members of the community to treat others with kindness and respect. Harassment, discrimination, and offensive language or behavior will not be tolerated. We believe that a community built on respect is essential for fostering collaboration and innovation.
 
-2. **Collaboration and Support**  
+2. **Collaboration and Support**
    The StarMine thrives on collaboration. If you encounter an issue or need assistance, don’t hesitate to reach out to others. Likewise, offer your help when you can. Encourage the exchange of ideas, and work together to improve the project.
 
-3. **Constructive Feedback**  
+3. **Constructive Feedback**
    Feedback is an essential part of our community’s growth. When giving or receiving feedback, be respectful and open-minded. Constructive criticism leads to better outcomes and helps improve both the project and the community as a whole.
 
-4. **Inclusivity and Diversity**  
+4. **Inclusivity and Diversity**
    We welcome contributions from individuals of all backgrounds and skill levels. The StarMine is a space for diverse perspectives, and everyone should feel empowered to contribute, learn, and share their ideas without fear of discrimination or exclusion.
 
-5. **Professionalism**  
+5. **Professionalism**
    We expect professionalism in all communications, whether they are issues, pull requests, or direct messages. Be mindful of your tone and ensure that interactions remain respectful and polite at all times.
 
 ## Expected Behavior

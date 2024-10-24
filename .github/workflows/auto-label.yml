@@ -21,7 +21,7 @@ jobs:
             const item = context.payload.issue || context.payload.pull_request;
             const itemBody = item.body ? item.body.toLowerCase() : '';
             const itemTitle = item.title.toLowerCase();
-            
+
             // Add gssoc label to all issues and PRs
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
