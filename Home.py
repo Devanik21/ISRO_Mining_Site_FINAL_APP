@@ -7,29 +7,34 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-    # Adding selectboxes for user customization
+# Adding selectboxes for user customization
 
 # Sidebar content with advanced layout
 
 with st.sidebar:
     mining_importance = st.selectbox(
         "🔧 **Select Mining Site Importance Level**",
-        options=["Low", "Medium", "High", "Critical"]
+        options=["Low", "Medium", "High", "Critical"],
     )
     distance_filter = st.selectbox(
         "🌐 **Filter Sites by Distance**",
-        options=["< 100 light years", "100-500 light years", "500-1000 light years", "> 1000 light years"]
+        options=[
+            "< 100 light years",
+            "100-500 light years",
+            "500-1000 light years",
+            "> 1000 light years",
+        ],
     )
     outlier_sensitivity = st.selectbox(
         "🔍 **Adjust Sensitivity for Outlier Detection**",
-        options=["Low", "Medium", "High"]
+        options=["Low", "Medium", "High"],
     )
     st.title("🪐 **Galactic Mining Hub**")
     st.subheader("Deep dive into the infinite cosmic sea!")
     st.markdown(
         """
         **Galactic Mining Hub** is a cutting-edge platform that leverages advanced
-        Machine Learning and Data Science techniques to revolutionize space mining 
+        Machine Learning and Data Science techniques to revolutionize space mining
         exploration. Dive deep into the cosmos to discover valuable mining sites
         across the galaxy.
         """
@@ -41,9 +46,9 @@ with st.sidebar:
             """
             ## 🚀 **Galactic Mining Hub**
 
-            This initiative is at the forefront of space exploration, aiming to identify 
-            and evaluate mining sites on distant celestial bodies using sophisticated 
-            AI algorithms. Developed to push the boundaries of what's possible in 
+            This initiative is at the forefront of space exploration, aiming to identify
+            and evaluate mining sites on distant celestial bodies using sophisticated
+            AI algorithms. Developed to push the boundaries of what's possible in
             extraterrestrial resource extraction.
 
             **Developer:** [Devanik](https://www.linkedin.com/in/devanik/)
@@ -61,7 +66,6 @@ with st.sidebar:
     )
 
 
-
 # Main content layout with a centered introduction and styled text
 st.markdown(
     """
@@ -70,7 +74,7 @@ st.markdown(
         <h2><em>Explore, Analyze, and Discover Cosmic Mining Sites with Advanced AI</em></h2>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 st.divider()
@@ -78,10 +82,10 @@ st.divider()
 # Information and interactive section
 st.markdown(
     f"""
-    **Welcome to Galactic Mining Hub**, a premier platform that combines the power of 
-    **Machine Learning** and **Data Science** to unlock the secrets of the universe. 
-    Our hub provides a comprehensive toolkit for space mining analysis, from predictive 
-    modeling to in-depth data insights, designed to support informed decision-making 
+    **Welcome to Galactic Mining Hub**, a premier platform that combines the power of
+    **Machine Learning** and **Data Science** to unlock the secrets of the universe.
+    Our hub provides a comprehensive toolkit for space mining analysis, from predictive
+    modeling to in-depth data insights, designed to support informed decision-making
     in the field of space exploration.
 
     ### **🚀 Prediction Model**

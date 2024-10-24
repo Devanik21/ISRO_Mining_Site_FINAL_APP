@@ -36,7 +36,3 @@ Push the changes to your forked repository on GitHub:
 Provide a clear description of the changes you've made.
 
 7) **We will review your pull request and merge it**
-
-
-
-
