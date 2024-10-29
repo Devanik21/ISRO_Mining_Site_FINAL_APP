@@ -1,3 +1,9 @@
+<div align="center">
+<img  src="https://readme-typing-svg.herokuapp.com?color=2E41F7&center=true&vCenter=true&size=32&width=900&height=78&lines=🪐+Welcome+to+ISRO+Mining+Site+FINAL+APP+✨"/>
+</div>
+
+
+
 # 🌌 Galactic Mining Hub
 
 ## Table of Contents
@@ -14,6 +20,7 @@
 - [📞 Contact](#-contact)
 - [👀 Our Contributors](#-our-contributors)
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
   
 ## 🚀 Project Overview
 
@@ -24,6 +31,8 @@
 <!-- If you have a project logo or banner, you can add it here using the following format:
 ![Galactic Mining Hub Logo](path/to/your/logo.png)
 -->
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 📊 GitHub Stats
 
@@ -38,6 +47,7 @@
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Devanik21&layout=compact&theme=radical)
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 🛠️ Tech Stack
 
@@ -53,6 +63,8 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
 ![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 🏆 Featured In:
 
@@ -70,7 +82,7 @@
    <tr>
 </table>
 
-
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 🌟 Key Features
 
@@ -79,6 +91,8 @@
 - **📊 Data Analysis:** Perform in-depth exploratory data analysis with clustering and outlier detection
 - **📈 Interactive Visualizations:** Create and customize advanced data visualizations
 - **🧠 Actionable Insights:** Gain valuable insights to guide decision-making in space mining ventures
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 📊 Dataset
 
@@ -90,6 +104,8 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - Sustainability Index
 - Efficiency Index
 - Distance from Earth (Million km)
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 💻 Installation & Usage
 
@@ -130,6 +146,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 | [LICENSE](LICENSE)                       | Full text of the MIT License               |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 📄 License & Contributing
 
@@ -141,7 +158,9 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - [View Contributing Guidelines](CONTRIBUTING.md)
 - [View Code of Conduct](CODE_OF_CONDUCT.md)
 
----
+
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 
 ## 🛰️ Acknowledgments
@@ -149,11 +168,15 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - Inspired by the growing interest in space exploration and resource mining on celestial bodies
 - Special thanks to the open-source community and the developers of the tools used in this project
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 ## 📞 Contact
 
 For questions or feedback, please reach out to [Devanik](https://www.linkedin.com/in/devanik) on LinkedIn.
 
 ---
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## ❤️ Our Contributors
 
