@@ -172,7 +172,32 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 
 ## 📞 Contact
 
-For questions or feedback, please reach out to [Devanik](https://www.linkedin.com/in/devanik) on LinkedIn.
+### Project Admin⚡
+ 
+<table>
+<tr>
+<td align="center"><a href="https://github.com/Devanik21"><img src="https://media.licdn.com/dms/image/v2/D5603AQH6V6goMsTntA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720361235479?e=1735776000&v=beta&t=40HIvf0osLuWxjBfGQBS4kmtoY49Wqao7cgCbN-ixVo" width=150px height=150px /></a></br> <h4 style="color:red;">DEVANIK DEBNATH</h4>
+ <a href="https://www.linkedin.com/in/devanik/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+</tr>
+</table>
+
+### Project Mentors✨
+ 
+<table>
+<tr>
+<td align="center"><a href="https://github.com/Anusha0501"><img src="https://media.licdn.com/dms/image/v2/D5603AQHP3OaBM6S93g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710094108411?e=1735776000&v=beta&t=BHL5HpYVwtA1nk0bhIHSZYqtzSzFesFM4Glqpa-uVho" width=150px height=150px /></a></br> <h4 style="color:red;">ANUSHA SINGH</h4>
+ <a href="https://www.linkedin.com/in/anusha-singh01/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+<td align="center"><a href="https://github.com/Madhusri02"><img src="https://media.licdn.com/dms/image/v2/D5635AQFTwzs0bmtEsA/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1723223933503?e=1730779200&v=beta&t=jt5tuaxAcu_0LpG6YT4YJT6iTijKRf1XyoPR-uV2fyY" width=150px height=150px /></a></br> <h4 style="color:red;">MADHU SRI</h4>
+ <a href="https://www.linkedin.com/in/isha-pandey163/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+<td align="center"><a href="https://github.com/Soumyasrn"><img src="https://avatars.githubusercontent.com/u/120653233?v=4" width=150px height=150px /></a></br> <h4 style="color:red;">SOUMYA RANJAN NAYAK</h4>
+ <a href="https://www.linkedin.com/in/soumyasrn/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+</tr>
+</table>
+
 
 ---
 
