@@ -1,3 +1,9 @@
+<div align="center">
+<img  src="https://readme-typing-svg.herokuapp.com?color=2E41F7&center=true&vCenter=true&size=32&width=900&height=78&lines=🪐+Welcome+to+ISRO+Mining+Site+FINAL+APP+✨"/>
+</div>
+
+
+
 # 🌌 Galactic Mining Hub
 
 ## Table of Contents
@@ -14,6 +20,7 @@
 - [📞 Contact](#-contact)
 - [👀 Our Contributors](#-our-contributors)
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
   
 ## 🚀 Project Overview
 
@@ -25,6 +32,8 @@
 ![Galactic Mining Hub Logo](path/to/your/logo.png)
 -->
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 ## 📊 GitHub Stats
 
 ![Stars](https://img.shields.io/github/stars/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
@@ -33,6 +42,12 @@
 ![Pull Requests](https://img.shields.io/github/issues-pr/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
 ![Contributors](https://img.shields.io/github/contributors/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
 ![Last Commit](https://img.shields.io/github/last-commit/Devanik21/ISRO_Mining_Site_FINAL_APP?style=for-the-badge)
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Devanik21&show_icons=true&theme=radical)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Devanik21&layout=compact&theme=radical)
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 🛠️ Tech Stack
 
@@ -48,6 +63,8 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
 ![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=for-the-badge&logo=Keras&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 🏆 Featured In:
 
@@ -65,6 +82,8 @@
    <tr>
 </table>
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 ## 🌟 Key Features
 
 - **🔮 Prediction Model:** Forecast potential mining sites using advanced ML algorithms
@@ -72,6 +91,8 @@
 - **📊 Data Analysis:** Perform in-depth exploratory data analysis with clustering and outlier detection
 - **📈 Interactive Visualizations:** Create and customize advanced data visualizations
 - **🧠 Actionable Insights:** Gain valuable insights to guide decision-making in space mining ventures
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## 📊 Dataset
 
@@ -99,6 +120,9 @@ The project utilizes a synthetic dataset representing various celestial bodies a
    ```PowerShell
    docker-compose down
    ```
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 
 ## 💻 Installation & Usage
 
@@ -139,6 +163,8 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 | [LICENSE](LICENSE)                       | Full text of the MIT License               |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Code of Conduct for contributors           |
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 ## 📄 License & Contributing
 
 |        [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)         | [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) |
@@ -149,7 +175,9 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - [View Contributing Guidelines](CONTRIBUTING.md)
 - [View Code of Conduct](CODE_OF_CONDUCT.md)
 
----
+
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 
 ## 🛰️ Acknowledgments
@@ -157,11 +185,40 @@ The project utilizes a synthetic dataset representing various celestial bodies a
 - Inspired by the growing interest in space exploration and resource mining on celestial bodies
 - Special thanks to the open-source community and the developers of the tools used in this project
 
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
+
 ## 📞 Contact
 
-For questions or feedback, please reach out to [Devanik](https://www.linkedin.com/in/devanik) on LinkedIn.
+### Project Admin⚡
+ 
+<table>
+<tr>
+<td align="center"><a href="https://github.com/Devanik21"><img src="https://media.licdn.com/dms/image/v2/D5603AQH6V6goMsTntA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720361235479?e=1735776000&v=beta&t=40HIvf0osLuWxjBfGQBS4kmtoY49Wqao7cgCbN-ixVo" width=150px height=150px /></a></br> <h4 style="color:red;">DEVANIK DEBNATH</h4>
+ <a href="https://www.linkedin.com/in/devanik/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+</tr>
+</table>
+
+### Project Mentors✨
+ 
+<table>
+<tr>
+<td align="center"><a href="https://github.com/Anusha0501"><img src="https://media.licdn.com/dms/image/v2/D5603AQHP3OaBM6S93g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1710094108411?e=1735776000&v=beta&t=BHL5HpYVwtA1nk0bhIHSZYqtzSzFesFM4Glqpa-uVho" width=150px height=150px /></a></br> <h4 style="color:red;">ANUSHA SINGH</h4>
+ <a href="https://www.linkedin.com/in/anusha-singh01/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+<td align="center"><a href="https://github.com/Madhusri02"><img src="https://media.licdn.com/dms/image/v2/D5635AQFTwzs0bmtEsA/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1723223933503?e=1730779200&v=beta&t=jt5tuaxAcu_0LpG6YT4YJT6iTijKRf1XyoPR-uV2fyY" width=150px height=150px /></a></br> <h4 style="color:red;">MADHU SRI</h4>
+ <a href="https://www.linkedin.com/in/isha-pandey163/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+<td align="center"><a href="https://github.com/Soumyasrn"><img src="https://avatars.githubusercontent.com/u/120653233?v=4" width=150px height=150px /></a></br> <h4 style="color:red;">SOUMYA RANJAN NAYAK</h4>
+ <a href="https://www.linkedin.com/in/soumyasrn/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
+</td>
+</tr>
+</table>
+
 
 ---
+
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## ❤️ Our Contributors
 
