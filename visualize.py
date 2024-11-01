@@ -132,4 +132,25 @@ def show_visualize_page():
     # Use a color gradient for the 'adjusted_score' column for better visual appeal
     st.write(top_sites_display.style.background_gradient(subset=['adjusted_score'], cmap='coolwarm'))
 
+# Downloadable Visualization
+    if st.button("Download Visualization"):
+        fig.savefig("visualization.png")  # Save the current figure
+        with open("visualization.png", "rb") as file:
+            st.download_button(
+                label="Download Chart",
+                data=file,
+                file_name="visualization.png",
+                mime="image/png"
+            )
+
+    # Downloadable Data
+    if st.button("Download Data"):
+        csv = data.to_csv(index=False)
+        st.download_button(
+            label="Download CSV",
+            data=csv,
+            file_name="space_mining_data.csv",
+            mime="text/csv"
+        )
+
 show_visualize_page()
