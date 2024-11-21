@@ -3,21 +3,34 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Set the title and icon of the Streamlit page
 st.set_page_config(page_title="Mining Site Visualization", page_icon="🔍")
 
 def load_data():
-    # Load the dataset
-    data = pd.read_csv("space_mining_dataset.csv")
-    return data
-
+    #Load the dataset from CSV and handle errors if the file is not found.
+    try:
+       data = pd.read_csv("space_mining_dataset.csv")
+       return data
+    except FileNotFoundError:
+        st.error("Dataset file not found. Please upload the correct file.")
+        return pd.DataFrame() 
+    
 def show_visualize_page():
+    #Main function to show the visualization page.
     st.title("Mining Site Visualization")
     st.write("Explore different visualizations to understand the dataset and the impact of user preferences.")
 
     data = load_data()
+    if data.empty:
+        return  
 
     # Check available columns in the dataset
     st.write("Available Columns:", data.columns)
+
+    required_columns = ['iron', 'nickel', 'water_ice', 'other_minerals', 'sustainability_index', 'distance_from_earth']
+    if not all(col in data.columns for col in required_columns):
+        st.error(f"Dataset must contain the following columns: {', '.join(required_columns)}")
+        return
 
     # If 'final_score' does not exist, calculate it based on other features
     if 'final_score' not in data.columns:
@@ -52,16 +65,20 @@ def show_visualize_page():
     # Use a more colorful palette for the histogram
     sns.histplot(data[feature], bins=20, kde=True, ax=ax, color='teal')
     ax.set_xlabel(feature)
+    ax.set_title(f"Distribution of {feature}")
     st.pyplot(fig)
 
     # Visualization 2: Pairplot of Selected Features
     st.subheader("Pairplot of Selected Features")
     features = st.multiselect("Select Features for Pairplot", data.columns[1:])  # Exclude non-numeric columns if necessary
     if len(features) > 1:
-        fig, ax = plt.subplots()
+        if len(features) > 4:
+            st.warning("Select up to 4 features for pairplot for better performance.")   
+        else:
+            fig, ax = plt.subplots()
         
         # Customizing pairplot with a color palette
-        pairplot_fig = sns.pairplot(data[features + ['final_score']], diag_kind='kde', hue='final_score', palette="coolwarm")
+        spairplot_fig = sns.pairplot(data[features + ['final_score']], diag_kind='kde', hue='final_score', palette="coolwarm")
         st.pyplot(pairplot_fig.fig)
     else:
         st.write("Please select more than one feature.")
@@ -73,9 +90,9 @@ def show_visualize_page():
     corr_matrix = numeric_data.corr()
     
     # Displaying the heatmap
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 8))
     sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5, ax=ax)
-    ax.set_title("Correlation Heatmap")
+    ax.set_title("Correlation Heatmap", fontsize=16)
     st.pyplot(fig)
 
     # Visualization 4: Boxplot of Feature Distribution by Category
