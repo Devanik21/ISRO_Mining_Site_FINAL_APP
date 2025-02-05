@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load the trained model
-model = joblib.load("FINAL_mining_model.pkl")
+model = joblib.load("RF_mining_model.pkl")
 
 # Set the page configuration
 st.set_page_config(
