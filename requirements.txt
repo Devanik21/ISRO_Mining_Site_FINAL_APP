@@ -9,3 +9,5 @@ xgboost
 lightgbm
 tensorflow
 keras
+google-generativeai
+streamlit_lottie
