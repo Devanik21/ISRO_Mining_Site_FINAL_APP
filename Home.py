@@ -34,7 +34,7 @@ with st.sidebar:
         across the galaxy.
         """
     )
-    st.image("space_mining.png", use_column_width=True)
+    st.image("space_mining.png", use_container_width=True)
 
     with st.expander("🌟 **Project Overview**"):
         st.markdown(
