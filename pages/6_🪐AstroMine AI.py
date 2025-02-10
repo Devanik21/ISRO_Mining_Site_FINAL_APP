@@ -6,7 +6,7 @@ import requests
 
 # Configure the page
 st.set_page_config(
-    page_title="AstroMine AI",
+    page_title=" CelestAI Nexus",
     page_icon="🪐",
     layout="wide",
     initial_sidebar_state="expanded",
