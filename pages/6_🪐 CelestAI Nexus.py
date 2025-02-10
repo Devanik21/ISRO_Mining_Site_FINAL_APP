@@ -89,7 +89,7 @@ except Exception as e:
 st.markdown(
     """
     <div style="text-align: center; margin-top: 50px;">
-        <h1 style="color: #ffdd00; text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);"><strong>🚀 AstroMine AI 🌌</strong></h1>
+        <h1 style="color: #ffdd00; text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);"><strong>🛰️ CelestAI Nexus 🌌</strong></h1>
         <p style="color: #ff9a8b; font-size: 20px; font-weight: bold;">Your AI companion for futuristic space exploration and asteroid mining insights! 🔥</p>
     </div>
     """,
