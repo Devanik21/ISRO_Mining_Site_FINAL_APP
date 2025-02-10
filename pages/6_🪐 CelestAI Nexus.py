@@ -55,7 +55,7 @@ st.markdown(
 
 # Sidebar Configuration
 with st.sidebar:
-    st.markdown("### 🚀 Welcome to AstroMine AI")
+    st.markdown("### 🚀 Welcome to  CelestAI Nexus")
     api_key = st.text_input("🔑 Enter Google Gemini API Key:", type="password")
     if api_key:
         genai.configure(api_key=api_key)
