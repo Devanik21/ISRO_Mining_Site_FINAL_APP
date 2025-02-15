@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Library</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, #4a90e2, #50e3c2);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #ffcc00;
+            color: #333;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #50e3c2;
+            outline: none;
+        }
+
+        .filter {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter select {
+            padding: 10px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .filter select:hover {
+            border-color: #50e3c2;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .resource-card {
+            background: #fff;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-card h3 {
+            color: #4a90e2;
+            margin: 0 0 10px;
+        }
+
+        .resource-card p {
+            color: #666;
+            margin: 0 0 15px;
+        }
+
+        .resource-card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card a:hover {
+            background: #50e3c2;
+            transform: translateY(-2px);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .rating span {
+            margin-left: 10px;
+            color: #ffcc00;
+        }
+
+        .footer-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer {
+            padding: 20px;
+            background: #4a90e2;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Submission Form Styles */
+        .submission-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .submission-form h2 {
+            margin-bottom: 20px;
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        .submission-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .submission-form input, 
+        .submission-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .submission-form input:focus, 
+        .submission-form textarea:focus {
+            border-color: #50e3c2;
+            outline: none;
+        }
+
+        .submission-form button {
+            padding: 10px 15px;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .submission-form button:hover {
+            background: #50e3c2;
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resource Library</h1>
+        <nav>
+            <ul>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#papers">Research Papers</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#regulations">Regulations</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Search resources...">
+    </div>
+    <div class="filter">
+        <label for="resource-type">Filter by:</label>
+        <select id="resource-type">
+            <option value="all">All</option>
+            <option value="articles">Articles</option>
+            <option value="papers">Research Papers</option>
+            <option value="tutorials">Tutorials</option>
+            <option value="regulations">Regulations</option>
+        </select>
+    </div>
+    <main>
+        <section id="articles">
+            <h2>Articles</h2>
+            <div class="resource-card">
+                <h3>Understanding Space Mining</h3>
+                <p>A comprehensive overview of space mining technologies and techniques.</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐☆</span>
+                </div>
+                <a href="#">Read More</a>
+            </div>
+            <div class="resource-card">
+                <h3>The Future of Resource Extraction</h3>
+                <p>This article discusses various aspects of resource extraction from asteroids.</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <a href="#">Read More</a>
+            </div>
+        </section>
+        <section id="papers">
+            <h2>Research Papers</h2>
+            <div class="resource-card">
+                <h3>Exploration of Asteroid Resources</h3>
+                <p>A detailed research paper exploring the potential resources on asteroids.</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <a href="#">Read More</a>
+            </div>
+        </section>
+        <section id="tutorials">
+            <h2>Tutorials</h2>
+            <div class="resource-card">
+                <h3>Space Mining 101</h3>
+                <p>A beginner's guide to understanding the basics of space mining.</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐☆</span>
+                </div>
+                <a href="#">Read More</a>
+            </div>
+        </section>
+        <section id="regulations">
+            <h2>Regulations</h2>
+            <div class="resource-card">
+                <h3>Legal Framework for Space Mining</h3>
+                <p>Overview of the legal regulations surrounding space mining operations.</p>
+                <div class="rating">
+                    <span>⭐⭐⭐⭐☆</span>
+                </div>
+                <a href="#">Read More</a>
+            </div>
+        </section>
+        <div class="submission-form">
+            <h2>Submit a Resource</h2>
+            <form id="resourceForm">
+                <label for="resourceTitle">Resource Title:</label>
+                <input type="text" id="resourceTitle" placeholder="Enter the title of the resource" required>
+                <label for="resourceDescription">Description:</label>
+                <textarea id="resourceDescription" placeholder="Enter a brief description" rows="4" required></textarea>
+                <label for="resourceURL">Resource URL:</label>
+                <input type="url" id="resourceURL" placeholder="Enter the resource URL" required>
+                <button type="submit">Submit</button>
+                <div class="success-message" id="successMessage" style="display: none;">Resource submitted successfully!</div>
+            </form>
+        </div>
+    </main>
+    <div class="footer-container">
+        <footer>
+            <p>&copy; 2024 Galactic Mining Hub | All Rights Reserved</p>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('resourceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+        });
+    </script>
+</body>
+</html>
