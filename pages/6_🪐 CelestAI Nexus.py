@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS for a rare, futuristic, vibrant look
+# Custom CSS
 st.markdown(
     """
     <style>
@@ -52,7 +52,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Initialize session state for user input if not exists
+# Initialize session state
 if 'user_input' not in st.session_state:
     st.session_state.user_input = ""
 
@@ -83,29 +83,21 @@ def load_lottie_url(url):
     except:
         return None
 
-# Alternative function to load Lottie from local file
-def load_lottie_file(filepath):
-    try:
-        with open(filepath, "r", encoding="utf-8") as file:
-            return json.load(file)
-    except Exception as e:
-        st.error(f"Error loading animation file: {e}")
-        return None
-
-# Load animation from URL (public Lottie animations)
-lottie_url = "https://assets5.lottiefiles.com/packages/lf20_XZ3pkn.json"  # Space/AI related animation
+# Load animation from URL
+lottie_url = "https://assets5.lottiefiles.com/packages/lf20_XZ3pkn.json"
 animation = load_lottie_url(lottie_url)
-
-# If URL loading fails, try local file or show error
-if not animation:
-    try:
-        animation = load_lottie_file("src/AI.json")
-    except:
-        st.warning("Could not load animation. Continuing without it.")
 
 # Display animation if available
 if animation:
     st_lottie(animation, speed=1, loop=True, quality="high", height=250, key="animation")
+else:
+    try:
+        # Fallback to local file
+        with open("src/AI.json", "r", encoding="utf-8") as file:
+            animation = json.load(file)
+            st_lottie(animation, speed=1, loop=True, quality="high", height=250, key="animation")
+    except:
+        st.warning("Animation could not be loaded.")
 
 st.markdown(
     """
@@ -118,7 +110,7 @@ st.markdown(
 )
 st.markdown("---")
 
-# Use session state to maintain the user input
+# User input
 user_input = st.text_area("💬 Ask a question about space mining:", value=st.session_state.user_input)
 
 if st.button("🚀 Send Query"):
@@ -128,27 +120,23 @@ if st.button("🚀 Send Query"):
         st.warning("⚠️ Please enter a query.")
     else:
         try:
-            # Display a loading message
+            # Display loading spinner
             with st.spinner("🔄 Processing your query..."):
-                # Import Gemini library only if API key is provided
+                # Import Gemini library
                 import google.generativeai as genai
                 
                 # Configure the API
                 genai.configure(api_key=api_key)
                 
-                # Check available models and use the correct endpoint
-                try:
-                    model = genai.GenerativeModel("gemini-pro")
-                    response = model.generate_content(user_input)
-                    
-                    st.success("✨ AI Response:")
-                    st.markdown(
-                        f"<p style='background: linear-gradient(to right, #8e44ad, #c0392b); padding:12px; border-radius:12px; color:white; font-weight:bold;'>{response.text}</p>", 
-                        unsafe_allow_html=True
-                    )
-                except Exception as e:
-                    st.error(f"Error with Gemini API: {e}")
-                    st.info("The model 'gemini-pro' might not be available. Please check your API key and the available models.")
+                # Use Gemini 2.0 Flash model
+                model = genai.GenerativeModel("gemini-1.5-flash")
+                response = model.generate_content(user_input)
+                
+                st.success("✨ AI Response:")
+                st.markdown(
+                    f"<p style='background: linear-gradient(to right, #8e44ad, #c0392b); padding:12px; border-radius:12px; color:white; font-weight:bold;'>{response.text}</p>", 
+                    unsafe_allow_html=True
+                )
         except Exception as e:
             st.error(f"Error: {e}")
-            st.info("Make sure you have installed the required packages: pip install google-generativeai streamlit-lottie")
+            st.info("If you're having issues with the model, try these models: 'gemini-1.5-flash', 'gemini-1.5-pro', or check Google's documentation for the latest model names.")
