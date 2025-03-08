@@ -176,7 +176,7 @@ The project utilizes a synthetic dataset representing various celestial bodies a
  
 <table>
 <tr>
-<td align="center"><a href="https://github.com/Devanik21"><img src="https://media.licdn.com/dms/image/v2/D5603AQH6V6goMsTntA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1720361235479?e=1735776000&v=beta&t=40HIvf0osLuWxjBfGQBS4kmtoY49Wqao7cgCbN-ixVo" width=150px height=150px /></a></br> <h4 style="color:red;">DEVANIK DEBNATH</h4>
+<td align="center"><a href="https://github.com/Devanik21"><img src="" width=150px height=150px /></a></br> <h4 style="color:red;">DEVANIK DEBNATH</h4>
  <a href="https://www.linkedin.com/in/devanik/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px"></img></a>
 </td>
 </tr>
