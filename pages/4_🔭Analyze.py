@@ -381,12 +381,15 @@ def show_analyze_page():
     pdp_feature = st.selectbox("Select feature:", feature_cols, key="pdp_feature")
     
     from sklearn.inspection import partial_dependence
-    
-    pdp = partial_dependence(rf, X, features=[feature_cols.index(pdp_feature)])
+    import pandas as pd
+
+    pdp_result = partial_dependence(rf, X, features=[feature_cols.index(pdp_feature)])
+
     pdp_df = pd.DataFrame({
-        pdp_feature: pdp["values"][0],
-        'Partial Dependence': pdp["average"][0]
+      pdp_feature: pdp_result[1][0],  # Instead of pdp["values"][0]
+     'Partial Dependence': pdp_result[0][0]  # Instead of pdp["average"][0]
     })
+
     
     fig = px.line(pdp_df, x=pdp_feature, y='Partial Dependence')
     st.plotly_chart(fig)
