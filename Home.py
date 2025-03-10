@@ -327,12 +327,7 @@ st.markdown('<p class="subtitle-text">Pioneering the Future of Space Resource Ac
 
 # Animated Lottie section with error handling
 col1, col2, col3 = st.columns([1, 2, 1])
-'''with col2:
-    try:
-        st_lottie(rocket_lottie, height=300, key="rocket_animation")
-    except Exception as e:
-        st.image("https://via.placeholder.com/500x300.png?text=ISRO+Space+Rocket", use_column_width=True)
-        st.error(f"Could not display animation: {e}")'''
+
 
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
