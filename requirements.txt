@@ -5,6 +5,7 @@ pillow
 plotly
 requests
 streamlit-lottie
+statsmodels
 streamlit-option-menu
 scikit-learn
 joblib
