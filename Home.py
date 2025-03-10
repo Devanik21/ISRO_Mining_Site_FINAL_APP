@@ -168,6 +168,8 @@ def load_lottieurl(url):
         st.warning(f"Failed to load animation: {e}")
         return None
 
+
+st.image("space_mining.png", use_container_width=True)
 # Default fallback animation if URLs fail to load
 default_lottie = {
     "v": "5.7.11",
