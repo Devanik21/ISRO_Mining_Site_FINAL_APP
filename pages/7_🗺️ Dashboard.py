@@ -181,8 +181,8 @@ def show_visualize_page():
         st.markdown(f"**Optimal Mining Route:** ⚛️ `{path_str}`")
         # Corrected the plotting line -  use_container_width and indexing
         optimal_costs = [cost_matrix[i, j] for i, j in zip(optimal_path[:-1], optimal_path[1:])]
-        st.plotly_chart(px.line(pd.Series(optimal_costs), use_container_width=True), use_container_width=True)
-
+        fig = px.line(pd.Series(optimal_costs))
+        st.plotly_chart(fig, use_container_width=True)
 
 
     # Real-time Space Weather Monitor
