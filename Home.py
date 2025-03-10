@@ -204,7 +204,7 @@ default_lottie = {
             "p": {"a": 0, "k": [0, 0], "ix": 3},
             "nm": "Ellipse Path 1",
             "mn": "ADBE Vector Shape - Ellipse",
-            "hd": false
+            "hd": False
         }, {
             "ty": "fl",
             "c": {"a": 0, "k": [0.3, 0.38, 0.93, 1], "ix": 4},
@@ -213,7 +213,7 @@ default_lottie = {
             "bm": 0,
             "nm": "Fill 1",
             "mn": "ADBE Vector Graphic - Fill",
-            "hd": false
+            "hd": False
         }],
         "ip": 0,
         "op": 60,
