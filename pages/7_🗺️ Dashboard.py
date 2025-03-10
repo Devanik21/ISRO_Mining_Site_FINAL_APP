@@ -1,5 +1,3 @@
-# ISRO_Mining_Site_FINAL_APP/pages/3_📊_Visualize.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
