@@ -237,6 +237,7 @@ analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/
 
 # Advanced Sidebar with dynamic content
 with st.sidebar:
+    st.image("space_mining.png", use_container_width=True)
     st.markdown('<h1 style="text-align: center; color: #4CC9F0;">🛰️ ISRO</h1>', unsafe_allow_html=True)
     st.markdown('<h2 style="text-align: center; color: #b8c2cc;">Celestial Mining Intelligence Hub</h2>', unsafe_allow_html=True)
     
@@ -271,7 +272,7 @@ with st.sidebar:
             options=["< 100 LY", "100-500 LY", "500-1000 LY", "> 1000 LY"],
             index=1
         )
-    st.image("space_mining.png", use_container_width=True)
+    
     # Advanced filters with tooltips
     st.markdown("### Analysis Configuration")
     outlier_sensitivity = st.slider(
