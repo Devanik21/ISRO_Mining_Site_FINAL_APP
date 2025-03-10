@@ -1,3 +1,4 @@
+# Import section - Updated to include error handling for animations
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -5,11 +6,15 @@ from PIL import Image
 import time
 import plotly.express as px
 import plotly.graph_objects as go
-from streamlit_lottie import st_lottie
 import requests
 import json
+
+# Import the components that we can confirm exist
 from streamlit_option_menu import option_menu
-#from streamlit_particles import particles
+from streamlit_lottie import st_lottie
+
+# Removed streamlit_particles import since it's causing errors
+# from streamlit_particles import particles
 
 # Page Configuration with enhanced settings
 st.set_page_config(
@@ -24,7 +29,7 @@ st.set_page_config(
     }
 )
 
-# Custom CSS for amazing visual enhancements
+# Custom CSS for amazing visual enhancements (kept as is)
 st.markdown("""
 <style>
     /* Main Page Styling */
@@ -152,93 +157,78 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Function to load Lottie animations
+# Function to load Lottie animations with better error handling
 def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
+    try:
+        r = requests.get(url)
+        if r.status_code != 200:
+            return None
+        return r.json()
+    except Exception as e:
+        st.warning(f"Failed to load animation: {e}")
         return None
-    return r.json()
 
-# Load animations
-space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json")
-rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json")
-analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json")
-
-# Particles background configuration
-particles_config = {
-    "particles": {
-        "number": {
-            "value": 120,
-            "density": {
-                "enable": True,
-                "value_area": 800
-            }
+# Default fallback animation if URLs fail to load
+default_lottie = {
+    "v": "5.7.11",
+    "fr": 30,
+    "ip": 0,
+    "op": 60,
+    "w": 300,
+    "h": 300,
+    "nm": "Simple Circle",
+    "ddd": 0,
+    "assets": [],
+    "layers": [{
+        "ddd": 0,
+        "ind": 1,
+        "ty": 4,
+        "nm": "Circle",
+        "sr": 1,
+        "ks": {
+            "o": {"a": 0, "k": 100, "ix": 11},
+            "r": {"a": 0, "k": 0, "ix": 10},
+            "p": {"a": 0, "k": [150, 150, 0], "ix": 2, "l": 2},
+            "a": {"a": 0, "k": [0, 0, 0], "ix": 1, "l": 2},
+            "s": {"a": 1, "k": [
+                {"i": {"x": [0.5, 0.5, 0.5], "y": [1, 1, 1]}, "o": {"x": [0.5, 0.5, 0.5], "y": [0, 0, 0]}, "t": 0, "s": [100, 100, 100]},
+                {"i": {"x": [0.5, 0.5, 0.5], "y": [1, 1, 1]}, "o": {"x": [0.5, 0.5, 0.5], "y": [0, 0, 0]}, "t": 30, "s": [120, 120, 100]},
+                {"t": 60, "s": [100, 100, 100]}
+            ], "ix": 6, "l": 2}
         },
-        "color": {
-            "value": "#ffffff"
-        },
-        "shape": {
-            "type": "circle",
-            "stroke": {
-                "width": 0,
-                "color": "#000000"
-            },
-        },
-        "opacity": {
-            "value": 0.5,
-            "random": True,
-        },
-        "size": {
-            "value": 3,
-            "random": True,
-        },
-        "line_linked": {
-            "enable": True,
-            "distance": 150,
-            "color": "#4361EE",
-            "opacity": 0.4,
-            "width": 1
-        },
-        "move": {
-            "enable": True,
-            "speed": 1,
-            "direction": "none",
-            "random": True,
-            "straight": False,
-            "out_mode": "out",
-            "bounce": False,
-        }
-    },
-    "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-            "onhover": {
-                "enable": True,
-                "mode": "grab"
-            },
-            "onclick": {
-                "enable": True,
-                "mode": "push"
-            },
-            "resize": True
-        },
-        "modes": {
-            "grab": {
-                "distance": 140,
-                "line_linked": {
-                    "opacity": 1
-                }
-            },
-            "push": {
-                "particles_nb": 4
-            },
-        }
-    },
-    "retina_detect": True
+        "ao": 0,
+        "shapes": [{
+            "ty": "el",
+            "d": 1,
+            "s": {"a": 0, "k": [100, 100], "ix": 2},
+            "p": {"a": 0, "k": [0, 0], "ix": 3},
+            "nm": "Ellipse Path 1",
+            "mn": "ADBE Vector Shape - Ellipse",
+            "hd": false
+        }, {
+            "ty": "fl",
+            "c": {"a": 0, "k": [0.3, 0.38, 0.93, 1], "ix": 4},
+            "o": {"a": 0, "k": 100, "ix": 5},
+            "r": 1,
+            "bm": 0,
+            "nm": "Fill 1",
+            "mn": "ADBE Vector Graphic - Fill",
+            "hd": false
+        }],
+        "ip": 0,
+        "op": 60,
+        "st": 0,
+        "bm": 0
+    }],
+    "markers": []
 }
 
-# Apply particles background
-#particles(particles_config, height="300px")
+# Load animations with fallback
+space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
+rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json") or default_lottie
+analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
+
+# Removed particles background configuration and application since the module is missing
 
 # Advanced Sidebar with dynamic content
 with st.sidebar:
@@ -253,8 +243,12 @@ with st.sidebar:
         progress_bar.progress(percent_complete + 1)
     st.success("System Ready")
     
-    # Animated sidebar image
-   # st_lottie(space_lottie, speed=1, height=200, key="space_animation")
+    # Animated sidebar image - with error handling
+    try:
+        st_lottie(space_lottie, speed=1, height=200, key="space_animation")
+    except Exception as e:
+        st.error(f"Could not display animation: {e}")
+        st.info("Continuing with the rest of the application...")
     
     st.markdown("### Mission Parameters")
     col1, col2 = st.columns(2)
@@ -328,10 +322,14 @@ with st.sidebar:
 st.markdown('<h1 class="title-text">CELESTIAL MINING INTELLIGENCE HUB</h1>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle-text">Pioneering the Future of Space Resource Acquisition</p>', unsafe_allow_html=True)
 
-# Animated Lottie section
+# Animated Lottie section with error handling
 col1, col2, col3 = st.columns([1, 2, 1])
-'''with col2:
-    st_lottie(rocket_lottie, height=300, key="rocket_animation")'''
+with col2:
+    try:
+        st_lottie(rocket_lottie, height=300, key="rocket_animation")
+    except Exception as e:
+        st.image("https://via.placeholder.com/500x300.png?text=ISRO+Space+Rocket", use_column_width=True)
+        st.error(f"Could not display animation: {e}")
 
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
@@ -570,7 +568,11 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-    st_lottie(analysis_lottie, height=400, key="analysis_animation")
+    try:
+        st_lottie(analysis_lottie, height=400, key="analysis_animation")
+    except Exception as e:
+        st.image("https://via.placeholder.com/300x400.png?text=Analysis+Dashboard", use_column_width=True)
+        st.error(f"Could not display animation: {e}")
 
 # Call-to-action section
 st.markdown("<hr>", unsafe_allow_html=True)
