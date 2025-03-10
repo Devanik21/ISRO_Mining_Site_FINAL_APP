@@ -54,9 +54,9 @@ def get_nasa_asteroids():
 # Advanced Material Composition Analysis
 def analyze_mineral_composition(df):
     elements = ['Fe', 'Si', 'Mg', 'Ni', 'H2O', 'CH4']
-    comp = pd.DataFrame(np.random.dirichlet(np.ones(6), columns=elements, index=df.index)
+    comp = pd.DataFrame(np.random.dirichlet(np.ones(6), size=len(df)),
+                       columns=elements)
     return pd.concat([df, comp], axis=1)
-
 # HPC Simulation (Mock)
 def run_gravitational_sim(coords):
     masses = np.random.lognormal(3, 0.5, len(coords))
