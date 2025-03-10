@@ -47,7 +47,7 @@ def show_insights_page():
     @st.cache_data
     def load_data():
         df = pd.read_csv("space_mining_dataset.csv")
-        return df
+       
     
     try:
         df = load_data()
