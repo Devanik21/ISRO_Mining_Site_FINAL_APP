@@ -186,14 +186,14 @@ with tab2:
         fig.update_layout(polar=dict(radialaxis=dict(visible=True)), showlegend=True)
         st.plotly_chart(fig)
 
-    # NEW: Parallel Coordinates
+    '''# NEW: Parallel Coordinates
     st.subheader("Parallel Coordinates")
     parallel_cols = st.multiselect("Select Columns", numeric_columns, default=numeric_columns[:5], key="parallel_cols")
     parallel_color = st.selectbox("Color by", categorical_columns + numeric_columns, key="parallel_color")
     if parallel_cols:
         fig = px.parallel_coordinates(df, dimensions=parallel_cols, color=df[parallel_color], 
                                     color_continuous_scale=px.colors.diverging.Tealrose)
-        st.plotly_chart(fig)
+        st.plotly_chart(fig)'''
 
     # NEW: Interactive Heatmap
     st.subheader("Interactive Correlation Heatmap")
