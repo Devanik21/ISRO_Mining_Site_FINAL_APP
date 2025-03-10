@@ -300,7 +300,7 @@ with st.sidebar:
         - Lunar south pole evaluation
         - Mars regolith composition analysis
         
-        **Project Lead:** Dr. Devanik Saha  
+        **Project Lead:** [Devanik](https://www.linkedin.com/in/devanik/)  
         **Authorization Level:** Delta-7
         """)
     
