@@ -13,7 +13,8 @@ import base64
 from datetime import datetime
 import altair as alt
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA, TSNE
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
