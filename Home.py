@@ -331,7 +331,7 @@ st.markdown('<p class="subtitle-text">Pioneering the Future of Space Resource Ac
 # Animated Lottie section
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    st_lottie(rocket_lottie, height=300, key="rocket_animation")
+  #  st_lottie(rocket_lottie, height=300, key="rocket_animation")
 
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
