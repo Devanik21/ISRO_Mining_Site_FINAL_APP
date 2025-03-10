@@ -6,7 +6,7 @@ plotly
 requests
 streamlit-lottie
 streamlit-option-menu
-streamlit-particles
+streamlit-elements
 scikit-learn
 joblib
 matplotlib
