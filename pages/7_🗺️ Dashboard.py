@@ -84,7 +84,7 @@ def get_nasa_asteroids():
         st.error(f"Error processing asteroid data: {e}")
         return pd.read_parquet('sample_asteroid_data.parquet')
 
-
+'''
 # Advanced Material Composition Analysis
 def analyze_mineral_composition(df):
     elements = ['Fe', 'Si', 'Mg', 'Ni', 'H2O', 'CH4']
@@ -277,6 +277,6 @@ def show_visualize_page():
     <div style="position: fixed; bottom: 10px; right: 10px; background: #000; padding: 5px 10px; border-radius: 5px;">
         🔒 Quantum-Safe Encryption: AES-512 + Lattice-based NIST Standard
     </div>
-    """, unsafe_allow_html=True)'''
+    """, unsafe_allow_html=True)
 
 show_visualize_page()
