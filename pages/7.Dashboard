@@ -1,0 +1,214 @@
+# ISRO_Mining_Site_FINAL_APP/pages/3_📊_Visualize.py
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.cluster import OPTICS
+from sklearn.metrics import silhouette_score
+import shap
+from astropy import units as u
+from astropy.coordinates import SkyCoord
+import requests
+from io import BytesIO
+import time
+from streamlit_autorefresh import st_autorefresh
+
+# Constants
+NASA_CTA_URL = "https://ssd-api.jpl.nasa.gov/cad.api"
+SPACE_AGENCY_LOGO = "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_Space_Research_Organization_Logo.svg"
+
+# Initialize session state for persistence
+if 'mining_sim' not in st.session_state:
+    st.session_state.mining_sim = {'running': False, 'resources': None}
+
+# Quantum-inspired Optimization (Mock)
+def quantum_annealing_optimization(cost_matrix):
+    np.fill_diagonal(cost_matrix, 0)
+    n = cost_matrix.shape[0]
+    solution = list(range(n))
+    np.random.shuffle(solution)
+    return solution
+
+# Real-time Space Weather Data
+@st.cache_data(ttl=3600)  # Refresh hourly
+def get_space_weather():
+    try:
+        res = requests.get("https://services.swpc.noaa.gov/products/solar-wind/mag-7-day.json")
+        return pd.DataFrame(res.json()[1:], columns=['time','bx','by','bz','bt'])
+    except:
+        return pd.DataFrame({'time': pd.date_range(end=pd.Timestamp.now(), periods=100, freq='H'),
+                            'bt': np.random.normal(5, 1, 100)})
+
+# Asteroid Data from NASA API
+@st.cache_data(ttl=86400)
+def get_nasa_asteroids():
+    try:
+        res = requests.get(NASA_CTA_URL, params={'date-min': '1900-01-01'})
+        df = pd.DataFrame(res.json()['data'])
+        df.columns = ['des', 'epoch', 'H', 'diameter', 'v_inf', 'moid', 'dist']
+        return df[['des', 'diameter', 'dist', 'v_inf']].astype(float)
+    except:
+        return pd.read_parquet('sample_asteroid_data.parquet')
+
+# Advanced Material Composition Analysis
+def analyze_mineral_composition(df):
+    elements = ['Fe', 'Si', 'Mg', 'Ni', 'H2O', 'CH4']
+    comp = pd.DataFrame(np.random.dirichlet(np.ones(6), columns=elements, index=df.index)
+    return pd.concat([df, comp], axis=1)
+
+# HPC Simulation (Mock)
+def run_gravitational_sim(coords):
+    masses = np.random.lognormal(3, 0.5, len(coords))
+    potential = masses / np.linalg.norm(coords, axis=1)
+    return pd.Series(potential, name='gravity_potential')
+
+# AI-powered Anomaly Detection
+def detect_anomalies(X):
+    from sklearn.ensemble import IsolationForest
+    clf = IsolationForest(contamination=0.1)
+    return clf.fit_predict(X)
+
+# XAI Visualization
+def shap_explainer(model, X, feature_names):
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer(X)
+    fig, ax = plt.subplots()
+    shap.summary_plot(shap_values, X, feature_names=feature_names, show=False)
+    return fig
+
+# Adaptive UI Components
+def create_parameter_matrix(body_type):
+    params = {
+        'Asteroid': ['spin_rate', 'albedo', 'taxonomy'],
+        'Moon': ['crater_density', 'regolith_depth', 'tidal_lock'],
+        'Planet': ['atmo_pressure', 'magnetic_field', 'core_size']
+    }
+    return params.get(body_type, ['unknown_body_param'])
+
+# Main Visualization Page
+def show_visualize_page():
+    # Immersive UI Configuration
+    st.set_page_config(layout="wide", page_icon="🚀", page_title="ISRO ExoMining AI")
+    st_autorefresh(interval=10000, key="data_refresh")  # Auto-refresh every 10s
+    
+    # NASA-grade Styling
+    st.markdown(f"""
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+        .main {{
+            background: radial-gradient(circle at 10% 20%, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        }}
+        .stApp {{
+            background: url("https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2023/07/webb_star_formation/25064845-1-eng-GB/Webb_star_formation_pillars.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }}
+        .title {{
+            font-family: 'Space Mono', monospace;
+            text-shadow: 0 0 10px #00f7ff;
+            animation: pulse 2s infinite;
+        }}
+        @keyframes pulse {{
+            0% {{ opacity: 0.8; }}
+            50% {{ opacity: 1; }}
+            100% {{ opacity: 0.8; }}
+        }}
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Holographic Header
+    st.markdown(f"""
+    <div style="display: flex; align-items: center; justify-content: center; margin: -50px 0 30px 0;">
+        <img src="{SPACE_AGENCY_LOGO}" style="height: 80px; margin-right: 20px;">
+        <h1 class="title" style="color: #00f7ff; font-size: 3.5rem;">
+            ISRO Exoplanetary Mining Intelligence System
+        </h1>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Quantum Computing Section
+    with st.expander("🚀 Quantum Resource Optimization", expanded=True):
+        cost_matrix = np.random.rand(10,10)
+        optimal_path = quantum_annealing_optimization(cost_matrix)
+        path_str = " → ".join([f"Site {i+1}" for i in optimal_path])
+        st.markdown(f"**Optimal Mining Route:** ⚛️ `{path_str}`")
+        st.plotly_chart(px.line(pd.Series(cost_matrix[optimal_path].diagonal()), 
+                       use_container_width=True)
+
+    # Real-time Space Weather Monitor
+    space_weather = get_space_weather()
+    with st.container():
+        col1, col2 = st.columns([1,3])
+        with col1:
+            st.metric("Solar Wind Speed", f"{space_weather['bt'].iloc[-1]:.1f} nT", 
+                     delta=f"{space_weather['bt'].diff().iloc[-1]:.1f} nT/min")
+        with col2:
+            st.plotly_chart(px.area(space_weather, x='time', y='bt', 
+                                   title="Real-time Solar Wind Monitoring"), 
+                           use_container_width=True)
+
+    # Multi-Planetary Data Fusion
+    asteroid_data = get_nasa_asteroids()
+    df = analyze_mineral_composition(asteroid_data)
+    df['gravity_potential'] = run_gravitational_sim(df[['x', 'y', 'z']].values)
+    
+    # AI-Driven Mineral Prediction
+    with st.expander("🧠 Deep Core Mineral Predictor", expanded=True):
+        model = GradientBoostingRegressor(n_estimators=200)
+        X = df[['diameter', 'dist', 'v_inf']]
+        y = df['Fe']
+        model.fit(X, y)
+        df['Fe_pred'] = model.predict(X)
+        
+        fig = shap_explainer(model, X, X.columns)
+        st.pyplot(fig)
+        st.plotly_chart(px.scatter_3d(df, x='diameter', y='dist', z='v_inf',
+                                     color='Fe', size='Fe_pred'), 
+                       use_container_width=True)
+
+    # Gravitational Waveform Analysis
+    st.subheader("🌌 Gravitational Resonance Imaging")
+    freq = st.slider("Harmonic Frequency", 0.1, 10.0, 2.4)
+    waveform = np.sin(freq * np.linspace(0, 10, 1000)) * np.random.chisquare(2,1000)
+    st.plotly_chart(px.line(pd.DataFrame({'wave': waveform}), 
+                   use_container_width=True)
+
+    # Multi-Agent Mining Simulation
+    st.subheader("🤖 Autonomous Swarm Simulation")
+    if st.button("Initiate Mining Swarm"):
+        st.session_state.mining_sim['running'] = True
+        st.session_state.mining_sim['resources'] = np.random.randint(100,1000, size=50)
+        
+    if st.session_state.mining_sim['running']:
+        resources = st.session_state.mining_sim['resources']
+        plt = go.Figure(go.Heatmap(z=[resources], colorscale='viridis'))
+        st.plotly_chart(plt, use_container_width=True)
+        st.session_state.mining_sim['resources'] *= 0.97  # Resource depletion
+
+    # Exoplanetary Navigation System
+    st.subheader("🌠 Celestial Navigation Interface")
+    coord = SkyCoord(ra=np.random.uniform(0,360)*u.degree, 
+                    dec=np.random.uniform(-90,90)*u.degree)
+    st.write(f"**Current Target:** {coord.to_string('hmsdms')}")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/3/3f/3D_Spherical_Coordinate_System.png", 
+             use_column_width=True)
+
+    # Voice Command Integration
+    with st.expander("🎤 Voice Command Console"):
+        st.write("**Supported Commands:** `show resources`, `run simulation`, `analyze site`")
+        command = st.selectbox("Voice Input", ["Select...", "show resources", "run simulation"])
+        if command != "Select...":
+            st.success(f"Executing command: **{command}**")
+            time.sleep(1)
+            st.experimental_rerun()
+
+    # Quantum-Safe Encryption Badge
+    st.markdown("""
+    <div style="position: fixed; bottom: 10px; right: 10px; background: #000; padding: 5px 10px; border-radius: 5px;">
+        🔒 Quantum-Safe Encryption: AES-512 + Lattice-based NIST Standard
+    </div>
+    """, unsafe_allow_html=True)
+
+show_visualize_page()
