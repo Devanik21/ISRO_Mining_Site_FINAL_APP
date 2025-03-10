@@ -224,10 +224,10 @@ default_lottie = {
 }
 
 # Load animations with fallback
-space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
+'''space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
 rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json") or default_lottie
 analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
-
+'''
 # Removed particles background configuration and application since the module is missing
 
 # Advanced Sidebar with dynamic content
