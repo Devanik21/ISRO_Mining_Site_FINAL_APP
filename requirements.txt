@@ -3,6 +3,7 @@ pandas
 numpy
 pillow
 plotly
+geopandas
 requests
 streamlit-lottie
 statsmodels
