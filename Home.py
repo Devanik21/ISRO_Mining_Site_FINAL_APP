@@ -238,7 +238,7 @@ particles_config = {
 }
 
 # Apply particles background
-particles(particles_config, height="300px")
+#particles(particles_config, height="300px")
 
 # Advanced Sidebar with dynamic content
 with st.sidebar:
