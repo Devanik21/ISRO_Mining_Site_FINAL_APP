@@ -90,7 +90,7 @@ class SpaceMiningVisualizer:
         
     def setup_ui(self):
         """Configure Streamlit page and apply custom CSS."""
-        st.set_page_config(layout=self.config.layout, page_title=self.config.title, page_icon="🌠")
+        #st.set_page_config(layout=self.config.layout, page_title=self.config.title, page_icon="🌠")
         st.markdown("""
         <style>
         .main-header {
