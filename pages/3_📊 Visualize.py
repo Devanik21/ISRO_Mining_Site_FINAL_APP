@@ -14,7 +14,7 @@ from datetime import datetime
 import altair as alt
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
+from sklearn.manifold import TSNE  # Corrected import
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
@@ -59,8 +59,6 @@ def load_data():
         if uploaded_file:
             df = pd.read_csv(uploaded_file)
         else:
-            # Simulate mining data
-            st.warning("Using simulated data.")
             np.random.seed(42)
             df = pd.DataFrame({
                 'Site_ID': [f'S{str(i).zfill(3)}' for i in range(100)],
@@ -85,6 +83,10 @@ st.write("A comprehensive tool for visualizing, analyzing, and predicting mining
 # Tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Core Visualizations", "Advanced Plots", "Geospatial & 3D", "ML & Predictive", "Real-Time Analytics"])
 
+# Set black borders globally for Matplotlib
+plt.rcParams['axes.edgecolor'] = 'black'
+plt.rcParams['axes.linewidth'] = 1.5
+
 # --- Tab 1: Core Visualizations ---
 with tab1:
     st.header("Core Visualizations")
@@ -108,6 +110,8 @@ with tab1:
         ax.set_xscale('log')
         ax.set_yscale('log')
     ax.set_title(f"{x_axis} vs {y_axis}")
+    for spine in ax.spines.values():
+        spine.set_edgecolor('black')
     st.pyplot(fig)
 
     # Dynamic Histogram
@@ -118,6 +122,8 @@ with tab1:
     fig, ax = plt.subplots(figsize=(12, 8))
     sns.histplot(df[hist_col], bins=bins, kde=True, stat=stat, ax=ax)
     ax.set_title(f"Distribution of {hist_col}")
+    for spine in ax.spines.values():
+        spine.set_edgecolor('black')
     st.pyplot(fig)
 
     # Nested Pie Chart
@@ -130,7 +136,7 @@ with tab1:
     ax.pie(outer_data, labels=outer_data.index, radius=1.2, wedgeprops=dict(width=0.3))
     ax.pie(inner_data.values.flatten(), radius=0.9, wedgeprops=dict(width=0.3))
     ax.set_title(f"Nested Distribution: {outer_col} & {inner_col}")
-    st.pyplot(fig)
+    st.pyplot(fig)  # Pie charts don’t have spines, so no border adjustment needed
 
 # --- Tab 2: Advanced Plots ---
 with tab2:
@@ -164,6 +170,9 @@ with tab2:
     g = sns.FacetGrid(df, row=ridge_cat, hue=ridge_cat, aspect=15, height=0.5)
     g.map(sns.kdeplot, ridge_num, fill=True)
     g.fig.suptitle(f"Ridge Plot: {ridge_num} by {ridge_cat}")
+    for ax in g.axes.flat:
+        for spine in ax.spines.values():
+            spine.set_edgecolor('black')
     st.pyplot(g.fig)
 
     # Violin + Swarm Combo
@@ -174,6 +183,8 @@ with tab2:
     sns.violinplot(x=df[combo_x], y=df[combo_y], inner=None, ax=ax)
     sns.swarmplot(x=df[combo_x], y=df[combo_y], color="k", size=3, ax=ax)
     ax.set_title(f"{combo_x} vs {combo_y}")
+    for spine in ax.spines.values():
+        spine.set_edgecolor('black')
     st.pyplot(fig)
 
 # --- Tab 3: Geospatial & 3D ---
@@ -233,6 +244,8 @@ with tab4:
         model.fit(X_train, y_train)
         fig, ax = plt.subplots(figsize=(12, 8))
         xgb.plot_importance(model, ax=ax)
+        for spine in ax.spines.values():
+            spine.set_edgecolor('black')
         st.pyplot(fig)
 
     # SHAP Analysis
@@ -242,6 +255,8 @@ with tab4:
         shap_values = explainer.shap_values(X_test)
         fig, ax = plt.subplots(figsize=(12, 8))
         shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
+        for spine in ax.spines.values():
+            spine.set_edgecolor('black')
         st.pyplot(fig)
 
     # TSNE Visualization
@@ -253,6 +268,8 @@ with tab4:
         fig, ax = plt.subplots(figsize=(12, 8))
         ax.scatter(tsne_result[:, 0], tsne_result[:, 1])
         ax.set_title("t-SNE Projection")
+        for spine in ax.spines.values():
+            spine.set_edgecolor('black')
         st.pyplot(fig)
 
 # --- Tab 5: Real-Time Analytics ---
@@ -272,6 +289,8 @@ with tab5:
         fig, ax = plt.subplots(figsize=(12, 6))
         ax.plot(data_buffer)
         ax.set_title(f"Real-Time {rt_col}")
+        for spine in ax.spines.values():
+            spine.set_edgecolor('black')
         placeholder.pyplot(fig)
         time.sleep(update_freq / 10)
 
@@ -285,21 +304,19 @@ with tab5:
             corr = sample.corr()
             fig, ax = plt.subplots(figsize=(10, 8))
             sns.heatmap(corr, annot=True, cmap='coolwarm', ax=ax)
+            for spine in ax.spines.values():
+                spine.set_edgecolor('black')
             placeholder_heatmap.pyplot(fig)
             time.sleep(update_freq / 10)
 
-# Export Options
+# Export Options (Removed HTML)
 st.sidebar.subheader("Export Options")
-export_type = st.sidebar.selectbox("Export Type", ["PNG", "PDF", "CSV", "HTML"], key="export_type")
+export_type = st.sidebar.selectbox("Export Type", ["PNG", "PDF", "CSV"], key="export_type")
 if st.sidebar.button("Export"):
     if export_type == "CSV":
         csv = df.to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
         href = f'<a href="data:file/csv;base64,{b64}" download="mining_data.csv">Download CSV</a>'
-    elif export_type == "HTML":
-        html = plt.gcf().canvas.get_supported_filetypes()['html']
-        b64 = base64.b64encode(html.encode()).decode()
-        href = f'<a href="data:text/html;base64,{b64}" download="visualization.html">Download HTML</a>'
     else:
         buf = io.BytesIO()
         plt.savefig(buf, format=export_type.lower(), dpi=300)
@@ -307,3 +324,5 @@ if st.sidebar.button("Export"):
         href = f'<a href="data:image/{export_type.lower()};base64,{b64}" download="visualization.{export_type.lower()}">Download {export_type}</a>'
     st.sidebar.markdown(href, unsafe_allow_html=True)
 
+# Footer
+st.markdown(f"<footer style='text-align: center; color: gray;'>Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} by Grok 3 (xAI)</footer>", unsafe_allow_html=True)
