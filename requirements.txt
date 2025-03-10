@@ -1,6 +1,12 @@
 streamlit
 pandas
 numpy
+pillow
+plotly
+requests
+streamlit-lottie
+streamlit-option-menu
+streamlit-particles
 scikit-learn
 joblib
 matplotlib
@@ -9,8 +15,4 @@ xgboost
 lightgbm
 tensorflow
 keras
-plotly
 google-generativeai
-streamlit_lottie
-streamlit-option-menu
-streamlit-particles
