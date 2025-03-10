@@ -591,7 +591,7 @@ with cta_col1:
 
 with cta_col2:
     if st.button("Launch Explorer Module"):
-        st.balloons()
+        #st.balloons()
         st.success("Explorer module activated! Redirecting to prediction interface...")
 
 # Footer with credits and system status
