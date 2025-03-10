@@ -13,3 +13,4 @@ plotly
 google-generativeai
 streamlit_lottie
 streamlit-option-menu
+streamlit-particles
