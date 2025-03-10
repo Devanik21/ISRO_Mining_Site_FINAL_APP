@@ -9,7 +9,7 @@ from streamlit_lottie import st_lottie
 import requests
 import json
 from streamlit_option_menu import option_menu
-from streamlit_particles import particles
+#from streamlit_particles import particles
 
 # Page Configuration with enhanced settings
 st.set_page_config(
