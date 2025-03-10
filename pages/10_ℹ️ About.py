@@ -5,13 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 import json
-from streamlit_lottie import st_lottie
-
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
 
 # Page configuration
 st.set_page_config(
@@ -45,9 +38,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Load space animation
-lottie_space = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_ovngpbhx.json")
-
 # Animated header
 st.markdown("""
 <div align="center">
@@ -57,8 +47,6 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st_lottie(lottie_space, height=250, key="space_animation")
-    
     st.title("🚀 Navigation")
     st.info("Explore the cosmos with Galactic Mining Hub - your gateway to interstellar resources.")
     
