@@ -702,13 +702,13 @@ def main():
             
             fig, ax = plt.subplots(figsize=(8, 8), facecolor='#0e1117')
             wedges, texts, autotexts = ax.pie(
-                    values, 
-                    labels=minerals,
-                    autopct='%1.1f%%',
-                    startangle=90,
-                    wedgeprops={'edgecolor': '#0e1117', 'linewidth': 2},
-                    textprops={'color': 'white'},
-                    colors=['#3366ff', '#00bf00', '#33ccff', '#ff9900']
+                values, 
+                labels=minerals,
+                autopct='%1.1f%%',
+                startangle=90,
+                wedgeprops={'edgecolor': '#0e1117', 'linewidth': 2},
+                textprops={'color': 'white'},
+                colors=['#3366ff', '#00bf00', '#33ccff', '#ff9900']
                 )
                 
                 # Style the chart
