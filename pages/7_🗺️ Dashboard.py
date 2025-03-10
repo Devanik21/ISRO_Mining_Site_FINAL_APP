@@ -58,7 +58,7 @@ def get_space_weather():
                                 'bt': np.random.normal(5, 1, 100)})
 
 
-'''# Asteroid Data from NASA API
+# Asteroid Data from NASA API
 @st.cache_data(ttl=86400)
 def get_nasa_asteroids():
     try:
@@ -84,7 +84,7 @@ def get_nasa_asteroids():
         st.error(f"Error processing asteroid data: {e}")
         return pd.read_parquet('sample_asteroid_data.parquet')
 
-'''
+
 # Advanced Material Composition Analysis
 def analyze_mineral_composition(df):
     elements = ['Fe', 'Si', 'Mg', 'Ni', 'H2O', 'CH4']
