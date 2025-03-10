@@ -10,6 +10,7 @@ streamlit-option-menu
 scikit-learn
 joblib
 matplotlib
+folium
 seaborn
 xgboost
 lightgbm
