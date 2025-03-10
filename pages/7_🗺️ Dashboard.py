@@ -58,7 +58,7 @@ def get_space_weather():
                                 'bt': np.random.normal(5, 1, 100)})
 
 
-# Asteroid Data from NASA API
+'''# Asteroid Data from NASA API
 @st.cache_data(ttl=86400)
 def get_nasa_asteroids():
     try:
@@ -277,6 +277,6 @@ def show_visualize_page():
     <div style="position: fixed; bottom: 10px; right: 10px; background: #000; padding: 5px 10px; border-radius: 5px;">
         🔒 Quantum-Safe Encryption: AES-512 + Lattice-based NIST Standard
     </div>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)'''
 
 show_visualize_page()
