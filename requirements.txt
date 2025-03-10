@@ -5,6 +5,10 @@ pillow
 plotly
 geopandas
 requests
+altair
+networkx
+umap-learn
+hdbscan
 streamlit-lottie
 statsmodels
 streamlit-option-menu
