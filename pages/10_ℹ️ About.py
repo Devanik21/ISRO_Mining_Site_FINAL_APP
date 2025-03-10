@@ -56,8 +56,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar
-'''with st.sidebar:
-    st_lottie(lottie_space, height=250, key="space_animation")'''
+with st.sidebar:
+    st_lottie(lottie_space, height=250, key="space_animation")
     
     st.title("🚀 Navigation")
     st.info("Explore the cosmos with Galactic Mining Hub - your gateway to interstellar resources.")
