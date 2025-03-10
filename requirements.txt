@@ -9,6 +9,7 @@ statsmodels
 streamlit-option-menu
 scikit-learn
 joblib
+streamlit_folium
 matplotlib
 folium
 seaborn
