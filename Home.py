@@ -226,10 +226,17 @@ default_lottie = {
 # Load animations with fallback
 space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
 
-import json
+import streamlit as st
+from streamlit_lottie import st_lottie  
 
-with open("rocket animation.lottie", "rb") as f:
-    rocket_lottie = json.load(f) or default_lottie
+def load_lottie_file(filepath: str):
+    with open(filepath, "rb") as f:
+        return f.read()
+
+rocket_lottie = load_lottie_file("rocket animation.lottie")
+
+st_lottie(rocket_lottie, speed=1, loop=True, quality="high")
+
 
 # Removed particles background configuration and application since the module is missing
 
