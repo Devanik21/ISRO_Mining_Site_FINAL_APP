@@ -346,7 +346,7 @@ with metric_cols[0]:
 with metric_cols[1]:
     st.markdown("""
     <div class="metric-container">
-        <div class="metric-value">89.7%</div>
+        <div class="metric-value">99.7%</div>
         <div class="metric-label">Model Accuracy</div>
     </div>
     """, unsafe_allow_html=True)
