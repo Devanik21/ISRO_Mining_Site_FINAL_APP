@@ -254,7 +254,7 @@ with st.sidebar:
     st.success("System Ready")
     
     # Animated sidebar image
-    st_lottie(space_lottie, speed=1, height=200, key="space_animation")
+   # st_lottie(space_lottie, speed=1, height=200, key="space_animation")
     
     st.markdown("### Mission Parameters")
     col1, col2 = st.columns(2)
