@@ -155,7 +155,7 @@ def show_insights_page():
                     'sustainability_index': ['mean'],
                     'efficiency_index': ['mean'],
                     'distance_from_earth': ['mean']
-                }).style.background_gradient(cmap='Blues')
+                }).style.background_gradient(cmap='Blues',axis=None)
                 
                 st.dataframe(celestial_body_summary, height=300)
             
@@ -304,7 +304,7 @@ def show_insights_page():
                     'Estimated Value (B USD)_count': 'Number of Sites'
                 })
                 
-                st.dataframe(cluster_summary.style.background_gradient(cmap='viridis'), height=500)
+                st.dataframe(cluster_summary.style.background_gradient(cmap='viridis', axis=None), height=500)
             
             # Optimal Sites Identification
             st.markdown('<p class="sub-header">Optimal Site Identification</p>', unsafe_allow_html=True)
