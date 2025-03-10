@@ -12,6 +12,7 @@ matplotlib
 seaborn
 xgboost
 lightgbm
+streamlit-autorefresh
 tensorflow
 keras
 google-generativeai
