@@ -9,5 +9,6 @@ xgboost
 lightgbm
 tensorflow
 keras
+plotly
 google-generativeai
 streamlit_lottie
