@@ -176,14 +176,14 @@ default_lottie = {
     "op": 60,
     "w": 300,
     "h": 300,
-    "nm": "Simple Circle",
+   # "nm": "Simple Circle",
     "ddd": 0,
     "assets": [],
     "layers": [{
         "ddd": 0,
         "ind": 1,
         "ty": 4,
-        "nm": "Circle",
+       # "nm": "Circle",
         "sr": 1,
         "ks": {
             "o": {"a": 0, "k": 100, "ix": 11},
