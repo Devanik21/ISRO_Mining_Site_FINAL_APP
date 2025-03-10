@@ -223,19 +223,12 @@ default_lottie = {
     "markers": []
 }
 
+
 # Load animations with fallback
 space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
+#rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json") or default_lottie
+analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
 
-import streamlit as st
-from streamlit_lottie import st_lottie  
-
-def load_lottie_file(filepath: str):
-    with open(filepath, "rb") as f:
-        return f.read()
-
-rocket_lottie = load_lottie_file("rocket animation.lottie")
-
-st_lottie(rocket_lottie, speed=1, loop=True, quality="high")
 
 
 # Removed particles background configuration and application since the module is missing
@@ -334,12 +327,12 @@ st.markdown('<p class="subtitle-text">Pioneering the Future of Space Resource Ac
 
 # Animated Lottie section with error handling
 col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
+'''with col2:
     try:
         st_lottie(rocket_lottie, height=300, key="rocket_animation")
     except Exception as e:
         st.image("https://via.placeholder.com/500x300.png?text=ISRO+Space+Rocket", use_column_width=True)
-        st.error(f"Could not display animation: {e}")
+        st.error(f"Could not display animation: {e}")'''
 
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
