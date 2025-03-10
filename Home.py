@@ -169,7 +169,7 @@ def load_lottieurl(url):
         return None
 
 
-st.image("space_mining.png", use_container_width=True)
+
 # Default fallback animation if URLs fail to load
 default_lottie = {
     "v": "5.7.11",
@@ -271,7 +271,7 @@ with st.sidebar:
             options=["< 100 LY", "100-500 LY", "500-1000 LY", "> 1000 LY"],
             index=1
         )
-    
+    st.image("space_mining.png", use_container_width=True)
     # Advanced filters with tooltips
     st.markdown("### Analysis Configuration")
     outlier_sensitivity = st.slider(
