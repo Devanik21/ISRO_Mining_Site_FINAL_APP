@@ -4,9 +4,8 @@ numpy
 pillow
 plotly
 requests
-streamlit-lottie
+streamlit-lottie==1.0.0
 streamlit-option-menu
-streamlit-elements
 scikit-learn
 joblib
 matplotlib
