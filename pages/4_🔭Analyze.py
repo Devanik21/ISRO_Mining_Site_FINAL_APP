@@ -376,10 +376,7 @@ def show_analyze_page():
     fig = px.bar(importance_df, x='Feature', y='Importance', title='Feature Importance')
     st.plotly_chart(fig)
     
-    # Partial dependence plot (simplified)
-    st.write("## 🔍 Partial Dependence Plot")
-    pdp_feature = st.selectbox("Select feature:", feature_cols, key="pdp_feature")
-    
+
 
     
     # Anomaly scores
