@@ -197,8 +197,9 @@ def main():
         predict_button = st.button("🔮 Run Advanced Analysis", use_container_width=True)
         
         if st.button("📄 Reset Parameters", use_container_width=True):
-            st.experimental_rerun()
-            
+            st.rerun()
+s
+
         st.markdown("<hr>", unsafe_allow_html=True)
         st.markdown("""
             <div style="font-size: 0.8rem; color: #aaaaaa; margin-top: 20px; text-align: center;">
