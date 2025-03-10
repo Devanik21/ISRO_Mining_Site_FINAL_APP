@@ -197,8 +197,8 @@ def main():
         predict_button = st.button("🔮 Run Advanced Analysis", use_container_width=True)
         
         if st.button("📄 Reset Parameters", use_container_width=True):
-            st.rerun()
-s
+        st.rerun()
+
 
         st.markdown("<hr>", unsafe_allow_html=True)
         st.markdown("""
