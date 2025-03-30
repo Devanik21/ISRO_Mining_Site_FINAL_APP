@@ -112,8 +112,10 @@ st.markdown("""
         background: linear-gradient(90deg, #4361EE, #3A0CA3);
         color: white;
         border: none;
+        padding:15px 20px;
         padding: 10px 25px;
         border-radius: 5px;
+            
         font-weight: bold;
         box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
         transition: all 0.3s ease;
