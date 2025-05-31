@@ -23,6 +23,23 @@ SPACE_AGENCY_LOGO = "https://upload.wikimedia.org/wikipedia/commons/b/bd/Indian_
 if 'mining_sim' not in st.session_state:
     st.session_state.mining_sim = {'running': False, 'resources': None}
 
+# Helper function to generate sample asteroid data if API fails or returns unusable data
+def generate_sample_asteroid_data(num_rows=100):
+    """Generates a sample DataFrame mimicking NASA asteroid data."""
+    st.info("Using generated sample asteroid data as a fallback.")
+    data = {
+        'des': [f"AST-S{i:03d}" for i in range(num_rows)],
+        'diameter': np.random.uniform(0.01, 5.0, num_rows),  # km
+        'dist': np.random.uniform(0.1, 3.0, num_rows),      # AU
+        'v_inf': np.random.uniform(1, 20, num_rows),        # km/s
+    }
+    df = pd.DataFrame(data)
+    # Ensure columns are numeric
+    for col in ['diameter', 'dist', 'v_inf']:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+    df.dropna(inplace=True)
+    return df
+
 # Quantum-inspired Optimization (Mock)
 def quantum_annealing_optimization(cost_matrix):
     np.fill_diagonal(cost_matrix, 0)
@@ -39,51 +56,73 @@ def get_space_weather():
         res.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
         data = res.json()
         # Check if the data is in the expected format
-        if isinstance(data, list) and len(data) > 1:
-            df = pd.DataFrame(data[1:], columns=['time','bx','by','bz','bt'])
-            df['time'] = pd.to_datetime(df['time']) #convert time to datetime objects
-            for col in ['bx','by','bz','bt']:
-                df[col] = pd.to_numeric(df[col], errors='coerce')  # Handle potential non-numeric values
-            return df
+        if isinstance(data, list) and len(data) > 1 and isinstance(data[0], list):
+            headers = data[0]
+            actual_data = data[1:]
+            df = pd.DataFrame(actual_data, columns=headers)
+
+            # We are interested in 'time_tag' and 'bt' (magnetic field total)
+            if 'time_tag' in df.columns and 'bt' in df.columns:
+                df_processed = df[['time_tag', 'bt']].copy()
+                df_processed['time_tag'] = pd.to_datetime(df_processed['time_tag'], errors='coerce')
+                df_processed['bt'] = pd.to_numeric(df_processed['bt'], errors='coerce')
+                df_processed.rename(columns={'time_tag': 'time'}, inplace=True)
+                df_processed.dropna(inplace=True)
+                if not df_processed.empty:
+                    return df_processed
+            st.warning("Space weather data received but in unexpected format or missing key columns ('time_tag', 'bt').")
+            
         else:
-            return pd.DataFrame({'time': pd.date_range(end=pd.Timestamp.now(), periods=100, freq='H'),
-                                'bt': np.random.normal(5, 1, 100)})
+            st.warning("Unexpected data structure from space weather API.")
+
     except requests.exceptions.RequestException as e:
         st.error(f"Error fetching space weather data: {e}")
-        return pd.DataFrame({'time': pd.date_range(end=pd.Timestamp.now(), periods=100, freq='H'),
-                            'bt': np.random.normal(5, 1, 100)})
-    except (ValueError, KeyError) as e:  # Catch JSON decoding or data structure issues
+    except (ValueError, KeyError, TypeError) as e:  # Catch JSON decoding or data structure issues
         st.error(f"Error processing space weather data: {e}")
-        return pd.DataFrame({'time': pd.date_range(end=pd.Timestamp.now(), periods=100, freq='H'),
-                                'bt': np.random.normal(5, 1, 100)})
-
+    
+    # Fallback to sample data
+    st.info("Using generated sample space weather data.")
+    return pd.DataFrame({
+        'time': pd.date_range(end=pd.Timestamp.now(tz='UTC'), periods=100, freq='H'),
+        'bt': np.random.normal(5, 1, 100)
+    })
 
 # Asteroid Data from NASA API
-@st.cache_data(ttl=86400)
+@st.cache_data(ttl=86400) # Refresh daily
 def get_nasa_asteroids():
     try:
-        res = requests.get(NASA_CTA_URL, params={'date-min': '1900-01-01'})
+        res = requests.get(NASA_CTA_URL, params={'date-min': '2023-01-01', 'date-max': '2024-01-01', 'dist-max': '0.1'}) # More focused query
         res.raise_for_status()
         data = res.json()
 
-        # Check for the 'data' and 'fields' keys in the response
         if 'data' in data and 'fields' in data:
-            df = pd.DataFrame(data['data'], columns=data['fields'])
-            # Correctly select and convert columns to numeric types.
-            df = df[['des', 'diameter', 'dist', 'v_inf']].apply(pd.to_numeric, errors='coerce')
-            df.dropna(inplace=True) #drop rows with NaN
+            df_full = pd.DataFrame(data['data'], columns=data['fields'])
+            required_cols = ['des', 'diameter', 'dist', 'v_inf']
+            
+            if not all(col in df_full.columns for col in required_cols):
+                st.warning(f"NASA API data missing one or more required columns: {required_cols}.")
+                return generate_sample_asteroid_data()
+            
+            df = df_full[required_cols].copy()
+            numeric_cols = ['diameter', 'dist', 'v_inf']
+            for col in numeric_cols:
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+            df.dropna(subset=numeric_cols, inplace=True)
+            
+            if df.empty:
+                st.warning("No valid asteroid data after processing API response.")
+                return generate_sample_asteroid_data()
             return df
         else:
-            st.warning("Unexpected data format from NASA API.")
-            return pd.read_parquet('sample_asteroid_data.parquet')  # Fallback
+            st.warning("Unexpected data format from NASA API (missing 'data' or 'fields').")
+            return generate_sample_asteroid_data()
 
     except requests.exceptions.RequestException as e:
         st.error(f"Error fetching asteroid data: {e}")
-        return pd.read_parquet('sample_asteroid_data.parquet')
-    except (ValueError, KeyError) as e:
-        st.error(f"Error processing asteroid data: {e}")
-        return pd.read_parquet('sample_asteroid_data.parquet')
-
+        return generate_sample_asteroid_data()
+    except (ValueError, KeyError, TypeError) as e:
+        st.error(f"Error processing asteroid data structure: {e}")
+        return generate_sample_asteroid_data()
 
 # Advanced Material Composition Analysis
 def analyze_mineral_composition(df):
@@ -94,7 +133,7 @@ def analyze_mineral_composition(df):
                        columns=elements)
         return pd.concat([df, comp], axis=1)
     else:
-      return df #return original df if empty
+      return df.copy() #return a copy of original df if empty to avoid modifying it upstream
 
 
 # HPC Simulation (Mock)
@@ -192,11 +231,11 @@ def show_visualize_page():
         with col1:
             if not space_weather.empty:
                 st.metric("Solar Wind Speed", f"{space_weather['bt'].iloc[-1]:.1f} nT",
-                         delta=f"{space_weather['bt'].diff().iloc[-1]:.1f} nT/min")
+                         delta=f"{space_weather['bt'].diff().iloc[-1]:.1f} nT (change)")
             else:
                 st.metric("Solar Wind Speed", "N/A", delta="N/A")
         with col2:
-          if not space_weather.empty:
+          if not space_weather.empty and 'time' in space_weather.columns and 'bt' in space_weather.columns:
             st.plotly_chart(px.area(space_weather, x='time', y='bt',
                                    title="Real-time Solar Wind Monitoring"),
                            use_container_width=True)
@@ -206,25 +245,28 @@ def show_visualize_page():
     # Multi-Planetary Data Fusion
     asteroid_data = get_nasa_asteroids()
     df = analyze_mineral_composition(asteroid_data)
-
-
-    #Gravitational sim needs x,y,z - create them here as they are not in the NASA data.
+    
+    # Gravitational sim needs x,y,z - create them here as they are not in the NASA data.
     if df is not None and not df.empty:
-      df['x'] = np.random.rand(len(df))
-      df['y'] = np.random.rand(len(df))
-      df['z'] = np.random.rand(len(df))
-      df['gravity_potential'] = run_gravitational_sim(df[['x', 'y', 'z']].values)
-    else:
-      st.write("No asteroid data to simulate.")
-      df = pd.DataFrame() #create empty df
-
+        df['x'] = np.random.uniform(-5, 5, len(df)) # More spread for visualization
+        df['y'] = np.random.uniform(-5, 5, len(df))
+        df['z'] = np.random.uniform(-2, 2, len(df))
+        df['gravity_potential'] = run_gravitational_sim(df[['x', 'y', 'z']].values)
+    elif df is None: # Should not happen with new fallbacks, but good for safety
+        df = pd.DataFrame()
+        st.warning("Main asteroid DataFrame is None, initialized to empty.")
+    # If df is already an empty DataFrame, no action needed here.
 
     # AI-Driven Mineral Prediction
     with st.expander("🧠 Deep Core Mineral Predictor", expanded=True):
-        if not df.empty:
+        # Ensure required columns for prediction exist and df is not empty
+        predictor_cols = ['diameter', 'dist', 'v_inf', 'Fe'] # 'Fe' is the target
+        if not df.empty and all(col in df.columns for col in predictor_cols):
             model = GradientBoostingRegressor(n_estimators=200)
-            X = df[['diameter', 'dist', 'v_inf']]
-            y = df['Fe']
+            # Ensure X does not contain the target variable 'Fe'
+            X_features = ['diameter', 'dist', 'v_inf']
+            X = df[X_features]
+            y = df['Fe'] # Target variable
             model.fit(X, y)
             df['Fe_pred'] = model.predict(X)
 
