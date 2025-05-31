@@ -772,28 +772,6 @@ with predictor_col2:
                 insight_message += "Challenging outlook. Significant risk factors identified. Consider alternative approaches or enhanced contingency planning."
                 st.error(insight_message)
 
-st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
-st.markdown('<div class="section-header-box"><h2><span style="text-shadow: 0 0 8px #4CC9F0;">📡 Cosmic Event Horizon - Latest Intel</span></h2></div>', unsafe_allow_html=True)
-
-intel_col1, intel_col2, intel_col3 = st.columns(3)
-intel_items = [
-    {"icon": "🌊", "title": "Subsurface Ocean Confirmed on Kepler-452b", "source": "Deep Space Probe 'Odysseus'", "time": "2 min ago", "lottie": news_lottie},
-    {"icon": "✨", "title": "Unusual Energy Signature Detected - Sector Gamma-7", "source": "DSN Array 3", "time": "15 min ago", "lottie": news_lottie},
-    {"icon": "⛏️", "title": "New High-Yield Titanium Deposits on Asteroid Bennu", "source": "Mining Drone Swarm Alpha", "time": "45 min ago", "lottie": news_lottie}
-]
-
-for i, col in enumerate([intel_col1, intel_col2, intel_col3]):
-    item = intel_items[i]
-    with col:
-        st.markdown(f"""
-        <div class="frosted-glass-card" style="height: 280px;">
-            <h4 style="color: #4CC9F0;">{item['icon']} {item['title']}</h4>
-            <p style="font-size: 0.85rem;"><strong>Source:</strong> {item['source']}<br><strong>Reported:</strong> {item['time']}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        if item.get("lottie"):
-             st_lottie(item["lottie"], height=100, key=f"intel_anim_{i}", speed=0.7)
-
 # Animated Analysis section
 st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 st.markdown("## ✨ Platform Highlights")
