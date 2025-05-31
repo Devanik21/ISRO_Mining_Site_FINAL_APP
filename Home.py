@@ -931,7 +931,7 @@ with footer_col3:
     <div style="text-align: center;">
         <p style="color: #b8c2cc; font-size: 0.9rem;">
             <strong>Developed by:</strong><br>
-            Dr. Devanik Saha & Advanced Systems Team
+            Dr. Devanik with Advanced AI
         </p>
     </div>
     """, unsafe_allow_html=True)
