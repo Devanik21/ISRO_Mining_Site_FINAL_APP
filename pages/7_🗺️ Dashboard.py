@@ -395,8 +395,9 @@ def show_visualize_page():
 
     if st.session_state.mining_sim['running']:
         resources = st.session_state.mining_sim['resources']
-        plt = go.Figure(go.Heatmap(z=[resources], colorscale='viridis'))
-        st.plotly_chart(plt, use_container_width=True)
+        # Renamed 'plt' to 'heatmap_fig' to avoid conflict with imported matplotlib.pyplot
+        heatmap_fig = go.Figure(go.Heatmap(z=[resources], colorscale='viridis'))
+        st.plotly_chart(heatmap_fig, use_container_width=True)
         st.session_state.mining_sim['resources'] *= 0.97  # Resource depletion
 
     # Exoplanetary Navigation System (Simplified without astropy)
