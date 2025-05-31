@@ -867,8 +867,14 @@ with col1:
         <h4>🚀 Predictive Analytics Engine</h4>
         <p>Our quantum-enhanced predictive modeling analyzes spectroscopic signatures, gravitational anomalies, and composition data to identify high-value mining opportunities across the galaxy.</p>
         
+        <h4>🔮 Multi-Parameter Recommendation System</h4>
+        <p>The advanced AI weighs over 200 variables including resource concentration, extraction difficulty, orbital mechanics, and mission logistics to prioritize the most profitable ventures.</p>
+        
         <h4>📊 Interactive Data Visualization</h4>
         <p>Explore cosmic mining opportunities through intuitive 3D visualizations, comparative analysis tools, and dynamic filtering to identify patterns invisible to conventional analysis.</p>
+        
+        <h4>⚙️ Mission Simulation Framework</h4>
+        <p>Test mining strategies in our physics-accurate simulation environment that models extraction processes, equipment performance, and environmental challenges before committing resources.</p>
     </div>
     """, unsafe_allow_html=True)
 
