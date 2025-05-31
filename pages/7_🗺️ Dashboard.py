@@ -302,7 +302,7 @@ def show_visualize_page():
     st.subheader("🌠 Celestial Navigation Interface")
     st.write(f"**Current Target:** Random coordinates (RA: {np.random.uniform(0,360):.2f}, DEC: {np.random.uniform(-90,90):.2f})")
     st.image("https://upload.wikimedia.org/wikipedia/commons/3/3f/3D_Spherical_Coordinate_System.png",
-             use_column_width=True)
+             use_container_width=True)
 
 
     # Voice Command Integration
