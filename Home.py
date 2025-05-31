@@ -214,80 +214,20 @@ def load_lottieurl(url):
         st.warning(f"Failed to load animation: {e}")
         return None
 
-
-
-# Default fallback animation if URLs fail to load
-default_lottie = {
-    "v": "5.7.11",
-    "fr": 30,
-    "ip": 0,
-    "op": 60,
-    "w": 300,
-    "h": 300,
-   # "nm": "Simple Circle",
-    "ddd": 0,
-    "assets": [],
-    "layers": [{
-        "ddd": 0,
-        "ind": 1,
-        "ty": 4,
-       # "nm": "Circle",
-        "sr": 1,
-        "ks": {
-            "o": {"a": 0, "k": 100, "ix": 11},
-            "r": {"a": 0, "k": 0, "ix": 10},
-            "p": {"a": 0, "k": [150, 150, 0], "ix": 2, "l": 2},
-            "a": {"a": 0, "k": [0, 0, 0], "ix": 1, "l": 2},
-            "s": {"a": 1, "k": [
-                {"i": {"x": [0.5, 0.5, 0.5], "y": [1, 1, 1]}, "o": {"x": [0.5, 0.5, 0.5], "y": [0, 0, 0]}, "t": 0, "s": [100, 100, 100]},
-                {"i": {"x": [0.5, 0.5, 0.5], "y": [1, 1, 1]}, "o": {"x": [0.5, 0.5, 0.5], "y": [0, 0, 0]}, "t": 30, "s": [120, 120, 100]},
-                {"t": 60, "s": [100, 100, 100]}
-            ], "ix": 6, "l": 2}
-        },
-        "ao": 0,
-        "shapes": [{
-            "ty": "el",
-            "d": 1,
-            "s": {"a": 0, "k": [100, 100], "ix": 2},
-            "p": {"a": 0, "k": [0, 0], "ix": 3},
-            "nm": "Ellipse Path 1",
-            "mn": "ADBE Vector Shape - Ellipse",
-            "hd": False
-        }, {
-            "ty": "fl",
-            "c": {"a": 0, "k": [0.3, 0.38, 0.93, 1], "ix": 4},
-            "o": {"a": 0, "k": 100, "ix": 5},
-            "r": 1,
-            "bm": 0,
-            "nm": "Fill 1",
-            "mn": "ADBE Vector Graphic - Fill",
-            "hd": False
-        }],
-        "ip": 0,
-        "op": 60,
-        "st": 0,
-        "bm": 0
-    }],
-    "markers": []
-}
-
-
 # Load animations with fallback
-space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
-#rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json") or default_lottie
-platform_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
-hero_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_4p3fDM.json") or default_lottie # Galaxy animation
-
+space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json")
+platform_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json")
+hero_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_4p3fDM.json") # Galaxy animation
 
 # New Lottie animations for advanced features
-quantum_comm_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_p1qiuahe.json") or default_lottie
-subsurface_scanner_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_ofa3xwo7.json") or default_lottie
-terraforming_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_p2u571tg.json") or default_lottie
-risk_matrix_lottie = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_x1gjdldd.json") or default_lottie
-ai_advisor_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_vPnn3K.json") or default_lottie
-data_insights_lottie = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_vS022M.json") or default_lottie # For new data insights section
-planet_lottie = load_lottieurl("https://assets6.lottiefiles.com/packages/lf20_R0gD5C.json") or default_lottie # Generic planet
-news_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_zcdjf40p.json") or default_lottie # News/Intel animation
+quantum_comm_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_p1qiuahe.json")
+subsurface_scanner_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_ofa3xwo7.json")
+terraforming_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_p2u571tg.json")
+risk_matrix_lottie = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_x1gjdldd.json")
+ai_advisor_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_vPnn3K.json")
+data_insights_lottie = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_vS022M.json") # For new data insights section
+planet_lottie = load_lottieurl("https://assets6.lottiefiles.com/packages/lf20_R0gD5C.json") # Generic planet
+news_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_zcdjf40p.json") # News/Intel animation
 
 # Removed particles background configuration and application since the module is missing
 
@@ -306,12 +246,12 @@ with st.sidebar:
     st.success("System Ready")
     
     # Animated sidebar image - with error handling
-    try:
-        st_lottie(space_lottie, speed=1, height=200, key="space_animation")
-    except Exception as e:
-        st.error(f"Could not display animation: {e}")
-        st.info("Continuing with the rest of the application...")
-    
+    if space_lottie:
+        try:
+            st_lottie(space_lottie, speed=1, height=200, key="space_animation")
+        except Exception as e:
+            st.error(f"Could not display space animation: {e}")
+
     st.markdown("### Mission Parameters")
     col1, col2 = st.columns(2)
     
@@ -387,11 +327,12 @@ st.markdown('<p class="subtitle-text">Navigating the Cosmos with Artificial Inte
 # Animated Lottie section with error handling
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    try:
-        st_lottie(hero_lottie, speed=1, height=300, key="hero_animation")
-    except Exception as e:
-        st.warning(f"Could not display hero animation: {e}")
-
+    if hero_lottie:
+        try:
+            st_lottie(hero_lottie, speed=1, height=300, key="hero_animation")
+        except Exception as e:
+            st.warning(f"Could not display hero animation: {e}")
+            
 st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
@@ -879,11 +820,12 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-    try:
-        st_lottie(platform_lottie, height=400, key="platform_animation")
-    except Exception as e:
-        st.image("https://via.placeholder.com/300x400.png?text=Analysis+Dashboard", use_column_width=True)
-        st.error(f"Could not display animation: {e}")
+    if platform_lottie:
+        try:
+            st_lottie(platform_lottie, height=400, key="platform_animation")
+        except Exception as e:
+            st.error(f"Could not display platform animation: {e}")
+
 
 # Call-to-action section
 st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
@@ -935,4 +877,3 @@ with footer_col3:
         </p>
     </div>
     """, unsafe_allow_html=True)
-
