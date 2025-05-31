@@ -364,7 +364,7 @@ st.markdown("""
 st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 
 # Interactive cosmic map (sample visualization)
-st.markdown("## 💡 Celestial Object Analytics Dashboard")
+st.markdown("## 🌌 Galactic Resource Map")
 
 # Generate sample data for the visualization
 np.random.seed(42)
@@ -377,87 +377,61 @@ star_data = pd.DataFrame({
     'distance': np.random.uniform(10, 1000, n_stars),
     'site_type': np.random.choice(['Asteroid', 'Moon', 'Planet', 'Dust Cloud'], n_stars)
 })
-# Sample data for the new Celestial Object Analytics Dashboard
-num_objects = 300
-object_names = [f"CelObj-{i:03d}" for i in range(num_objects)]
-object_types_population = np.random.choice(['Planet', 'Moon', 'Asteroid', 'Comet', 'Star System', 'Nebula'], num_objects, p=[0.2, 0.25, 0.25, 0.1, 0.1, 0.1])
-distances_population = np.random.lognormal(mean=3, sigma=1.2, size=num_objects) * 15 # Distances in LY, wider spread
-primary_minerals_population = np.random.choice(['Water Ice', 'Silicates', 'Iron-Nickel', 'Volatiles', 'Helium-3', 'Carbonaceous', 'Exotic Matter'], num_objects)
-threat_levels_population = np.random.choice(['Negligible', 'Low', 'Moderate', 'High', 'Extreme'], num_objects, p=[0.4, 0.25, 0.2, 0.1, 0.05])
-discovery_years_population = np.random.randint(2000, 2041, num_objects)
 
-celestial_objects_df = pd.DataFrame({
-    'Name': object_names,
-    'Type': object_types_population,
-    'Distance (LY)': distances_population,
-    'Primary Mineral': primary_minerals_population,
-    'Threat Level': threat_levels_population,
-    'Discovery Year': discovery_years_population
-})
-
-# --- New Dashboard Controls ---
-st.markdown("#### Filter Celestial Catalog:")
-filter_cols = st.columns(3)
-with filter_cols[0]:
-    selected_type = st.selectbox("Object Type:", options=['All'] + sorted(celestial_objects_df['Type'].unique()), key="new_dash_type")
-with filter_cols[1]:
-    min_year, max_year = int(celestial_objects_df['Discovery Year'].min()), int(celestial_objects_df['Discovery Year'].max())
-    selected_year_range = st.slider("Discovery Year Range:", min_year, max_year, (min_year, max_year), key="new_dash_year")
-with filter_cols[2]:
-    selected_threat = st.multiselect("Threat Level:", options=sorted(celestial_objects_df['Threat Level'].unique()), default=sorted(celestial_objects_df['Threat Level'].unique()), key="new_dash_threat")
-
-# Apply filters
-filtered_celestial_df = celestial_objects_df.copy()
-if selected_type != 'All':
-    filtered_celestial_df = filtered_celestial_df[filtered_celestial_df['Type'] == selected_type]
-filtered_celestial_df = filtered_celestial_df[
-    (filtered_celestial_df['Discovery Year'] >= selected_year_range[0]) &
-    (filtered_celestial_df['Discovery Year'] <= selected_year_range[1])
-]
-if selected_threat:
-    filtered_celestial_df = filtered_celestial_df[filtered_celestial_df['Threat Level'].isin(selected_threat)]
-
-st.markdown(f"**Displaying {len(filtered_celestial_df)} of {len(celestial_objects_df)} celestial objects based on filters.**")
-
-if filtered_celestial_df.empty:
-    st.warning("No celestial objects match the current filter criteria.")
+# Apply distance filter
+if distance_filter == "< 100 LY":
+    filtered_data = star_data[star_data['distance'] < 100]
+elif distance_filter == "100-500 LY":
+    filtered_data = star_data[(star_data['distance'] >= 100) & (star_data['distance'] < 500)]
+elif distance_filter == "500-1000 LY":
+    filtered_data = star_data[(star_data['distance'] >= 500) & (star_data['distance'] < 1000)]
 else:
-    # --- New Dashboard Visualizations ---
-    viz_cols = st.columns(2)
-    with viz_cols[0]:
-        st.markdown("##### Mineral Distribution by Type")
-        if selected_type != 'All':
-            mineral_counts = filtered_celestial_df['Primary Mineral'].value_counts().nlargest(10)
-            fig_mineral = px.bar(mineral_counts, x=mineral_counts.index, y=mineral_counts.values,
-                                 labels={'x': 'Primary Mineral', 'y': 'Count'}, title=f"Top Minerals in {selected_type}s")
-            fig_mineral.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color='#f0f2f6')
-            st.plotly_chart(fig_mineral, use_container_width=True)
-        else:
-            st.info("Select a specific object type to see mineral distribution.")
+    filtered_data = star_data[star_data['distance'] >= 1000]
 
-        st.markdown("##### Distance Distribution")
-        fig_distance = px.histogram(filtered_celestial_df, x='Distance (LY)', nbins=30,
-                                    title=f"Distance Distribution ({selected_type if selected_type != 'All' else 'All Types'})")
-        fig_distance.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color='#f0f2f6')
-        st.plotly_chart(fig_distance, use_container_width=True)
+# Create 3D scatter plot
+fig = px.scatter_3d(
+    filtered_data, 
+    x='x', 
+    y='y', 
+    z='z',
+    color='resource_value',
+    size='resource_value',
+    color_continuous_scale=px.colors.sequential.Plasma,
+    opacity=0.8,
+    hover_name=filtered_data.index,
+    hover_data={
+        'x': False,
+        'y': False,
+        'z': False,
+        'resource_value': ':.2f',
+        'distance': ':.1f',
+        'site_type': True
+    },
+    labels={
+        'resource_value': 'Resource Index',
+        'distance': 'Distance (LY)',
+        'site_type': 'Celestial Body Type'
+    },
+    title="Interactive Galactic Resource Distribution"
+)
 
-    with viz_cols[1]:
-        st.markdown("##### Discovery Trends Over Years")
-        discovery_trend = filtered_celestial_df.groupby('Discovery Year').size().reset_index(name='Count')
-        fig_trend = px.line(discovery_trend, x='Discovery Year', y='Count', markers=True,
-                              title=f"Discoveries per Year ({selected_type if selected_type != 'All' else 'All Types'})")
-        fig_trend.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color='#f0f2f6')
-        st.plotly_chart(fig_trend, use_container_width=True)
+fig.update_layout(
+    scene=dict(
+        xaxis_title='Galactic X (LY)',
+        yaxis_title='Galactic Y (LY)',
+        zaxis_title='Galactic Z (LY)',
+        xaxis=dict(gridcolor='rgba(255, 255, 255, 0.1)'),
+        yaxis=dict(gridcolor='rgba(255, 255, 255, 0.1)'),
+        zaxis=dict(gridcolor='rgba(255, 255, 255, 0.1)'),
+        bgcolor='rgba(10, 17, 40, 0.9)'
+    ),
+    paper_bgcolor='rgba(10, 17, 40, 0)',
+    plot_bgcolor='rgba(10, 17, 40, 0)',
+    margin=dict(l=0, r=0, t=30, b=0),
+    height=600,
+)
 
-        st.markdown("##### Threat Level Overview")
-        threat_counts = filtered_celestial_df['Threat Level'].value_counts()
-        fig_threat = px.pie(threat_counts, values=threat_counts.values, names=threat_counts.index,
-                            title=f"Threat Levels ({selected_type if selected_type != 'All' else 'All Types'})", hole=0.3)
-        fig_threat.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font_color='#f0f2f6')
-        st.plotly_chart(fig_threat, use_container_width=True)
-
-    st.markdown("##### Sample Data from Filtered Catalog:")
-    st.dataframe(filtered_celestial_df.head(), use_container_width=True)
+st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("""
 <div style="background-color: rgba(25, 32, 72, 0.7); padding: 15px; border-radius: 10px; margin-top: -20px;">
@@ -655,7 +629,7 @@ with data_col1:
     
     dataset_choice = st.selectbox(
         "Select Dataset for Analysis:",
-        options=["Recommended Mining Prospects", "Current Celestial Catalog (Filtered)", "Full Celestial Catalog (Unfiltered)"],
+        options=["Recommended Mining Prospects", "Galactic Resource Map Data (Current Filter)", "Overall Star Catalog (Unfiltered)"],
         key="dataset_analysis_choice"
     )
 
@@ -679,37 +653,38 @@ with data_col2:
             recommendation_df['Mission Duration'].mode()[0] if not recommendation_df['Mission Duration'].mode().empty else "N/A" # Simplistic avg
         ), unsafe_allow_html=True)
 
-    elif dataset_choice == "Current Celestial Catalog (Filtered)":
-        st.dataframe(filtered_celestial_df.head(), use_container_width=True)
-        if not filtered_celestial_df.empty:
+    elif dataset_choice == "Galactic Resource Map Data (Current Filter)":
+        # Use the globally available filtered_data from the map section
+        st.dataframe(filtered_data.head(), use_container_width=True)
+        if not filtered_data.empty:
             st.markdown("""
             <div class="frosted-glass-card" style="font-size: 0.9rem;">
-                <p><strong>Objects in Current Filtered View:</strong> {}</p>
-                <p><strong>Average Distance:</strong> {:.2f} LY</p>
-                <p><strong>Most Common Primary Mineral:</strong> {}</p>
+                <p><strong>Sites in Current View ({}):</strong> {}</p>
+                <p><strong>Average Resource Index:</strong> {:.2f}</p>
+                <p><strong>Predominant Site Type:</strong> {}</p>
                 <p><strong>Distance Range Covered:</strong> {:.1f} LY to {:.1f} LY</p>
             </div>
             """.format(
-                len(filtered_celestial_df),
-                filtered_celestial_df['Distance (LY)'].mean(),
-                filtered_celestial_df['Primary Mineral'].mode()[0] if not filtered_celestial_df['Primary Mineral'].mode().empty else "N/A",
-                filtered_celestial_df['Distance (LY)'].min(), filtered_celestial_df['Distance (LY)'].max()
+                distance_filter, len(filtered_data),
+                filtered_data['resource_value'].mean(),
+                filtered_data['site_type'].mode()[0] if not filtered_data['site_type'].mode().empty else "N/A",
+                filtered_data['distance'].min(), filtered_data['distance'].max()
             ), unsafe_allow_html=True)
         else:
-            st.info(f"No data available for the current filter criteria.")
+            st.info(f"No data available for the current filter: {distance_filter}")
 
-    elif dataset_choice == "Full Celestial Catalog (Unfiltered)":
-        st.dataframe(celestial_objects_df.head(), use_container_width=True)
+    elif dataset_choice == "Overall Star Catalog (Unfiltered)":
+        st.dataframe(star_data.head(), use_container_width=True)
         st.markdown("""
         <div class="frosted-glass-card" style="font-size: 0.9rem;">
-            <p><strong>Total Cataloged Celestial Objects:</strong> {}</p>
-            <p><strong>Overall Average Distance:</strong> {:.2f} LY</p>
-            <p><strong>Object Type Distribution (Top 3):</strong> {} ...</p>
+            <p><strong>Total Cataloged Celestial Bodies:</strong> {}</p>
+            <p><strong>Overall Average Resource Index:</strong> {:.2f}</p>
+            <p><strong>Site Type Distribution:</strong> {} ...</p>
         </div>
         """.format(
-            len(celestial_objects_df),
-            celestial_objects_df['Distance (LY)'].mean(),
-            ", ".join([f"{idx}: {val}" for idx, val in celestial_objects_df['Type'].value_counts().nlargest(3).items()])
+            len(star_data),
+            star_data['resource_value'].mean(),
+            ", ".join([f"{idx}: {val}" for idx, val in star_data['site_type'].value_counts().nlargest(3).items()])
         ), unsafe_allow_html=True)
 
 st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
