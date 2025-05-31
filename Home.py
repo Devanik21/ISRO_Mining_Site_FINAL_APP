@@ -18,14 +18,14 @@ from streamlit_lottie import st_lottie
 
 # Page Configuration with enhanced settings
 st.set_page_config(
-    page_title="ISRO Celestial Mining Intelligence Hub",
+    page_title="🪐 CelestAI Nexus - Cosmic Intelligence Platform",
     page_icon="🛰️",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
         'Get Help': 'https://www.isro.gov.in/contact_us.html',
         'Report a bug': 'https://github.com/yourusername/ISRO_Mining_Site_FINAL_APP/issues',
-        'About': "# ISRO Celestial Mining Intelligence Hub\nAn advanced platform for cosmic resource analysis and mining site evaluation."
+        'About': "# 🪐 CelestAI Nexus\nAn advanced AI-driven platform for cosmic resource analysis, mining site evaluation, and celestial exploration."
     }
 )
 
@@ -33,7 +33,7 @@ st.set_page_config(
 st.markdown("""
 <style>
     /* Main Page Styling */
-    .main {
+    body, .main {
         background-color: #0a1128;
         color: #f0f2f6;
     }
@@ -148,11 +148,57 @@ st.markdown("""
     }
     
     /* Divider styling */
-    hr {
+    hr.enhanced-hr {
         height: 3px;
         background: linear-gradient(90deg, rgba(76, 201, 240, 0), rgba(76, 201, 240, 1), rgba(76, 201, 240, 0));
         border: none;
         margin: 2rem 0;
+    }
+
+    /* Frosted Glass Card */
+    .frosted-glass-card {
+        background: rgba(40, 50, 100, 0.55); /* Semi-transparent background */
+        backdrop-filter: blur(12px); /* Blur effect for the background */
+        -webkit-backdrop-filter: blur(12px); /* For Safari */
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        margin-bottom: 25px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .frosted-glass-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 45px rgba(76, 201, 240, 0.4);
+    }
+
+    .frosted-glass-card h3 {
+        color: #4CC9F0; /* Light blue for headers inside frosted cards */
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(76, 201, 240, 0.5);
+        padding-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .frosted-glass-card p, .frosted-glass-card li {
+        color: #e0e0e0; /* Lighter text for readability on blurred background */
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Section Header Box */
+    .section-header-box {
+        background: linear-gradient(135deg, rgba(67, 97, 238, 0.3), rgba(114, 9, 183, 0.3));
+        padding: 15px 25px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        text-align: center;
+        border-left: 6px solid #7209B7;
+        border-right: 6px solid #4CC9F0;
+    }
+    .section-header-box h2 {
+        color: #f0f2f6; margin: 0; font-size: 2rem; font-weight: 700; text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -229,17 +275,23 @@ default_lottie = {
 # Load animations with fallback
 space_lottie = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_XiFZR1.json") or default_lottie
 #rocket_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_jtbfg2vy.json") or default_lottie
-analysis_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
+platform_lottie = load_lottieurl("https://assets9.lottiefiles.com/private_files/lf30_8z6ubjgj.json") or default_lottie
+hero_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_4p3fDM.json") or default_lottie # Galaxy animation
 
-
+# New Lottie animations for advanced features
+quantum_comm_lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_p1qiuahe.json") or default_lottie
+subsurface_scanner_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_ofa3xwo7.json") or default_lottie
+terraforming_lottie = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_p2u571tg.json") or default_lottie
+risk_matrix_lottie = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_x1gjdldd.json") or default_lottie
+ai_advisor_lottie = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_vPnn3K.json") or default_lottie
 
 # Removed particles background configuration and application since the module is missing
 
 # Advanced Sidebar with dynamic content
 with st.sidebar:
     st.image("space_mining.png", use_container_width=True)
-    st.markdown('<h1 style="text-align: center; color: #4CC9F0;">🛰️ ISRO</h1>', unsafe_allow_html=True)
-    st.markdown('<h2 style="text-align: center; color: #b8c2cc;">Celestial Mining Intelligence Hub</h2>', unsafe_allow_html=True)
+    st.markdown('<h1 style="text-align: center; color: #4CC9F0;">🪐 CelestAI Nexus</h1>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align: center; color: #b8c2cc; font-size: 1.1rem;">Cosmic Intelligence Platform</h2>', unsafe_allow_html=True)
     
     # Dynamic progress bar to show system loading
     st.markdown("### System Initialization")
@@ -293,17 +345,17 @@ with st.sidebar:
     # Mission briefing expander
     with st.expander("🌟 Mission Briefing", expanded=False):
         st.markdown("""
-        ## ISRO Celestial Mining Initiative
+        ## CelestAI Nexus Initiative
         
-        The Indian Space Research Organisation's Celestial Mining Intelligence Hub is a state-of-the-art platform 
-        designed to identify, analyze, and prioritize potential mining sites across our solar system and beyond.
+        CelestAI Nexus is a state-of-the-art AI platform designed to identify, analyze, and prioritize potential 
+        celestial mining sites and exploration targets across the cosmos.
         
-        Our mission is to advance India's position in the emerging space resource economy while ensuring 
+        Our mission is to pioneer humanity's expansion into space resource utilization while ensuring 
         sustainable practices for cosmic resource utilization.
         
         **Current mission focus:**
         - Asteroid belt prospects within 500 LY
-        - Lunar south pole evaluation
+        - Exo-lunar resource evaluation
         - Mars regolith composition analysis
         
         **Project Lead:** [Devanik](https://www.linkedin.com/in/devanik/)  
@@ -325,13 +377,18 @@ with st.sidebar:
 
 # Main content area with advanced UI elements
 # Hero section with animated title
-st.markdown('<h1 class="title-text">CELESTIAL MINING INTELLIGENCE HUB</h1>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle-text">Pioneering the Future of Space Resource Acquisition</p>', unsafe_allow_html=True)
+st.markdown('<h1 class="title-text">🪐 CELESTAI NEXUS</h1>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle-text">Navigating the Cosmos with Artificial Intelligence & Advanced Analytics</p>', unsafe_allow_html=True)
 
 # Animated Lottie section with error handling
 col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    try:
+        st_lottie(hero_lottie, speed=1, height=300, key="hero_animation")
+    except Exception as e:
+        st.warning(f"Could not display hero animation: {e}")
 
-
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 # Mission metrics dashboard
 st.markdown("## 📊 Mission Dashboard")
 
@@ -368,7 +425,7 @@ with metric_cols[3]:
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 
 # Interactive cosmic map (sample visualization)
 st.markdown("## 🌌 Galactic Resource Map")
@@ -449,7 +506,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 
 # Core functionality cards
 st.markdown("## 🛠️ Core System Capabilities")
@@ -514,8 +571,114 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
+# New Advanced Celestial Intelligence Modules Section
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
+st.markdown('<div class="section-header-box"><h2><span style="text-shadow: 0 0 8px #4CC9F0;">🌌 Advanced Celestial Intelligence Modules</span></h2></div>', unsafe_allow_html=True)
+
+feature_cols1 = st.columns(2)
+with feature_cols1[0]:
+    st.markdown("""
+    <div class="frosted-glass-card">
+        <h3>🔗 Quantum Entanglement Comms Link</h3>
+        <p>Establish ultra-secure, faster-than-light communication channels using quantum entanglement for instantaneous data transfer across vast cosmic distances.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if quantum_comm_lottie:
+        st_lottie(quantum_comm_lottie, height=150, key="quantum_comm")
+    st.radio("Link Status:", ("Active", "Standby", "Initializing"), horizontal=True, key="q_com_status")
+    st.caption("Current Throughput: 7.2 ZB/s (Zettabytes per second)")
+    st.caption("Encryption Level: Quantum Grade XII")
+
+with feature_cols1[1]:
+    st.markdown("""
+    <div class="frosted-glass-card">
+        <h3>⛏️ AI-Driven Subsurface Scanner</h3>
+        <p>Deploy AI algorithms to analyze gravimetric and seismic data, revealing deep subsurface compositions and potential resource deposits on target celestial bodies.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if subsurface_scanner_lottie:
+        st_lottie(subsurface_scanner_lottie, height=150, key="subsurface_scan")
+    
+    scan_target = st.selectbox("Target Body for Deep Scan:", ["Europa", "Titan", "Ceres", "Ganymede"], key="scan_target")
+    scan_depth = st.slider("Scan Depth (km):", 1, 500, 50, key="scan_depth")
+    if st.button("Initiate Deep Scan", key="deep_scan_button"):
+        st.info(f"Initiating scan of {scan_target} to {scan_depth} km... Analyzing quantum resonance signatures...")
+        # Placeholder for scan result
+        time.sleep(1)
+        st.success(f"Preliminary Scan Complete: High probability of water ice and silicate deposits detected at {scan_depth*0.7:.1f} km.")
+
+feature_cols2 = st.columns(2)
+with feature_cols2[0]:
+    st.markdown("""
+    <div class="frosted-glass-card">
+        <h3>🌍 Terraforming Suitability Index (TSI)</h3>
+        <p>Assess celestial bodies for their potential to be terraformed. The TSI combines atmospheric, geological, and radiation data to provide a comprehensive suitability score.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if terraforming_lottie:
+        st_lottie(terraforming_lottie, height=150, key="terraforming_idx")
+    
+    tsi_body = st.selectbox("Evaluate Body for Terraforming:", ["Mars", "Luna", "Exoplanet Kepler-186f"], key="tsi_body")
+    # Mock TSI data based on selection
+    tsi_score = np.random.randint(20, 85) if tsi_body == "Mars" else np.random.randint(5, 40)
+    st.metric(label=f"Overall TSI Score for {tsi_body}", value=f"{tsi_score}%")
+    st.progress(tsi_score)
+    st.caption("Parameters: Atmospheric Pressure (25%), Liquid Water Potential (70%), Gravitational Stability (90%), Temp. Regulation (40%), Radiation Shielding (30%)")
+
+with feature_cols2[1]:
+    st.markdown("""
+    <div class="frosted-glass-card">
+        <h3>⚠️ Dynamic Risk Assessment Matrix</h3>
+        <p>Proactively identify and mitigate mission risks. This module uses predictive AI to forecast potential hazards across various mission phases.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    if risk_matrix_lottie:
+        st_lottie(risk_matrix_lottie, height=150, key="risk_matrix_anim")
+
+    risk_phases = st.multiselect("Select Mission Phases for Risk Analysis:", ["Launch", "Interplanetary Cruise", "Orbital Insertion", "Surface Operations", "Return Journey"], default=["Launch", "Surface Operations"], key="risk_phases")
+    if risk_phases:
+        risk_data = {
+            'Risk Factor': ['Equipment Malfunction', 'Solar Flare Event', 'Micrometeoroid Impact', 'Navigation Error', 'Resource Depletion'],
+        }
+        for phase in risk_phases:
+            risk_data[phase] = np.random.choice(['Low', 'Medium', 'High', 'Critical'], 5)
+        
+        risk_df = pd.DataFrame(risk_data)
+        def style_risk(val):
+            color = 'lightgreen'
+            if val == 'Medium': color = 'orange'
+            elif val == 'High': color = 'red'
+            elif val == 'Critical': color = 'darkred'
+            return f'color: {color}; font-weight: bold;'
+        st.dataframe(risk_df.style.applymap(style_risk, subset=risk_phases), use_container_width=True)
+
+st.markdown("""
+<div class="frosted-glass-card" style="margin-top: 20px;">
+    <h3>🔮 Sentient AI Advisor ("Oracle")</h3>
+    <p>Consult the Oracle, our advanced AI consciousness, for strategic insights, complex problem-solving, and predictive forecasting related to your celestial endeavors.</p>
+</div>
+""", unsafe_allow_html=True)
+if ai_advisor_lottie:
+    st_lottie(ai_advisor_lottie, height=200, key="ai_advisor_anim")
+
+user_query = st.text_area("Pose your question to the Cosmic Oracle:", placeholder="e.g., 'What are the prospects for Helium-3 mining on Luna's far side?'", height=100, key="oracle_query")
+if st.button("Seek Cosmic Insight", key="oracle_button"):
+    if user_query:
+        responses = [
+            "The cosmic currents align favorably for this endeavor, yet vigilance against unforeseen solar activity is paramount.",
+            "Consider the deeper implications. Resource acquisition must harmonize with cosmic equilibrium.",
+            "Data suggests high potential, but the Oracle advises a multi-spectral survey to confirm subsurface anomalies before committing assets.",
+            "The threads of fate are complex. While promising, alternative trajectories may yield unexpected boons. Explore all paths.",
+            "A bold query! The Oracle perceives... a 78.3% probability of success, contingent on deploying advanced shielding technologies."
+        ]
+        with st.spinner("Oracle is contemplating the cosmic echoes..."):
+            time.sleep(1.5)
+            st.info(f"🔮 Oracle's Insight: {np.random.choice(responses)}")
+    else:
+        st.warning("The Oracle requires a query to illuminate the path. Please ask a question.")
+
 # Animated Recommendation section
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 st.markdown("## ✨ Recommended Mining Prospects")
 
 # Sample recommendation data
@@ -544,8 +707,8 @@ st.dataframe(
 )
 
 # Animated Analysis section
-st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("## 🔍 System Capabilities")
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
+st.markdown("## ✨ Platform Highlights")
 
 col1, col2 = st.columns([2, 1])
 
@@ -570,13 +733,13 @@ with col1:
 
 with col2:
     try:
-        st_lottie(analysis_lottie, height=400, key="analysis_animation")
+        st_lottie(platform_lottie, height=400, key="platform_animation")
     except Exception as e:
         st.image("https://via.placeholder.com/300x400.png?text=Analysis+Dashboard", use_column_width=True)
         st.error(f"Could not display animation: {e}")
 
 # Call-to-action section
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 cta_col1, cta_col2 = st.columns([3, 1])
 
 with cta_col1:
@@ -593,7 +756,7 @@ with cta_col2:
         st.success("Explorer module activated! Redirecting to prediction interface...")
 
 # Footer with credits and system status
-st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<hr class='enhanced-hr'>", unsafe_allow_html=True)
 footer_col1, footer_col2, footer_col3 = st.columns(3)
 
 with footer_col1:
@@ -601,7 +764,7 @@ with footer_col1:
     <div style="text-align: center;">
         <p style="color: #b8c2cc; font-size: 0.9rem;">
             <strong>System Status:</strong> Operational<br>
-            Last Updated: 10-03-2025 08:42 IST
+            Last Sync: {time.strftime("%d-%m-%Y %H:%M:%S")} IST
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -610,8 +773,8 @@ with footer_col2:
     st.markdown("""
     <div style="text-align: center;">
         <p style="color: #b8c2cc; font-size: 0.9rem;">
-            <strong>ISRO Celestial Mining Intelligence Hub</strong><br>
-            Version 2.7.4 | Chandra Build
+            <strong>🪐 CelestAI Nexus</strong><br>
+            Version 3.0.0 | Orionis Build
         </p>
     </div>
     """, unsafe_allow_html=True)
