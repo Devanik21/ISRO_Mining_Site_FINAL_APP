@@ -312,7 +312,7 @@ def show_visualize_page():
         if command != "Select...":
             st.success(f"Executing command: **{command}**")
             time.sleep(1)
-            st.experimental_rerun()
+            st.rerun()
 
     # Quantum-Safe Encryption Badge
     st.markdown("""
