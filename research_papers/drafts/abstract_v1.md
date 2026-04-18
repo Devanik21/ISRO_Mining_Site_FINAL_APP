@@ -1,0 +1,3 @@
+Abstract Draft v1:
+
+The exploration of celestial bodies for resource extraction necessitates robust, predictive site selection methodologies. This paper presents a novel machine learning framework...
