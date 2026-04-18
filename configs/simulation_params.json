@@ -1,0 +1,5 @@
+{
+    "monte_carlo_iterations": 50000,
+    "confidence_interval": 0.95,
+    "random_seed": 42
+}

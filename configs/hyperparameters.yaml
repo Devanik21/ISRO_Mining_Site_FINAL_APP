@@ -1,0 +1,5 @@
+learning_rate: 0.001
+batch_size: 64
+epochs: 100
+optimizer: 'adamw'
+weight_decay: 0.01
